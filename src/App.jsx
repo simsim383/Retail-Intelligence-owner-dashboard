@@ -384,7 +384,7 @@ function Hero() {
           </div>
 
           {/* Hero dashboard mockup */}
-          <div className="float-anim fu d5" style={{ position:'relative', width:'100%', maxWidth:780 }}>
+          <div style={{ position:'relative', width:'100%', maxWidth:780 }}>
             <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:300, height:200, background:'radial-gradient(ellipse,rgba(37,99,235,0.18),transparent 70%)', pointerEvents:'none' }} />
             <div className="dash-wrap">
               <div className="dash-bar">
