@@ -383,14 +383,51 @@ function Hero() {
             </div>
           </div>
 
-          {/* Hero phone — dashboard */}
-          <div className="float-anim fu d5" style={{ position:'relative', display:'flex', justifyContent:'center' }}>
-            <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:260, height:260, background:'radial-gradient(ellipse,rgba(37,99,235,0.2),transparent 70%)', pointerEvents:'none' }} />
-            <Phone badge="LIVE">
-              <AppHeader />
-              <KPIBar rev="£9,871" profit="£1,295" margin="18.4%" revSub="▲ 9.3% vs bench" profitSub="▼ -1.5% WoW" />
-              <DashboardScreen />
-            </Phone>
+          {/* Hero dashboard mockup */}
+          <div className="float-anim fu d5" style={{ position:'relative', width:'100%', maxWidth:780 }}>
+            <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:300, height:200, background:'radial-gradient(ellipse,rgba(37,99,235,0.18),transparent 70%)', pointerEvents:'none' }} />
+            <div className="dash-wrap">
+              <div className="dash-bar">
+                <div style={{ display:'flex', alignItems:'center', gap:12 }}>
+                  <div className="dash-dots">
+                    <span style={{ background:'#FF5F57' }} /><span style={{ background:'#FEBC2E' }} /><span style={{ background:'#28C840' }} />
+                  </div>
+                  <span className="dash-title">retail-intelligence.app — W/E 07 Mar 2026</span>
+                </div>
+                <div className="dash-live"><span style={{ width:6, height:6, borderRadius:'50%', background:'var(--green)', display:'inline-block' }} /> Live</div>
+              </div>
+              <div className="kpi-row">
+                {[{val:'£9,871',lbl:'Revenue',color:'var(--blue-glo)'},{val:'£1,295',lbl:'Profit',color:'var(--green)'},{val:'18.4%',lbl:'Margin',color:'var(--cyan)'},{val:'+11.3%',lbl:'vs Last Wk',color:'var(--amber)'}].map((k,i) => (
+                  <div className="kpi" key={i}><div className="kpi-val" style={{ color:k.color }}>{k.val}</div><div className="kpi-lbl">{k.lbl}</div></div>
+                ))}
+              </div>
+              <div className="dash-body">
+                <div className="dash-panel">
+                  <div className="dp-head">Top Sellers <span style={{ fontSize:10, fontWeight:700, padding:'2px 8px', borderRadius:99, background:'rgba(37,99,235,0.15)', color:'var(--blue-glo)' }}>This Week</span></div>
+                  {[{name:'Tobacco & Vaping',val:'+34% ↑',up:true},{name:'Alt. Smoking',val:'+66% ↑',up:true},{name:'Alcohol',val:'£2,003',up:null},{name:'Soft Drinks',val:'£862',up:null}].map((r,i) => (
+                    <div className="dp-row" key={i}>
+                      <span style={{ color:'var(--text)', fontWeight:600 }}>{r.name}</span>
+                      <span className={r.up===true?'trend-up':''} style={r.up===null?{color:'var(--muted)',fontWeight:600}:{}}>{r.val}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="dash-panel">
+                  <div className="dp-head">Alerts <span style={{ fontSize:10, fontWeight:700, padding:'2px 8px', borderRadius:99, background:'rgba(239,68,68,0.15)', color:'var(--red)' }}>Action Needed</span></div>
+                  {[{name:'Galaxy Ripple',val:'⚠ 5 sales vs full box',dn:true},{name:'Chocomel',val:'Negative margin',dn:true},{name:'Twix White',val:'Sales doubled — restock',dn:false},{name:'Milk 2L Semi',val:'Margin fixed ✓',dn:false}].map((r,i) => (
+                    <div className="dp-row" key={i}>
+                      <span style={{ color:'var(--text)', fontWeight:600 }}>{r.name}</span>
+                      <span className={r.dn?'trend-dn':'trend-up'}>{r.val}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ padding:'0 14px 14px' }}>
+                <div style={{ background:'rgba(37,99,235,0.07)', border:'1px solid rgba(37,99,235,0.2)', borderRadius:10, padding:'10px 14px', fontSize:11, color:'var(--muted)', lineHeight:1.6 }}>
+                  <span style={{ color:'var(--blue-glo)', fontWeight:700 }}>✦ AI Insight — </span>
+                  Paramount cigarettes up <strong style={{ color:'var(--text)' }}>+100% WoW</strong>. A new regular customer. Reorder now or you'll lose them.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
