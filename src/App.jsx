@@ -381,8 +381,7 @@ function Hero() {
               <button className="btn-primary-lg" onClick={() => scrollTo('contact')}>Request a Demo <ArrowRight /></button>
               <button className="btn-secondary-lg" onClick={() => scrollTo('app-preview')}><PlayIcon /> See the App</button>
             </div>
-          </div>
-
+          
           {/* Hero phone — dashboard */}
           <div className="float-anim fu d5" style={{ position:'relative', display:'flex', justifyContent:'center' }}>
             <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:260, height:260, background:'radial-gradient(ellipse,rgba(37,99,235,0.2),transparent 70%)', pointerEvents:'none' }} />
