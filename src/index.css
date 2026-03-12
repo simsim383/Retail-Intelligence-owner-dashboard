@@ -143,8 +143,8 @@ body {
 
 /* ── HERO ── */
 #hero {
-  position:relative; min-height:100vh;
-  display:flex; align-items:center; padding-top:68px;
+  position:relative;
+  display:flex; align-items:center; padding-top:108px; padding-bottom:80px;
   background:
     radial-gradient(ellipse 60% 50% at 30% 50%, #1D4ED812 0%, transparent 60%),
     radial-gradient(ellipse 40% 40% at 70% 30%, #0891B210 0%, transparent 55%),
@@ -160,7 +160,7 @@ body {
 .hero-inner {
   display:flex; flex-direction:column;
   align-items:center; text-align:center;
-  gap:60px; position:relative; z-index:1; width:100%;
+  gap:48px; position:relative; z-index:1; width:100%;
 }
 .hero-left {
   display:flex; flex-direction:column; align-items:center;
@@ -425,6 +425,9 @@ footer a:hover { color:var(--blue-glo); }
   .dash-body { grid-template-columns:1fr; }
   .nav-links, .nav-cta { display:none; }
   .hamburger { display:block; }
+  /* Why pillars — stack on mobile */
+  .pillar-card { grid-template-columns:1fr !important; }
+  .pillar-card > div:first-child { border-right:none !important; border-bottom:1px solid var(--border); }
 }
 @media(max-width:520px) {
   .stats-grid { grid-template-columns:1fr 1fr; }
