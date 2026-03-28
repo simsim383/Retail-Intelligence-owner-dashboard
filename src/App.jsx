@@ -921,11 +921,6 @@ function Pricing() {
             <button className="plan-btn plan-btn-main" onClick={() => scrollTo('contact')}>Get Started →</button>
           </div>
         </div>
-        <div className="reassure">
-          {['No setup fees','Cancel anytime','No contracts','Works with any EPOS'].map(t => (
-            <div className="reassure-item" key={t}><span style={{color:'var(--green)'}}>✓</span> {t}</div>
-          ))}
-        </div>
       </div>
     </section>
   )
