@@ -729,7 +729,7 @@ function Features() {
         </div>
 
         {/* 2 — Trending */}
-        <div className="feature-row flip reveal">
+        <div className="feature-row reveal">
           <div>
             <div className="feature-label">Trending</div>
             <h2 className="feature-title">Catch the wave<br />before it breaks.</h2>
