@@ -883,7 +883,6 @@ function Pricing() {
         <div className="section-head">
           <span className="badge badge-blue">Pricing</span>
           <h2>Simple pricing.<br /><span className="gradient-text">No surprises.</span></h2>
-          <p>Pay monthly. Cancel anytime. No setup fees. No contracts. No hidden costs.</p>
         </div>
         <div className="pricing-grid">
           <div className="plan reveal">
