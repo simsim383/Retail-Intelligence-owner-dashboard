@@ -338,8 +338,7 @@ function Navbar({ scrolled, menuOpen, setMenuOpen }) {
           </div>
           <ul className="nav-links">{links.map(l => (<li key={l.id}><a onClick={() => scrollTo(l.id)}>{l.label}</a></li>))}</ul>
           <div className="nav-cta">
-            <button className="btn-ghost" onClick={() => scrollTo('contact')}>Log In</button>
-            <button className="btn-primary" onClick={() => scrollTo('contact')}>Get Early Access →</button>
+            <button className="btn-primary" onClick={() => scrollTo('contact')}>Sign up →</button>
           </div>
           <button className="hamburger" onClick={() => setMenuOpen(v => !v)} aria-label="Menu">
             {menuOpen ? <XIcon /> : <MenuIcon />}
