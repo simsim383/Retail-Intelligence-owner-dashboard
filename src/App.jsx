@@ -65,12 +65,12 @@ function Phone({ children, label, badge, badgeColor = 'var(--green)' }) {
 }
 
 // ── App header ───────────────────────────────────────────────────────
-function AppHeader({ name='Nikul', store='Gateway, Leeds', weekly=true }) {
+function AppHeader({ name='Sarah', store='High Street, Leeds', weekly=true }) {
   return (
     <div style={{ padding:'10px 12px 8px', background:'#0A0F1A', borderBottom:'1px solid #1C2A3E' }}>
       <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:4 }}>
-        <div style={{ width:22, height:22, borderRadius:6, background:'linear-gradient(135deg,#1D4ED8,#06B6D4)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:10, fontWeight:800, color:'white' }}>L</div>
-        <span style={{ fontWeight:800, fontSize:13, color:'#F0F4FF' }}>Londis Intelligence</span>
+        <div style={{ width:22, height:22, borderRadius:6, background:'linear-gradient(135deg,#1D4ED8,#06B6D4)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:10, fontWeight:800, color:'white' }}>R</div>
+        <span style={{ fontWeight:800, fontSize:13, color:'#F0F4FF' }}>Retail Intelligence</span>
       </div>
       <div style={{ fontSize:9, color:'#4A637F' }}>Good afternoon, <span style={{ color:'#8BA3C7' }}>{name}</span></div>
       <div style={{ fontSize:9, color:'#4A637F' }}>{store}</div>
@@ -729,7 +729,7 @@ function Features() {
         </div>
 
         {/* 2 — Trending */}
-        <div className="feature-row reveal">
+        <div className="feature-row flip reveal">
           <div>
             <div className="feature-label">Trending</div>
             <h2 className="feature-title">Catch the wave<br />before it breaks.</h2>
@@ -883,6 +883,7 @@ function Pricing() {
         <div className="section-head">
           <span className="badge badge-blue">Pricing</span>
           <h2>Simple pricing.<br /><span className="gradient-text">No surprises.</span></h2>
+          <p>Pay monthly. Cancel anytime. No setup fees. No contracts. No hidden costs.</p>
         </div>
         <div className="pricing-grid">
           <div className="plan reveal">
