@@ -373,8 +373,7 @@ function Hero() {
             </p>
             <div className="hero-pills fu d4">
               <span className="hero-pill">✓ Make better buying decisions</span>
-              <span className="hero-pill">✓ Spot pricing errors instantly</span>
-              <span className="hero-pill">✓ Catch theft before it's too late</span>
+              <span className="hero-pill">✓ Daily health check</span>
               <span className="hero-pill">✓ Forecast with confidence</span>
             </div>
             <div className="hero-btns fu d5">
@@ -469,8 +468,8 @@ function Stats() {
           {[
             { num:'£728',   color:'var(--green)',    lbl:'Extra profit from one price change' },
             { num:'£300+',  color:'var(--amber)',    lbl:'Tied up in one instinct buy'        },
-            { num:'5 min',  color:'var(--cyan)',     lbl:'Weekly upload time'                 },
-            { num:'1 week', color:'var(--blue-glo)', lbl:'To start making better decisions'  },
+            { num:'1 min',  color:'var(--cyan)',     lbl:'Weekly upload time'                 },
+            { num:'1 day', color:'var(--blue-glo)', lbl:'To start making better decisions'  },
           ].map((s, i) => (
             <div key={i} className="reveal">
               <div className="stat-num" style={{ color:s.color }}>{s.num}</div>
@@ -490,8 +489,8 @@ function AppPreview() {
       <div className="container">
         <div className="section-head">
           <span className="badge badge-blue">Inside the App</span>
-          <h2>Weekly insight.<br /><span className="gradient-text">Monthly intelligence.</span></h2>
-          <p>A mobile-first dashboard with 10 weekly views and 12 monthly views. Pro includes both — and the monthly deep-dive is where the real strategic advantage lives.</p>
+          <h2>Daily insight.<br /><span className="gradient-text">Monthly intelligence.</span></h2>
+          <p>A mobile-first dashboard with view of your daily, weekly and monthly data to help you view, manage and plan your business.</p>
         </div>
 
         {/* Row 1 — Weekly + Monthly nav grids */}
@@ -534,9 +533,9 @@ function AppPreview() {
         <div style={{ marginTop:40, display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:16 }}>
           {[
             { icon:'📱', title:'Mobile-first',          desc:'Designed for store owners on the move — check your numbers from anywhere, any time, on any device.' },
-            { icon:'📅', title:'Weekly + Monthly · Pro', desc:'Pro includes both weekly EPOS analysis and monthly deep-dives: baseline trends, competitor pricing, financial P&L, and shelf density.', pro:true },
-            { icon:'🏷️', title:'Competitor Pricing · Pro',desc:'Your prices vs Tesco & Asda across a fixed 15-product basket every month. 3 upside, 4 in-line, 7 at risk — know your position.', pro:true },
-            { icon:'⚙️', title:'Operations & Staffing',  desc:'1,250 transactions. £7.90 avg spend. Busiest day: Saturday. Peak hours flagged. Suggested day off. All from your own data.' },
+            { icon:'📅', title:'Daily + Weekly + Monthly', desc:' EPOS analysis and deep-dives into your data', pro:true },
+            { icon:'🏷️', title:'Competitor Pricing · Pro',desc:'Your prices vs Tesco & Asda across a fixed 15-product basket every month — know your position.', pro:true },
+            { icon:'⚙️', title:'Operations & Staffing',  desc:'Find your average basket spend, busiest day and quietest day all from your own data.' },
           ].map((c,i)=>(
             <div className="card reveal" key={i} style={{ textAlign:'center', position:'relative' }}>
               {c.pro && <div style={{ position:'absolute', top:-10, right:12, fontSize:9, fontWeight:800, padding:'2px 9px', borderRadius:99, background:'rgba(37,99,235,0.15)', color:'var(--blue-glo)', border:'1px solid rgba(37,99,235,0.3)', letterSpacing:'0.06em', textTransform:'uppercase' }}>Pro</div>}
@@ -567,7 +566,7 @@ function WhyItWorks() {
       label:'2 — Weekly Health Check', title:"Know what's going well\nand what isn't.",
       body:"Every week you get a clear view of what's growing, declining, and whether you have a potential theft or stock discrepancy problem. The data you need — without being in the shop 24/7.",
       points:['Top and bottom performers by category, every week','Spot slow-moving lines eating into shelf space and cash','Flag discrepancies between stock stacked and sales recorded','Track trends week on week before problems compound'],
-      storyText:"A client stacked a full box of Galaxy Ripple. The data showed only 5 sales. We pinpointed the discrepancy before it was too late — that's the kind of visibility that pays for itself immediately.",
+      storyText:"A client saw their low margin products each week and could now pin point which specific products to increase their price on immediately",
       storyTag:'🔍 Stock Control',
     },
     {
@@ -711,7 +710,7 @@ function Features() {
             <div className="feature-label">Top Sellers</div>
             <h2 className="feature-title">Know what's selling.<br />Know what's not.</h2>
             <p className="feature-body">Best and worst performers ranked every week. See which categories are growing, which lines are freeing up space and cash, and where your real volume comes from.</p>
-            <CheckList checks={['Best sellers ranked by revenue, profit, and units','Worst performers flagged — free up space and cash','Category and department breakdowns with WoW','Ask about specific lines rather than the whole shop']} />
+            <CheckList checks={['Best sellers ranked by revenue, profit, and units','Worst performers flagged — free up space and cash','Category and department breakdowns with WoW','Ask about specific lines rather than the whole shop', ,'Increase shelf spacing on your top sellers']} />
           </div>
           <ScreenShell title="Top Sellers — W/E 07 Mar" badge="Best Sellers">
             {[
@@ -783,35 +782,6 @@ function Features() {
           </ScreenShell>
         </div>
 
-        {/* 4 — Stock Control */}
-        <div className="feature-row flip reveal">
-          <div>
-            <div className="feature-label" style={{ color:'var(--red)' }}>Stock Control &amp; Theft Detection</div>
-            <h2 className="feature-title">Full box stacked.<br /><span style={{color:'var(--red)'}}>Five sales recorded.</span></h2>
-            <p className="feature-body">A client stacked a full box of Galaxy Ripple. The data showed only 5 sales. We pinpointed the discrepancy before it was too late — automatically, every single week.</p>
-            <CheckList checks={['Flags discrepancies between stock movement and sales','Pin-points errors before they compound over weeks','Basket spend tracked per staff member per shift','Busy vs quiet day patterns reveal unusual activity']} />
-          </div>
-          <ScreenShell title="Stock Discrepancy Report" badge="Review" badgeClass="badge-red">
-            <div style={{padding:'14px 16px',display:'flex',flexDirection:'column',gap:10}}>
-              <div style={{background:'rgba(239,68,68,0.06)',border:'1px solid rgba(239,68,68,0.2)',borderRadius:10,padding:14}}>
-                <div style={{fontSize:11,fontWeight:700,color:'var(--red)',textTransform:'uppercase',letterSpacing:'0.06em',marginBottom:8}}>⚠ Discrepancy Flagged</div>
-                <div style={{fontSize:14,fontWeight:700,color:'var(--text)',marginBottom:4}}>Galaxy Ripple — Confectionery</div>
-                <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8,marginTop:10}}>
-                  {[{lbl:'Stock put out',val:'48 units',c:'var(--text)'},{lbl:'Sales recorded',val:'5 units',c:'var(--red)'},{lbl:'Remaining',val:'6 units',c:'var(--amber)'},{lbl:'Unaccounted',val:'37 units',c:'var(--red)'}].map((m,i)=>(
-                    <div key={i} style={{background:'var(--bg2)',borderRadius:8,padding:'8px 12px'}}>
-                      <div style={{fontSize:10,color:'var(--dim)',fontWeight:600,marginBottom:2}}>{m.lbl}</div>
-                      <div style={{fontSize:15,fontWeight:800,color:m.c}}>{m.val}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{background:'rgba(245,158,11,0.06)',border:'1px solid rgba(245,158,11,0.2)',borderRadius:10,padding:14,fontSize:12,color:'var(--muted)',lineHeight:1.65}}>
-                <div style={{color:'var(--amber)',fontWeight:700,fontSize:11,marginBottom:4}}>⚑ Action Required</div>
-                Check CCTV for this bay. Verify stock count physically. Consider reordering only once discrepancy is resolved.
-              </div>
-            </div>
-          </ScreenShell>
-        </div>
 
         {/* 5 — AI Summary */}
         <div className="feature-row reveal">
@@ -844,7 +814,7 @@ function Features() {
             <div className="feature-label" style={{ color:'var(--blue-glo)' }}>Competitor Pricing · Pro Monthly</div>
             <h2 className="feature-title">Know exactly where<br />you stand vs Tesco &amp; Asda.</h2>
             <p className="feature-body">A fixed 15-product basket checked against Tesco and Asda prices every month. Know instantly which lines are at risk, which are in-line, and where you actually have an advantage.</p>
-            <CheckList checks={['15-product basket vs Tesco & Asda every month','RISK / IN-LINE / UPSIDE status per product','Monthly P&L summary alongside pricing data','Shelf density: ELITE / OK / THIEF audit per category']} accent="var(--blue-glo)" />
+            <CheckList checks={['15-product basket vs Tesco & Asda every month','RISK / IN-LINE / UPSIDE status per product','Monthly P&L summary alongside pricing data']} accent="var(--blue-glo)" />
           </div>
           <ScreenShell title="Competitor Pricing — February 2026" badge="Pro Monthly" badgeClass="badge-blue">
             <div style={{padding:'8px 16px'}}>
@@ -974,7 +944,6 @@ function FinalCTA() {
           We deal with the past.<br /><span className="gradient-text">So you can profit in the future.</span>
         </h2>
         <p style={{ fontSize:16, color:'var(--muted)', maxWidth:460, margin:'0 auto 36px', lineHeight:1.7 }}>
-          Stop making decisions on instinct. Start knowing what's actually happening in your store — every single week.
         </p>
         <div style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', gap:12 }}>
           <button className="btn-primary-lg" onClick={() => scrollTo('contact')}>Request a Demo <ArrowRight /></button>
@@ -1053,7 +1022,7 @@ function Footer() {
               <div style={{ fontSize:11, color:'var(--dim)' }}>Smart stock analytics for independent stores</div>
             </div>
           </div>
-          <a href="mailto:hello@retail-intelligence.co.uk">hello@retail-intelligence.co.uk</a>
+          <a href="mailto:retail.intelligence@outlook.com">retail.intelligence@outlook.com</a>
           <div style={{ fontSize:12, color:'var(--dim)' }}>© 2026 Retail Intelligence · Built in the UK</div>
         </div>
       </div>
