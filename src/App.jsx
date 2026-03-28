@@ -468,7 +468,7 @@ function Stats() {
           {[
             { num:'£728',   color:'var(--green)',    lbl:'Extra profit from one price change' },
             { num:'£300+',  color:'var(--amber)',    lbl:'Tied up in one instinct buy'        },
-            { num:'1 min',  color:'var(--cyan)',     lbl:'Weekly upload time'                 },
+            { num:'1 min',  color:'var(--cyan)',     lbl:'Daily upload time'                 },
             { num:'1 day', color:'var(--blue-glo)', lbl:'To start making better decisions'  },
           ].map((s, i) => (
             <div key={i} className="reveal">
