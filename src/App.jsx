@@ -333,7 +333,7 @@ function Navbar({ scrolled, menuOpen, setMenuOpen }) {
       <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
         <div className="nav-inner">
           <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="logo-mark">📊</div>
+            <img src="/favicon.png" alt="Retail Intelligence" style={{ width:36, height:36, borderRadius:8, objectFit:'cover' }} />
             <span className="logo-text">Retail <span>Intelligence</span></span>
           </div>
           <ul className="nav-links">{links.map(l => (<li key={l.id}><a onClick={() => scrollTo(l.id)}>{l.label}</a></li>))}</ul>
@@ -1015,7 +1015,7 @@ function Footer() {
       <div className="container">
         <div className="foot-inner">
           <div className="nav-logo" onClick={() => window.scrollTo({ top:0, behavior:'smooth' })}>
-            <div className="logo-mark">📊</div>
+            <img src="/favicon.png" alt="Retail Intelligence" style={{ width:36, height:36, borderRadius:8, objectFit:'cover' }} />
             <div>
               <div style={{ fontSize:14, fontWeight:700, color:'var(--text)' }}>Retail <span style={{ color:'var(--blue-glo)' }}>Intelligence</span></div>
               <div style={{ fontSize:11, color:'var(--dim)' }}>Smart stock analytics for independent stores</div>
