@@ -212,7 +212,7 @@ export default function App(){
         background:scrollY>30?`${C.surface}E8`:"transparent",borderBottom:scrollY>30?`1px solid ${C.border}`:"1px solid transparent",transition:"all 0.3s ease"}}>
         <div style={{maxWidth:1100,margin:"0 auto",padding:"0 20px",height:64,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <img src="/favicon.png" alt="Retail Intelligence" style={{width:32,height:32,borderRadius:10,objectFit:"cover"}}/>
+            <img src="/staff-logo.png" alt="Retail Intelligence" style={{width:32,height:32,borderRadius:10,objectFit:"cover"}}/>
             <span style={{fontWeight:700,fontSize:15,color:C.text}}>Retail <span style={{color:C.amber}}>Intelligence</span></span>
           </div>
           <div className="hm" style={{display:"flex",gap:32}}>
@@ -952,7 +952,7 @@ export default function App(){
       <footer style={{borderTop:`1px solid ${C.border}`,padding:"36px 20px",background:C.bg}}>
         <div style={{maxWidth:1100,margin:"0 auto",display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"space-between",gap:16}}>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <img src="/favicon.png" alt="Retail Intelligence" style={{width:30,height:30,borderRadius:9,objectFit:"cover"}}/>
+            <img src="/staff-logo.png" alt="Retail Intelligence" style={{width:30,height:30,borderRadius:9,objectFit:"cover"}}/>
             <div>
               <div style={{fontSize:14,fontWeight:700,color:C.text}}>Retail <span style={{color:C.amber}}>Intelligence</span></div>
               <div style={{fontSize:11,color:C.dim}}>Staff intelligence for independent retail</div>
