@@ -125,12 +125,9 @@ export default function Home() {
             e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          <div style={{
-            width: 52, height: 52, borderRadius: 14,
-            background: 'rgba(37,99,235,0.15)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 26,
-          }}>📊</div>
+          <div style={{ width: 56, height: 56, borderRadius: 14, overflow: 'hidden', flexShrink: 0 }}>
+            <img src="/owner-logo.png" alt="Owner Intelligence" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
 
           <div>
             <div style={{
@@ -193,12 +190,9 @@ export default function Home() {
             e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          <div style={{
-            width: 52, height: 52, borderRadius: 14,
-            background: 'rgba(245,158,11,0.15)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 26,
-          }}>👥</div>
+          <div style={{ width: 56, height: 56, borderRadius: 14, overflow: 'hidden', flexShrink: 0 }}>
+            <img src="/staff-logo.png" alt="Staff Intelligence" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
 
           <div>
             <div style={{
