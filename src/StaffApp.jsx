@@ -1,8 +1,4 @@
 // StaffApp.jsx
-// This is a thin wrapper around the existing staff website content.
-// Copy the full content of your staff site's App.jsx into StaffPage.jsx
-// This file just adds the "← All Products" back link at the top.
-
 import { useNavigate } from 'react-router-dom'
 import StaffPage from './StaffPage.jsx'
 
@@ -10,18 +6,19 @@ export default function StaffApp() {
   const navigate = useNavigate()
   return (
     <>
-      {/* Back bar — sits above the existing staff navbar */}
+      {/* Back bar — fixed at very top, 36px tall */}
       <div style={{
         position: 'fixed',
         top: 0, left: 0, right: 0,
         zIndex: 200,
-        background: 'rgba(8,12,20,0.95)',
+        background: 'rgba(8,12,20,0.97)',
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(245,158,11,0.15)',
         padding: '8px 24px',
         display: 'flex',
         alignItems: 'center',
         gap: 12,
+        height: 36,
       }}>
         <button
           onClick={() => navigate('/')}
@@ -50,7 +47,15 @@ export default function StaffApp() {
         </span>
       </div>
 
-      {/* Push content down to account for the extra back bar (36px) + existing navbar */}
+      {/* 
+        The staff site navbar is position:fixed with top calculated from scrollY.
+        We add 36px offset via a style override so it sits below the back bar.
+      */}
+      <style>{`
+        .staff-nav { top: 36px !important; }
+      `}</style>
+
+      {/* Also push the page body down by 36px so hero content isn't hidden */}
       <div style={{ paddingTop: 36 }}>
         <StaffPage />
       </div>
