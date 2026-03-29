@@ -1,8 +1,4 @@
 // OwnerApp.jsx
-// This is a thin wrapper around the existing owner website.
-// The full owner site content lives in OwnerPage.jsx (rename your existing App.jsx to OwnerPage.jsx)
-// This file just adds the "← All Products" back link at the top.
-
 import { useNavigate } from 'react-router-dom'
 import OwnerPage from './OwnerPage.jsx'
 
@@ -10,18 +6,19 @@ export default function OwnerApp() {
   const navigate = useNavigate()
   return (
     <>
-      {/* Back bar — sits above the existing navbar */}
+      {/* Back bar — fixed at very top, 36px tall */}
       <div style={{
         position: 'fixed',
         top: 0, left: 0, right: 0,
         zIndex: 200,
-        background: 'rgba(11,17,32,0.95)',
+        background: 'rgba(11,17,32,0.97)',
         backdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(37,99,235,0.15)',
         padding: '8px 24px',
         display: 'flex',
         alignItems: 'center',
         gap: 12,
+        height: 36,
       }}>
         <button
           onClick={() => navigate('/')}
@@ -50,10 +47,13 @@ export default function OwnerApp() {
         </span>
       </div>
 
-      {/* Push content down to account for the extra back bar (36px) + existing navbar */}
-      <div style={{ paddingTop: 36 }}>
-        <OwnerPage />
-      </div>
+      {/* Push the owner's fixed navbar down by 36px so it sits below the back bar */}
+      <style>{`
+        #navbar { top: 36px !important; }
+        .mobile-menu { top: 104px !important; }
+      `}</style>
+
+      <OwnerPage />
     </>
   )
 }
