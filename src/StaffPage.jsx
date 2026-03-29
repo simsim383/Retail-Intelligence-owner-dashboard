@@ -208,7 +208,7 @@ export default function App(){
       `}</style>
 
       {/* ── NAVBAR ── */}
-      <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,backdropFilter:"blur(20px)",WebkitBackdropFilter:"blur(20px)",
+      <nav style={{position:"fixed",top:36,left:0,right:0,zIndex:100,backdropFilter:"blur(20px)",WebkitBackdropFilter:"blur(20px)",
         background:scrollY>30?`${C.surface}E8`:"transparent",borderBottom:scrollY>30?`1px solid ${C.border}`:"1px solid transparent",transition:"all 0.3s ease"}}>
         <div style={{maxWidth:1100,margin:"0 auto",padding:"0 20px",height:64,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <div style={{display:"flex",alignItems:"center",gap:10}}>
