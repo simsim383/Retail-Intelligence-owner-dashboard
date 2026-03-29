@@ -47,18 +47,7 @@ export default function StaffApp() {
         </span>
       </div>
 
-      {/* 
-        The staff site navbar is position:fixed with top calculated from scrollY.
-        We add 36px offset via a style override so it sits below the back bar.
-      */}
-      <style>{`
-        .staff-nav { top: 36px !important; }
-      `}</style>
-
-      {/* Also push the page body down by 36px so hero content isn't hidden */}
-      <div style={{ paddingTop: 36 }}>
-        <StaffPage />
-      </div>
+      <StaffPage />
     </>
   )
 }
