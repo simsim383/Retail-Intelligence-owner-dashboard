@@ -48,9 +48,11 @@ export default function OwnerApp() {
       </div>
 
       {/* Push the owner's fixed navbar down by 36px so it sits below the back bar */}
+      {/* scroll-margin-top ensures section scroll targets account for both bars */}
       <style>{`
         #navbar { top: 36px !important; }
         .mobile-menu { top: 104px !important; }
+        section[id], div[id] { scroll-margin-top: 104px; }
       `}</style>
 
       <OwnerPage />
