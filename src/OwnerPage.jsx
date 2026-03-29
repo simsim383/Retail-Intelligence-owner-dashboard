@@ -348,7 +348,7 @@ function Navbar({ scrolled, menuOpen, setMenuOpen }) {
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
         {links.map(l => (<a key={l.id} onClick={() => scrollTo(l.id)}>{l.label}</a>))}
         <button className="btn-primary-lg" onClick={() => { scrollTo('contact'); setMenuOpen(false) }} style={{ width:'100%', justifyContent:'center', marginTop:16 }}>
-          Get Early Access <ArrowRight />
+          Sign Up <ArrowRight />
         </button>
       </div>
     </>
@@ -972,7 +972,7 @@ function Contact() {
         <div className="section-head">
           <span className="badge badge-teal">Get In Touch</span>
           <h2>Let's talk about<br />your store.</h2>
-          <p>Request a demo, ask questions, or get early access. We reply within 24 hours.</p>
+          <p>Ask questions or sign up. We reply within 24 hours.</p>
         </div>
         {sent ? (
           <div style={{ maxWidth:560, margin:'0 auto', textAlign:'center', background:'rgba(16,185,129,0.08)', border:'1px solid rgba(16,185,129,0.3)', borderRadius:20, padding:'60px 40px' }}>
