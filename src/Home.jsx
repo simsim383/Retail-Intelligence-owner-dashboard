@@ -135,7 +135,7 @@ export default function Home() {
               color: '#3B82F6', marginBottom: 8,
             }}>Owner Intelligence</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: '#F1F5F9', marginBottom: 10, lineHeight: 1.2 }}>
-              Know your numbers.<br />Grow your profit.
+              Use your data.<br />Grow your profit.
             </div>
             <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
               Upload your EPOS data and instantly see what's selling, what's not, your real margins, and AI-powered stock decisions.
@@ -200,7 +200,7 @@ export default function Home() {
               color: '#F59E0B', marginBottom: 8,
             }}>Staff Intelligence</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: '#F1F5F9', marginBottom: 10, lineHeight: 1.2 }}>
-              Manage your team.<br />Without the chaos.
+              Manage your team.<br />With data.
             </div>
             <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
               Task tracking, shift management, time logs and payroll export — all in one app. No WhatsApp, no spreadsheets.
