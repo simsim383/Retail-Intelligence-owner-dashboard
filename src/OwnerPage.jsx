@@ -982,7 +982,7 @@ function Contact() {
           </div>
         ) : (
           <div className="contact-wrap">
-            {[{key:'name',label:'Your Name',type:'text',ph:'Jane Smith'},{key:'email',label:'Email Address',type:'email',ph:'jane@mystore.co.uk'},{key:'business',label:'Business Name',type:'text',ph:'Londis Horden'}].map(f => (
+            {[{key:'name',label:'Your Name',type:'text',ph:'Jane Smith'},{key:'email',label:'Email Address',type:'email',ph:'jane@mystore.co.uk'},{key:'business',label:'Business Name',type:'text',ph:'Londis UK'}].map(f => (
               <div className="field" key={f.key}>
                 <label>{f.label}</label>
                 <input type={f.type} placeholder={f.ph} value={form[f.key]} onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))} />
