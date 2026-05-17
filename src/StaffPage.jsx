@@ -917,7 +917,7 @@ export default function App(){
             <Card accent={C.amber} style={{padding:32}}>
               {[{key:"name",label:"Your Name",type:"text",ph:"Jane Smith"},
                 {key:"email",label:"Email Address",type:"email",ph:"jane@mystore.co.uk"},
-                {key:"business",label:"Business Name",type:"text",ph:"Premier Leeds"}
+                {key:"business",label:"Business Name",type:"text",ph:"Premier UK"}
               ].map(f=>(
                 <div key={f.key} style={{marginBottom:16}}>
                   <label style={{...LBL,display:"block",marginBottom:8}}>{f.label}</label>
