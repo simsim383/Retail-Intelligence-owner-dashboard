@@ -871,14 +871,14 @@ function Pricing() {
     {on:true,txt:'1 store'},{on:true,txt:'Best Sellers dashboard'},
     {on:true,txt:'Top & bottom performers by category'},{on:true,txt:'Review — browse all products & margins'},
     {on:true,txt:'Product search'},{on:true,txt:'Week-on-week comparisons'},
-    {on:true,txt:'Weekly EPOS file upload'},{on:false,txt:'Trending products view'},
-    {on:false,txt:'Margin erosion & price alerts'},{on:false,txt:'Stock discrepancy & theft flags'},
+    {on:true,txt:'Daily EPOS file upload'},{on:false,txt:'Trending products view'},{on:true,txt:'Operation Insights'}
+    {on:false,txt:'Margin erosion & price alerts'},
     {on:false,txt:'AI weekly summary'},{on:false,txt:'Coming Up — events & calendar'},
     {on:false,txt:'Monthly deep-dive reports'},{on:false,txt:'Competitor pricing (vs Tesco & Asda)'},
   ]
   const proFeatures = [
     'Everything in Basic','Trending products — weekly spike alerts',
-    'Margin erosion — automatic price alerts','Stock discrepancy & theft detection',
+    'Margin erosion — automatic price alerts','Social Media Trends', 'Weather Trends',
     'AI weekly summary — 5 key insights','Coming Up — events & calendar planning',
     'AI product action suggestions','3-month rolling averages per product',
     '— Monthly Reports —',
