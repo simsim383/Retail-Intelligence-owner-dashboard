@@ -143,7 +143,7 @@ export default function Home() {
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
-            {['Sales analytics', 'Profit insights', 'AI recommendations', 'Promotions'].map(tag => (
+            {['Sales analytics', 'Profit insights', 'AI recommendations', 'Stock Trends'].map(tag => (
               <span key={tag} style={{
                 fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 99,
                 background: 'rgba(37,99,235,0.1)', color: '#93C5FD',
