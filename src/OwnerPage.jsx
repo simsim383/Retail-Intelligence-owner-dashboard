@@ -807,7 +807,6 @@ function Features() {
               {[
                 {accent:'var(--blue-glo)',bg:'rgba(37,99,235,0.06)',border:'rgba(37,99,235,0.18)',label:'1 · Revenue',text:'Revenue £9,871 — strongest week since November, up <strong style="color:var(--text)">+11.3% WoW</strong>. Post-payday Saturday drove £1,846.'},
                 {accent:'var(--amber)',bg:'rgba(245,158,11,0.06)',border:'rgba(245,158,11,0.18)',label:'2 · Highest-Impact Action',text:'Elux Nic Salts selling <strong style="color:var(--text)">98 units/week untracked</strong>. One cost entry recovers <strong style="color:var(--green)">£120+/week</strong> in visible profit.'},
-                {accent:'var(--green)',bg:'rgba(16,185,129,0.05)',border:'rgba(16,185,129,0.18)',label:'3 · Supplier Switch',text:'Switch Hula Hoops to Parfetts (£0.79 vs £0.99). Saves <strong style="color:var(--text)">£213/year</strong> with zero customer impact.'},
                 {accent:'var(--red)',bg:'rgba(239,68,68,0.05)',border:'rgba(239,68,68,0.18)',label:'4 · Coming Up',text:"Mother's Day in 8 days · Eid in 13 days · Payday <strong style='color:var(--text)'>28 March</strong>. Three revenue events in 3 weeks."},
               ].map((ins,i)=>(
                 <div key={i} style={{background:ins.bg,border:`1px solid ${ins.border}`,borderRadius:10,padding:12,fontSize:12,color:'var(--muted)',lineHeight:1.65}}>
@@ -886,7 +885,7 @@ function Pricing() {
     '— Monthly Reports —',
     'Monthly deep-dive dashboard','Competitor pricing vs Tesco & Asda',
     'Shelf density audit (ELITE / OK / THIEF)','Monthly financial P&L summary',
-    'Baseline & velocity analysis','Supplier switch recommendations',
+    'Baseline & velocity analysis',
     'Priority support',
   ]
   return (
