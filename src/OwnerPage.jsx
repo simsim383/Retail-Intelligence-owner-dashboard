@@ -770,14 +770,13 @@ function Features() {
             <div className="feature-label">Margin Erosion</div>
             <h2 className="feature-title">£728 a year.<br />From one product.</h2>
             <p className="feature-body">Milk raised from £1.65 to £1.75 generated an extra £14 per week — £728 per year from a single change. Retail Intelligence shows you exactly where to look and what to change, every week.</p>
-            <CheckList checks={['Sell price vs invoice cost checked every week','Specific price increase suggestions per product','Flags supplier price rises — Jack\'s lettuce example','Negative margin alerts catch staff pricing errors']} />
+            <CheckList checks={['Negative margin alerts catch staff pricing errors']} />
           </div>
           <ScreenShell title="Margin Erosion — Action Required" badge="3 Alerts" badgeClass="badge-red">
             <div style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr',padding:'8px 16px',fontSize:10,fontWeight:700,color:'var(--dim)',textTransform:'uppercase',letterSpacing:'0.05em',borderBottom:'1px solid var(--border)'}}>
               <span>Product</span><span>Sell</span><span>Target</span><span>Margin</span>
             </div>
             {[
-              {name:"Jack's Lettuce",cat:'Supplier ↑ price',sell:'£0.89',tgt:'£0.95',margin:'6.1%',mc:'tag-red'},
               {name:'Chocomel 250ml',cat:'Staff error — wrong price',sell:'£1.49',tgt:'£1.82',margin:'−11.2%',mc:'tag-red'},
               {name:'Hula Hoops BBQ',cat:'Under-priced',sell:'£0.99',tgt:'£1.03',margin:'14.1%',mc:'tag-amber'},
               {name:'Milk 2L Semi',cat:'After raise — well done',sell:'£1.75',tgt:'£1.61',margin:'32.4% ✓',mc:'tag-green'},
@@ -800,7 +799,7 @@ function Features() {
             <div className="feature-label" style={{ color:'var(--amber)' }}>AI Weekly Summary · Pro</div>
             <h2 className="feature-title">A smart brief, every<br /><span className="amber-text">Monday morning.</span></h2>
             <p className="feature-body">Five sharp AI-generated insights every week. Not generic — based on your specific numbers. What happened, what it means, and what to do next.</p>
-            <CheckList checks={['5 prioritised insights every single week','Specific numbers, not vague observations','Calendar events and upcoming trading opportunities','Supplier switch recommendations with real £ savings']} accent="var(--amber)" />
+            <CheckList checks={['5 prioritised insights every single week','Specific numbers, not vague observations','Calendar events and upcoming trading opportunities']} accent="var(--amber)" />
           </div>
           <ScreenShell title="AI Weekly Summary — W/E 07 Mar" badge="Pro" badgeClass="badge-amber">
             <div style={{ padding:14, display:'flex', flexDirection:'column', gap:10 }}>
