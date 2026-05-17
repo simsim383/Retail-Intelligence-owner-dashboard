@@ -134,17 +134,23 @@ function SectionGrid({ sections }) {
 }
 
 const weeklyNav = [
-  { icon:'📊', name:'Dashboard',   desc:'KPIs & weekly overview' },
-  { icon:'🛒', name:'Purchases',   desc:'Stock purchases this week' },
-  { icon:'📈', name:'Trending',    desc:'High margin + high velocity' },
-  { icon:'⚠️', name:'Review',      desc:'Poor performers to reconsider' },
-  { icon:'🏆', name:'Top Sellers', desc:'Top profit contributors' },
-  { icon:'🚨', name:'Erosion',     desc:'Margin alerts & missing costs' },
-  { icon:'🎯', name:'Promos',      desc:'Promotion decisions' },
-  { icon:'⚙️', name:'Operations',  desc:'Daily trading & staffing' },
-  { icon:'📦', name:'Categories',  desc:'Category performance' },
-  { icon:'📅', name:'Coming Up',   desc:'Events & preparation' },
+  { icon:'📊', name:'Dashboard',     desc:'KPIs & insights' },
+  { icon:'📦', name:'Categories',    desc:'Revenue, profit, top/bottom' },
+  { icon:'📈', name:'Trending',      desc:'40%+ vs previous' },
+  { icon:'⚠️', name:'Review',        desc:'Low margin items' },
+  { icon:'🏆', name:'Top Sellers',   desc:'Best profit contributors' },
+  { icon:'🚨', name:'Erosion',       desc:'Margin alerts' },
+  { icon:'💎', name:'Hidden Profit', desc:'No cost data items' },
+  { icon:'⚙️', name:'Operations',    desc:'Daily patterns & basket' },
+  { icon:'✅', name:'Actions',       desc:'Prioritised to-do list' },
+  { icon:'📷', name:'Scanner',       desc:'Scan any product barcode' },
+  { icon:'🌤️', name:'Weather',       desc:'7-day forecast & stock prep' },
+  { icon:'📅', name:'Coming Up',     desc:'Events & prep' },
+  { icon:'🔥', name:'Social Media',  desc:'Viral & trending products' },
+  { icon:'⚙️', name:'Settings',      desc:'Uploads, PIN, logout' },
 ]
+
+const weeklyNavSingle = { icon:'🤖', name:'AI', desc:'Ask about your data' }
 
 const monthlyNav = [
   { icon:'📊', name:'Dashboard',      desc:'Monthly KPIs & overview' },
@@ -210,52 +216,59 @@ function CompetitorScreen() {
 // ── Operations screen ─────────────────────────────────────────────────
 function OperationsScreen() {
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-  const heights = [42, 72, 68, 70, 71, 74, 95]
-  const colors  = ['#3B82F6','#3B82F6','#3B82F6','#3B82F6','#3B82F6','#3B82F6','#10B981']
+  const vals  = [687, 1364, 1364, 1574, 1300, 1550, 1550]
+  const max   = Math.max(...vals)
+  const colors = ['#EF4444','#3B82F6','#3B82F6','#10B981','#3B82F6','#3B82F6','#3B82F6']
   return (
     <div style={{ background:'#06090F', padding:'10px 12px' }}>
       <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:10 }}>
         <span style={{ fontSize:14 }}>⚙️</span>
-        <span style={{ fontSize:11, fontWeight:700, color:'#F0F4FF' }}>Operations</span>
+        <span style={{ fontSize:11, fontWeight:700, color:'#F0F4FF' }}>Operational Intelligence</span>
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:6, marginBottom:10 }}>
-        {[{lbl:'TRANSACTIONS',val:'1,250',c:'#60A5FA'},{lbl:'AVG SPEND',val:'£7.90',c:'#10B981'},{lbl:'BUSIEST',val:'Saturday',c:'#F0F4FF'}].map((k,i)=>(
-          <div key={i}>
-            <div style={{ fontSize:7, fontWeight:700, color:'#4A637F', textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:2 }}>{k.lbl}</div>
-            <div style={{ fontSize:i===2?10:13, fontWeight:800, color:k.c }}>{k.val}</div>
-          </div>
-        ))}
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:6, marginBottom:8 }}>
+        <div style={{ background:'#0D1422', border:'1px solid #1C2A3E', borderRadius:8, padding:'7px 9px' }}>
+          <div style={{ fontSize:7, fontWeight:700, color:'#4A637F', textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:2 }}>Avg Daily</div>
+          <div style={{ fontSize:14, fontWeight:800, color:'#60A5FA' }}>£1,364</div>
+        </div>
+        <div style={{ background:'#0D1422', border:'1px solid #1C2A3E', borderRadius:8, padding:'7px 9px' }}>
+          <div style={{ fontSize:7, fontWeight:700, color:'#4A637F', textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:2 }}>Avg Basket</div>
+          <div style={{ fontSize:14, fontWeight:800, color:'#4A637F' }}>—</div>
+        </div>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:6, marginBottom:10 }}>
+        <div style={{ background:'rgba(16,185,129,0.1)', border:'1px solid rgba(16,185,129,0.25)', borderRadius:8, padding:'7px 9px' }}>
+          <div style={{ fontSize:7, fontWeight:700, color:'#10B981', textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:2 }}>Busiest</div>
+          <div style={{ fontSize:16, fontWeight:800, color:'#10B981' }}>Wed</div>
+          <div style={{ fontSize:8, color:'#4A637F' }}>£1,574</div>
+        </div>
+        <div style={{ background:'rgba(239,68,68,0.08)', border:'1px solid rgba(239,68,68,0.2)', borderRadius:8, padding:'7px 9px' }}>
+          <div style={{ fontSize:7, fontWeight:700, color:'#EF4444', textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:2 }}>Quietest</div>
+          <div style={{ fontSize:16, fontWeight:800, color:'#EF4444' }}>Sun</div>
+          <div style={{ fontSize:8, color:'#4A637F' }}>£687</div>
+        </div>
       </div>
       {/* Bar chart */}
-      <div style={{ display:'flex', alignItems:'flex-end', gap:4, height:80, marginBottom:4 }}>
+      <div style={{ display:'flex', alignItems:'flex-end', gap:4, height:72, marginBottom:4 }}>
         {days.map((d,i) => (
           <div key={i} style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:2 }}>
-            <div style={{ width:'100%', background:colors[i], borderRadius:'3px 3px 0 0', height:`${heights[i]}%`, opacity: i===0?0.6:1 }} />
+            <div style={{ width:'100%', background:colors[i], borderRadius:'3px 3px 0 0', height:`${Math.round((vals[i]/max)*100)}%` }} />
             <div style={{ fontSize:7, color:'#4A637F' }}>{d}</div>
           </div>
         ))}
       </div>
-      <div style={{ fontSize:7, color:'#4A637F', marginBottom:8 }}>■ Quiet ■ Normal ■ Peak</div>
-      <div style={{ fontSize:8, fontWeight:700, color:'#4A637F', textTransform:'uppercase', letterSpacing:'0.08em', marginBottom:6 }}>Peak Hours & Staffing</div>
-      {[
-        { time:'11:00–14:00', label:'Lunch rush',               tills:'2 tills' },
-        { time:'16:00–18:00', label:'After-school + after-work', tills:'2 tills' },
-        { time:'07:00–09:00', label:'Morning essentials',        tills:'1 till'  },
-        { time:'19:00–22:00', label:'Ramadan iftar window',      tills:'1 till'  },
-      ].map((r,i)=>(
-        <div key={i} style={{ display:'grid', gridTemplateColumns:'1fr 1.4fr 0.6fr', alignItems:'center', padding:'4px 0', borderBottom:'1px solid rgba(28,42,62,0.4)', fontSize:8 }}>
-          <span style={{ color:'#8BA3C7', fontWeight:600 }}>{r.time}</span>
-          <span style={{ color:'#4A637F' }}>{r.label}</span>
-          <span style={{ color:'#3B82F6', fontWeight:700, textAlign:'right' }}>{r.tills}</span>
-        </div>
-      ))}
-      <div style={{ marginTop:8, background:'#0D1422', border:'1px solid #1C2A3E', borderRadius:8, padding:'8px 10px', fontSize:8 }}>
-        <div style={{ color:'#60A5FA', fontWeight:700, fontSize:7, textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:4 }}>Key Metrics</div>
-        <div style={{ color:'#8BA3C7', lineHeight:1.6 }}>
-          <div>🏠 Suggested day off: Sunday (quietest — £869, 77 transactions)</div>
-          <div>🔲 Two tills needed: 11am–2pm and 4pm–6pm</div>
-          <div style={{ color:'#4A637F' }}>Basket note: Saturday highest avg spend at £9.82 — post-payday buying in bulk</div>
-        </div>
+      <div style={{ fontSize:7, color:'#4A637F', marginBottom:8 }}>■ Peak ■ Normal ■ Quiet</div>
+      <div style={{ background:'#0D1422', border:'1px solid #1C2A3E', borderRadius:8, padding:'8px 10px', fontSize:8 }}>
+        <div style={{ color:'#60A5FA', fontWeight:700, fontSize:7, textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:5 }}>⚡ Deep Insights</div>
+        {[
+          { icon:'📊', text:'Wednesday is your best day (£1574) — ensure full staffing and stock by the night before.' },
+          { icon:'💤', text:'Sunday is quietest (£687) — consider single cover or reduced hours.' },
+          { icon:'📋', text:'Revenue spread: £887 gap between best and worst day (65% variation). High variation — weekly patterns are strong.' },
+        ].map((ins,i) => (
+          <div key={i} style={{ display:'flex', gap:5, color:'#8BA3C7', lineHeight:1.5, marginBottom:i<2?5:0 }}>
+            <span style={{ flexShrink:0 }}>{ins.icon}</span>
+            <span>{ins.text}</span>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -498,7 +511,7 @@ function AppPreview() {
             <Phone label="Weekly View" badge="LIVE">
               <AppHeader />
               <KPIBar rev="£9,871" profit="£1,295" margin="18.4%" revSub="▲ 9.3% vs bench" profitSub="▼ -1.5% WoW" />
-              <SectionGrid sections={{ items: weeklyNav.slice(0,10), single: { icon:'✅', name:'Actions', desc:'Scorecard & to-do list' } }} />
+              <SectionGrid sections={{ items: weeklyNav, single: weeklyNavSingle }} />
             </Phone>
           </div>
           <div className="reveal">
@@ -522,7 +535,7 @@ function AppPreview() {
           <div className="reveal">
             <Phone label="Operations & Staffing" badge="LIVE">
               <AppHeader />
-              <KPIBar rev="£9,871" profit="£1,295" margin="18.4%" revSub="▲ 9.3% vs bench" profitSub="▼ -1.5% WoW" />
+              <KPIBar rev="£9,550" profit="£1,304" margin="24.0%" revSub="▲ vs bench" profitSub="▲ vs bench" />
               <OperationsScreen />
             </Phone>
           </div>
