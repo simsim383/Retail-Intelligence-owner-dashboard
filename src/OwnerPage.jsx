@@ -79,7 +79,7 @@ function AppHeader({ name='Sarah', store='High Street, Leeds', weekly=true }) {
           W/E 7 Mar (Latest)
         </div>
         <div style={{ flex:1, background:!weekly?'#111827':'transparent', border:'1px solid #1C2A3E', borderRadius:8, padding:'4px 8px', fontSize:9, fontWeight:600, color: !weekly?'#3B82F6':'#4A637F', textAlign:'center' }}>
-          {weekly ? 'Monthly ▾' : 'February 2026'}
+          {weekly ? ' ▾' : 'February 2026'}
         </div>
       </div>
     </div>
@@ -163,7 +163,6 @@ const monthlyNav = [
   { icon:'🏷️', name:'Competitors',    desc:'vs Tesco & Asda pricing' },
   { icon:'🧹', name:'Clear Shelf',    desc:'Slow mover promotions' },
   { icon:'⚙️', name:'Operations',     desc:'Staffing & trading patterns' },
-  { icon:'💰', name:'Financial',      desc:'Monthly P&L summary' },
   { icon:'📅', name:'Coming Up',      desc:'Events & forecast' },
 ]
 
