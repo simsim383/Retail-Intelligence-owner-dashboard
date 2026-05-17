@@ -871,7 +871,7 @@ function Pricing() {
     {on:true,txt:'1 store'},{on:true,txt:'Best Sellers dashboard'},
     {on:true,txt:'Top & bottom performers by category'},{on:true,txt:'Review — browse all products & margins'},
     {on:true,txt:'Product search'},{on:true,txt:'Week-on-week comparisons'},
-    {on:true,txt:'Daily EPOS file upload'},{on:false,txt:'Trending products view'},{on:true,txt:'Operation Insights'}
+    {on:true,txt:'Daily EPOS file upload'},{on:false,txt:'Trending products view'},{on:true,txt:'Operation Insights'},
     {on:false,txt:'Margin erosion & price alerts'},
     {on:false,txt:'AI weekly summary'},{on:false,txt:'Coming Up — events & calendar'},
     {on:false,txt:'Monthly deep-dive reports'},{on:false,txt:'Competitor pricing (vs Tesco & Asda)'},
