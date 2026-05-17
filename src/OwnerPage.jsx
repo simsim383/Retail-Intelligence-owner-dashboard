@@ -888,7 +888,7 @@ function Pricing() {
         <div className="pricing-grid">
           <div className="plan reveal">
             <div className="plan-name">Basic</div>
-            <div className="plan-price"><span className="big">£29</span></div>
+            <div className="plan-price"><span className="big">£19</span></div>
             <div className="plan-period">per month · billed monthly</div>
             <div className="plan-divider" />
             <div style={{fontSize:12,fontWeight:700,color:'var(--dim)',textTransform:'uppercase',letterSpacing:'0.08em',marginBottom:14}}>What's included</div>
@@ -902,7 +902,7 @@ function Pricing() {
           <div className="plan featured reveal">
             <div className="plan-tag">Most Popular</div>
             <div className="plan-name" style={{color:'var(--blue-glo)'}}>Pro</div>
-            <div className="plan-price"><span className="big">£65</span></div>
+            <div className="plan-price"><span className="big">£29</span></div>
             <div className="plan-period">per month · billed monthly</div>
             <div className="plan-divider" />
             <div style={{fontSize:12,fontWeight:700,color:'var(--blue-glo)',textTransform:'uppercase',letterSpacing:'0.08em',marginBottom:14}}>Everything in Basic, plus:</div>
