@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#140b1b">
-<title>The Bell Guesthouse · Horden · Come on in (concept v7.3)</title>
+<title>The Bell Guesthouse · Horden · Come on in (concept v7.4)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -513,7 +513,7 @@ form.enq .note{font-size:12px;color:var(--mut)}
     <div><h3>Bar hours</h3><ul id="hours"><li data-d="1,2,3,4">Mon–Thu from 4pm</li><li data-d="5,6">Fri &amp; Sat from 2pm</li><li data-d="0">Sunday from 12 noon</li></ul>
       <h3 style="margin-top:22px">Get in touch</h3><p><a href="tel:01915863863">0191 586 3863</a><br><a href="mailto:info@thebellguesthouse.com">info@thebellguesthouse.com</a></p></div>
   </div>
-  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v7.3 · November 2026 · all photos are The Bell's own · the walk-in is animated from them · rooms booked through eviivo</span></div>
+  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v7.4 · November 2026 · all photos are The Bell's own · the walk-in is animated from them · rooms booked through eviivo</span></div>
 </section>
 
 <script>
@@ -526,9 +526,9 @@ let INK = '#1d1c21';
 let W0 = 3.6;  // pen width in output px
 function pen(w = 1) { ctx.lineWidth = W0 * w / S; ctx.strokeStyle = INK; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; }
 // hand-drawn line: slight wobble + tiny overshoot
-let BUD = null, CNT = [0, 0];
+let BUD = null, BLO = null, CNT = [0, 0];
 function L(x1, y1, x2, y2, w = 1, j = .35) {
-  const cls = w >= .8 ? 0 : 1; CNT[cls]++; const skip = BUD && CNT[cls] > BUD[cls];
+  const cls = w >= .8 ? 0 : 1; CNT[cls]++; const skip = BUD && (CNT[cls] > BUD[cls] || (BLO && CNT[cls] <= BLO[cls]));
   pen(w); const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len;
   const o = Math.min(1.2, len * .02); x1 -= dx / len * o * rnd(); y1 -= dy / len * o * rnd(); x2 += dx / len * o * rnd(); y2 += dy / len * o * rnd();
   const n = Math.max(2, Math.ceil(len / 25)); ctx.beginPath(); ctx.moveTo(x1, y1);
@@ -551,7 +551,7 @@ function win(x, y, w, h, tr = .22, curtains = true) {
 function glint(x, y, w, h) { ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip(); for (let k = 0; k < 3; k++) L(x + w * .2 + k * 5, y + h, x + w * .2 + k * 5 + h * .8, y, .35, .1); ctx.restore(); }
 function post(x, y1, y2, w = 12) { L(x, y1, x, y2, .9); L(x + w, y1, x + w, y2, .9); }
 function beam(x1, x2, y, h = 12) { L(x1, y, x2, y, .9); L(x1, y + h, x2, y + h, .9); }
-function leaves(cx, cy, n, spread) { for (let i = 0; i < n; i++) { const x = cx + (rnd() - .5) * spread, y = cy + (rnd() - .5) * spread * .6, a = rnd() * 6.28, r = 3 + rnd() * 3; CNT[1]++; if (BUD && CNT[1] > BUD[1]) continue;
+function leaves(cx, cy, n, spread) { for (let i = 0; i < n; i++) { const x = cx + (rnd() - .5) * spread, y = cy + (rnd() - .5) * spread * .6, a = rnd() * 6.28, r = 3 + rnd() * 3; CNT[1]++; if (BUD && (CNT[1] > BUD[1] || (BLO && CNT[1] <= BLO[1]))) continue;
   pen(.5); ctx.beginPath(); ctx.ellipse(x, y, r, r * .45, a, 0, 6.29); ctx.stroke(); } }
 function roofTiles(left, right, yTop, yBot, gap = 8) { // left(y), right(y) give x bounds per y
   for (let y = yTop + gap * .6, r = 0; y < yBot - 2; y += gap, r++) { const xa = left(y), xb = right(y); L(xa, y, xb, y, .5, .25);
@@ -609,14 +609,14 @@ function drawBell() {
   [[566, 536], [598, 487], [667, 485], [712, 517], [535, 548]].forEach(([x, y]) => { pen(.8); ctx.beginPath(); ctx.arc(x, y, 5, 0, 6.3); ctx.stroke(); });
   // sign
   R(540, 515, 175, 66, 1.2);
-  if (!BUD || BUD[2]) { ctx.fillStyle = INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '600 30px "Cormorant Garamond", serif'; ctx.fillText('The Bell', 627.5, 541);
+  if (!BUD || (BUD[2] && !(BLO && BLO[2]))) { ctx.fillStyle = INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '600 30px "Cormorant Garamond", serif'; ctx.fillText('The Bell', 627.5, 541);
   ctx.font = '700 11px Manrope'; ctx.letterSpacing = '2px'; ctx.fillText('GUESTHOUSE', 627.5, 566); ctx.letterSpacing = '0px'; }
   // doors
   R(560, 581, 137, 160, 1.2); L(628.5, 581, 628.5, 741, 1);
   [[566, 597], [636, 597]].forEach(([x, y]) => R(x, y, 56, 13, .7));
   for (let r = 0; r < 4; r++) [[572, 0], [598, 0], [642, 0], [668, 0]].forEach(([x]) => R(x, 625 + r * 27, 14, 14, .6));
   L(620, 640, 620, 705, 1); L(637, 640, 637, 705, 1);
-  R(700, 610, 12, 12, .6); if (!BUD || BUD[2]) { ctx.font = '700 6px Manrope'; ctx.fillText('AA', 706, 616.5); }
+  R(700, 610, 12, 12, .6); if (!BUD || (BUD[2] && !(BLO && BLO[2]))) { ctx.font = '700 6px Manrope'; ctx.fillText('AA', 706, 616.5); }
   // ---- planters and base
   [[60, 77], [1028, 77]].forEach(([x, w]) => { R(x, 700, w, 80, 1); L(x + 4, 708, x + w - 4, 708, .5); for (let k = 0; k < 4; k++) leaves(x + w / 2, 692 - k * 4, 6, 40); });
   L(0, 742, 1206, 742, 1.3);
@@ -648,7 +648,9 @@ function loadImg(src){const i=new Image();i.decoding='async';i.src=src;return i}
 const FRONT=loadImg('img/front_hd.jpg');
 const SEQ={a:[],b:[],s:[]};
 function loadSeq(k){FR[k].forEach((s,i)=>{if(SEQ[k][i])return;const im=loadImg(s);im.onload=()=>{needWalk=true;if(k==='s')needMenu=true};SEQ[k][i]=im})}
-loadSeq('a');setTimeout(()=>loadSeq('b'),150);setTimeout(()=>loadSeq('s'),400);
+// the walk-in frames wait until the pen drawing is done (or you start scrolling), so the drawing runs smoothly
+let seqOn=false;function startSeq(){if(seqOn)return;seqOn=true;loadSeq('a');setTimeout(()=>loadSeq('b'),250);setTimeout(()=>loadSeq('s'),600)}
+setTimeout(startSeq,7000);
 function frame(k,u){const a=SEQ[k],n=FR[k].length,i=Math.round(clamp(u)*(n-1));for(let d=0;d<n;d++){for(const j of [i-d,i+d]){const im=a[j];if(im&&im.complete&&im.naturalWidth)return im}}return null}
 
 /* ===================================================================
@@ -668,7 +670,7 @@ const PW=2048,PH=1536,DOOR=[1050,1124];
 const MA=[1.72860540,0.03147051,-0.03147051,1.72860540,-15.6575514,46.5013554];
 function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;oc.width=cv.width;oc.height=cv.height;sizeMenu();needWalk=needMenu=true;countLines()}
 function frontGeom(push){
-  const s0=Math.max(W/PW,H/PH)*(isDesk()?1.02:1);
+  const s0=Math.max(W/PW,H/PH)*(isDesk()?1.045:1.03);
   const k=Math.pow(4.5,push),s=s0*k;
   const fx=isDesk()?.5:DOOR[0]/PW,fy=isDesk()?.56:.62;
   // base: photo covers the screen; door position on screen
@@ -679,6 +681,14 @@ function cover(iw,ih,zoom=1,fx=.5,fy=.5,dx=0){const s=Math.max(W/iw,H/ih)*zoom;r
 function paint(c,im,zoom=1,fx=.5,fy=.5,alpha=1,dx=0){if(!im||!im.naturalWidth)return;const r=cover(im.naturalWidth,im.naturalHeight,zoom,fx,fy,dx);c.save();c.globalAlpha=alpha;c.drawImage(im,r.x,r.y,r.w,r.h);c.restore()}
 
 let TOT=[0,0],drawP=0,photoP=0,introDone=false;
+// the HD photo was taken about 1 degree off level: turn photo and drawing together so the building sits straight
+const ROT=-Math.atan2(MA[1],MA[0]);
+function rotAt(c,g){c.translate(g.door[0],g.door[1]);c.rotate(ROT);c.translate(-g.door[0],-g.door[1])}
+// the pen drawing builds up on its own layer: each frame only adds the new strokes
+const LAY=document.createElement('canvas'),lay=LAY.getContext('2d');let layKey='',layDone=[0,0,0];
+// the straightened front photo, prepared once at screen size for the opening
+const PC=document.createElement('canvas'),pcx=PC.getContext('2d');let pcKey='';
+function frontPic(g,push){if(push>0)return null;const key=cv.width+'x'+cv.height;if(key!==pcKey){pcKey=key;PC.width=cv.width;PC.height=cv.height;pcx.setTransform(DPR,0,0,DPR,0,0);rotAt(pcx,g);pcx.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s)}return PC}
 function countLines(){const keep=ctx;ctx=document.createElement('canvas').getContext('2d');S=1;OX=0;OY=0;BUD=null;CNT=[0,0];seed=7;drawBell();TOT=CNT.slice();ctx=keep}
 function drawFront(push){
   const g=frontGeom(push);
@@ -687,21 +697,29 @@ function drawFront(push){
   if(photoP<1){const gr=cx.createRadialGradient(g.door[0],g.door[1]-H*.15,10,g.door[0],g.door[1]-H*.15,Math.max(W,H)*.7);gr.addColorStop(0,'rgba(114,55,156,.42)');gr.addColorStop(1,'rgba(20,11,27,0)');cx.fillStyle=gr;cx.fillRect(0,0,W,H)}
   // the photo fills in from the door outwards, edge to edge
   if(photoP>0&&FRONT.naturalWidth){
-    if(photoP>=1){cx.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s)}
-    else{ox.setTransform(DPR,0,0,DPR,0,0);ox.globalCompositeOperation='source-over';ox.clearRect(0,0,W,H);ox.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s);
+    const pic=frontPic(g,push);
+    if(photoP>=1){if(pic){cx.save();cx.setTransform(1,0,0,1,0,0);cx.drawImage(pic,0,0);cx.restore()}else{cx.save();rotAt(cx,g);cx.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s);cx.restore()}}
+    else{ox.setTransform(DPR,0,0,DPR,0,0);ox.globalCompositeOperation='source-over';ox.clearRect(0,0,W,H);if(pic){ox.setTransform(1,0,0,1,0,0);ox.drawImage(pic,0,0)}else{rotAt(ox,g);ox.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s)}ox.setTransform(DPR,0,0,DPR,0,0);
       const R=Math.hypot(W,H)*1.15*photoP;ox.globalCompositeOperation='destination-in';const gm=ox.createRadialGradient(g.door[0],g.door[1],R*.55,g.door[0],g.door[1],Math.max(R,1));gm.addColorStop(0,'rgba(0,0,0,1)');gm.addColorStop(1,'rgba(0,0,0,0)');ox.fillStyle=gm;ox.fillRect(0,0,W,H);ox.globalCompositeOperation='source-over';
       cx.setTransform(1,0,0,1,0,0);cx.drawImage(oc,0,0);cx.setTransform(DPR,0,0,DPR,0,0)}
     // a touch of evening on the daylight photo
     cx.fillStyle=`rgba(20,11,27,${.16*photoP})`;cx.fillRect(0,0,W,H)}
   // the pen lines, sitting exactly on the photo
   const la=photoP<1?1-photoP*.9:0;
-  if(la>0){const keep=ctx;ctx=cx;cx.save();cx.globalAlpha=la;
-    cx.setTransform(DPR*g.s,0,0,DPR*g.s,DPR*g.x,DPR*g.y);cx.transform(...MA);
-    S=1;OX=0;OY=0;INK='#f1dfbf';W0=(isDesk()?1.6:1.25)/(g.s*MA[0]);seed=7;CNT=[0,0];
-    BUD=drawP>=1?null:[Math.floor(TOT[0]*drawP),Math.floor(TOT[1]*Math.max(0,drawP*1.15-.15)),drawP>.92?1:0];drawBell();
-    if(drawP<1&&LASTPT){const lx=MA[0]*LASTPT[0]+MA[2]*LASTPT[1]+MA[4],ly=MA[1]*LASTPT[0]+MA[3]*LASTPT[1]+MA[5];const px=g.x+lx*g.s,py=g.y+ly*g.s;
-      cx.setTransform(DPR,0,0,DPR,0,0);const gg=cx.createRadialGradient(px,py,0,px,py,20);gg.addColorStop(0,'rgba(227,191,109,.95)');gg.addColorStop(1,'rgba(227,191,109,0)');cx.globalAlpha=1;cx.fillStyle=gg;cx.fillRect(px-22,py-22,44,44)}
-    cx.restore();ctx=keep}
+  if(la>0){
+    const key=cv.width+'x'+cv.height+'x'+push.toFixed(4);
+    if(key!==layKey){layKey=key;LAY.width=cv.width;LAY.height=cv.height;layDone=[0,0,0]}
+    const tgt=drawP>=1?[TOT[0],TOT[1],1]:[Math.floor(TOT[0]*drawP),Math.floor(TOT[1]*Math.max(0,drawP*1.15-.15)),drawP>.92?1:0];
+    if(tgt[0]>layDone[0]||tgt[1]>layDone[1]||tgt[2]>layDone[2]){const keep=ctx;ctx=lay;lay.save();
+      lay.setTransform(DPR,0,0,DPR,0,0);rotAt(lay,g);lay.translate(g.x,g.y);lay.scale(g.s,g.s);lay.transform(...MA);
+      S=1;OX=0;OY=0;INK='#f1dfbf';W0=(isDesk()?1.6:1.25)/(g.s*MA[0]);seed=7;CNT=[0,0];BUD=tgt;BLO=layDone;drawBell();BLO=null;
+      layDone=tgt;lay.restore();ctx=keep}
+    cx.save();cx.setTransform(1,0,0,1,0,0);cx.globalAlpha=la;cx.drawImage(LAY,0,0);cx.restore();
+    // the pen's glint, where the last stroke ended
+    if(drawP<1&&LASTPT){const lx=MA[0]*LASTPT[0]+MA[2]*LASTPT[1]+MA[4],ly=MA[1]*LASTPT[0]+MA[3]*LASTPT[1]+MA[5];
+      const qx=g.x+lx*g.s-g.door[0],qy=g.y+ly*g.s-g.door[1],c=Math.cos(ROT),sn=Math.sin(ROT);const px=g.door[0]+qx*c-qy*sn,py=g.door[1]+qx*sn+qy*c;
+      cx.setTransform(DPR,0,0,DPR,0,0);const gg=cx.createRadialGradient(px,py,0,px,py,20);gg.addColorStop(0,'rgba(227,191,109,.95)');gg.addColorStop(1,'rgba(227,191,109,0)');cx.fillStyle=gg;cx.fillRect(px-22,py-22,44,44)}
+  }
 }
 
 // the real-bar clip is portrait: on wide screens show it full height, feathered into a soft blur of itself
@@ -733,11 +751,13 @@ function drawWalk(){
   paint(cx,frame('s',seg(p,T.s[0],T.s[1])*SU),1);
 }
 function intro(){
-  if(RM||introDone){drawP=1;photoP=1;introDone=true;needWalk=true;$('hcopy').classList.add('in');$('cue').classList.add('in');return}
+  if(RM||introDone){drawP=1;photoP=1;introDone=true;needWalk=true;startSeq();$('hcopy').classList.add('in');$('cue').classList.add('in');return}
   const t0=performance.now(),D1=2400,D2=1500,GAP=250;
   setTimeout(()=>$('hcopy').classList.add('in'),1200);
-  (function step(now){const t=Math.max(0,now-t0);drawP=clamp(t/D1);drawP=1-Math.pow(1-drawP,1.6);photoP=ease(seg(t,D1+GAP,D1+GAP+D2));needWalk=true;
-    if(t<D1+GAP+D2&&!introDone)requestAnimationFrame(step);else{drawP=1;photoP=1;introDone=true;$('cue').classList.add('in')}})(t0);
+  // time only moves on while frames are actually drawn, so a busy moment pauses the pen instead of making it jump
+  let t=0,last=t0;
+  (function step(now){t+=clamp(now-last,0,34);last=now;drawP=clamp(t/D1);drawP=1-Math.pow(1-drawP,1.6);photoP=ease(seg(t,D1+GAP,D1+GAP+D2));needWalk=true;
+    if(t<D1+GAP+D2&&!introDone)requestAnimationFrame(step);else{drawP=1;photoP=1;introDone=true;$('cue').classList.add('in');startSeq()}})(t0);
 }
 
 /* ===================================================================
@@ -958,6 +978,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 const walk=$('walk'),caps=[...document.querySelectorAll('.cap')],progs=[...document.querySelectorAll('#prog span')],navs=[...document.querySelectorAll('#top nav a')];
 let idleT=null;
 function onScroll(){const r=walk.getBoundingClientRect(),tot=walk.offsetHeight-innerHeight;PT=clamp(-r.top/tot);
+  if(PT>.002)startSeq();
   if(PT>.02&&!introDone){introDone=true;drawP=1;photoP=1;$('hcopy').classList.add('in')}
   const pinned=r.top<=1&&r.bottom>=innerHeight-1;
   caps.forEach(c=>c.classList.toggle('on',pinned&&PT>=+c.dataset.a&&PT<+c.dataset.b));
