@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#140b1b">
-<title>The Bell Guesthouse · Horden · Come on in (concept v7.4)</title>
+<title>The Bell Guesthouse · Horden · Come on in (concept v7.5)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -513,7 +513,7 @@ form.enq .note{font-size:12px;color:var(--mut)}
     <div><h3>Bar hours</h3><ul id="hours"><li data-d="1,2,3,4">Mon–Thu from 4pm</li><li data-d="5,6">Fri &amp; Sat from 2pm</li><li data-d="0">Sunday from 12 noon</li></ul>
       <h3 style="margin-top:22px">Get in touch</h3><p><a href="tel:01915863863">0191 586 3863</a><br><a href="mailto:info@thebellguesthouse.com">info@thebellguesthouse.com</a></p></div>
   </div>
-  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v7.4 · November 2026 · all photos are The Bell's own · the walk-in is animated from them · rooms booked through eviivo</span></div>
+  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v7.5 · November 2026 · all photos are The Bell's own · the walk-in is animated from them · rooms booked through eviivo</span></div>
 </section>
 
 <script>
@@ -681,6 +681,7 @@ function cover(iw,ih,zoom=1,fx=.5,fy=.5,dx=0){const s=Math.max(W/iw,H/ih)*zoom;r
 function paint(c,im,zoom=1,fx=.5,fy=.5,alpha=1,dx=0){if(!im||!im.naturalWidth)return;const r=cover(im.naturalWidth,im.naturalHeight,zoom,fx,fy,dx);c.save();c.globalAlpha=alpha;c.drawImage(im,r.x,r.y,r.w,r.h);c.restore()}
 
 let TOT=[0,0],drawP=0,photoP=0,introDone=false;
+const SIGN=[.81,.97]; // the outline finishes at 85% (the sign board at about 80%), then the lettering is written // when the sign is written, as a share of the drawing time
 // the HD photo was taken about 1 degree off level: turn photo and drawing together so the building sits straight
 const ROT=-Math.atan2(MA[1],MA[0]);
 function rotAt(c,g){c.translate(g.door[0],g.door[1]);c.rotate(ROT);c.translate(-g.door[0],-g.door[1])}
@@ -709,14 +710,21 @@ function drawFront(push){
   if(la>0){
     const key=cv.width+'x'+cv.height+'x'+push.toFixed(4);
     if(key!==layKey){layKey=key;LAY.width=cv.width;LAY.height=cv.height;layDone=[0,0,0]}
-    const tgt=drawP>=1?[TOT[0],TOT[1],1]:[Math.floor(TOT[0]*drawP),Math.floor(TOT[1]*Math.max(0,drawP*1.15-.15)),drawP>.92?1:0];
+    const tgt=drawP>=1?[TOT[0],TOT[1],1]:[Math.floor(TOT[0]*clamp(drawP/.85)),Math.floor(TOT[1]*Math.max(0,drawP*1.15-.15)),0];
     if(tgt[0]>layDone[0]||tgt[1]>layDone[1]||tgt[2]>layDone[2]){const keep=ctx;ctx=lay;lay.save();
       lay.setTransform(DPR,0,0,DPR,0,0);rotAt(lay,g);lay.translate(g.x,g.y);lay.scale(g.s,g.s);lay.transform(...MA);
       S=1;OX=0;OY=0;INK='#f1dfbf';W0=(isDesk()?1.6:1.25)/(g.s*MA[0]);seed=7;CNT=[0,0];BUD=tgt;BLO=layDone;drawBell();BLO=null;
       layDone=tgt;lay.restore();ctx=keep}
     cx.save();cx.setTransform(1,0,0,1,0,0);cx.globalAlpha=la;cx.drawImage(LAY,0,0);cx.restore();
+    // the sign is written letter by letter, left to right, while the rest of the drawing carries on
+    let penAt=null;const wf=drawP<1?seg(drawP,SIGN[0],SIGN[1]):0;
+    if(wf>0){const x0=548,x1=712,xe=lerp(x0,x1,wf);cx.save();cx.globalAlpha=la;cx.setTransform(DPR,0,0,DPR,0,0);rotAt(cx,g);cx.translate(g.x,g.y);cx.scale(g.s,g.s);cx.transform(...MA);
+      cx.beginPath();cx.rect(530,500,xe-530,130);cx.clip();cx.fillStyle='#f1dfbf';cx.textAlign='center';cx.textBaseline='middle';
+      cx.font='600 30px "Cormorant Garamond", serif';cx.fillText('The Bell',627.5,541);cx.font='700 11px Manrope';cx.letterSpacing='2px';cx.fillText('GUESTHOUSE',627.5,566);cx.letterSpacing='0px';
+      cx.font='700 6px Manrope';cx.fillText('AA',706,616.5);cx.restore();if(wf<1)penAt=[xe,xe<700?(xe<600||xe>655?545:555):616]}
     // the pen's glint, where the last stroke ended
-    if(drawP<1&&LASTPT){const lx=MA[0]*LASTPT[0]+MA[2]*LASTPT[1]+MA[4],ly=MA[1]*LASTPT[0]+MA[3]*LASTPT[1]+MA[5];
+    const LP=penAt||LASTPT;
+    if(drawP<1&&LP){const lx=MA[0]*LP[0]+MA[2]*LP[1]+MA[4],ly=MA[1]*LP[0]+MA[3]*LP[1]+MA[5];
       const qx=g.x+lx*g.s-g.door[0],qy=g.y+ly*g.s-g.door[1],c=Math.cos(ROT),sn=Math.sin(ROT);const px=g.door[0]+qx*c-qy*sn,py=g.door[1]+qx*sn+qy*c;
       cx.setTransform(DPR,0,0,DPR,0,0);const gg=cx.createRadialGradient(px,py,0,px,py,20);gg.addColorStop(0,'rgba(227,191,109,.95)');gg.addColorStop(1,'rgba(227,191,109,0)');cx.fillStyle=gg;cx.fillRect(px-22,py-22,44,44)}
   }
@@ -752,11 +760,11 @@ function drawWalk(){
 }
 function intro(){
   if(RM||introDone){drawP=1;photoP=1;introDone=true;needWalk=true;startSeq();$('hcopy').classList.add('in');$('cue').classList.add('in');return}
-  const t0=performance.now(),D1=2400,D2=1500,GAP=250;
+  const t0=performance.now(),D1=2800,D2=1500,GAP=0;
   setTimeout(()=>$('hcopy').classList.add('in'),1200);
   // time only moves on while frames are actually drawn, so a busy moment pauses the pen instead of making it jump
   let t=0,last=t0;
-  (function step(now){t+=clamp(now-last,0,34);last=now;drawP=clamp(t/D1);drawP=1-Math.pow(1-drawP,1.6);photoP=ease(seg(t,D1+GAP,D1+GAP+D2));needWalk=true;
+  (function step(now){t+=clamp(now-last,0,34);last=now;drawP=clamp(t/D1);photoP=ease(seg(t,D1+GAP,D1+GAP+D2));needWalk=true;
     if(t<D1+GAP+D2&&!introDone)requestAnimationFrame(step);else{drawP=1;photoP=1;introDone=true;$('cue').classList.add('in');startSeq()}})(t0);
 }
 
@@ -1004,8 +1012,10 @@ function loop(now){
   requestAnimationFrame(loop)}
 addEventListener('scroll',onScroll,{passive:true});
 addEventListener('resize',()=>{size();onScroll()});
-FRONT.onload=()=>needWalk=true;
-function boot(){size();onScroll();intro();requestAnimationFrame(loop);
+// decode and prepare the front photo while the page is loading, so the fade-in starts without a hitch
+function prepFront(){if(!W||!FRONT.naturalWidth)return;(FRONT.decode?FRONT.decode():Promise.resolve()).catch(()=>{}).then(()=>{frontPic(frontGeom(0),0);needWalk=true})}
+FRONT.onload=prepFront;
+function boot(){size();onScroll();prepFront();intro();requestAnimationFrame(loop);
   if(!RM&&window.Lenis){lenis=new Lenis({lerp:.11,smoothWheel:true});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now())}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 </script>
