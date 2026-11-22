@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
+// The Bell concept is one finished HTML page plus its photos.
+// Everything lives in public/ and is copied to dist/ untouched.
 export default defineConfig({
-  plugins: [react()],
+  build: { outDir: 'dist', emptyOutDir: true },
+  publicDir: 'public',
 })
