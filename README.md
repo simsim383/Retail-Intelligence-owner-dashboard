@@ -1,4 +1,4 @@
-# The Bell Guesthouse — website concept (v8)
+# The Bell Guesthouse — website concept (v7.5)
 
 A scroll-through website concept for The Bell Guesthouse, Horden. It's temporarily hosted on the Retail Intelligence domain to show the idea.
 
