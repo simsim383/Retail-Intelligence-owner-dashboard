@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#140b1b">
-<title>The Bell Guesthouse · Horden · Come on in (concept v7.5)</title>
+<title>The Bell Guesthouse · Horden · Come on in (concept v8)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--plum:#72379c;--night:#140b1b;--night2:#1b1024;--night3:#26163a;--gold:#e3bf6d;--cream:#f4ead8;--mut:rgba(244,234,216,.72);--line:rgba(244,234,216,.16);--ease:cubic-bezier(.65,0,.25,1)}
+:root{--plum:#72379c;--night:#140b1b;--night2:#1b1024;--night3:#26163a;--gold:#e3bf6d;--cream:#f4ead8;--mut:rgba(244,234,216,.72);--line:rgba(244,234,216,.16);--ease:cubic-bezier(.22,1,.36,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--night)}
 body{font-family:Manrope,system-ui,sans-serif;color:var(--cream);background:var(--night);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -47,7 +47,7 @@ h1 em,h2 em,h3 em{font-style:italic;color:var(--gold)}
 }
 
 /* ============ 1. ARRIVE + WALK IN (pinned, full screen) ============ */
-#walk{position:relative;height:680vh}
+#walk{position:relative;height:300vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--night)}
 #cv{position:absolute;inset:0;width:100%;height:100%}
 .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,11,27,.55) 0%,rgba(20,11,27,0) 20%,rgba(20,11,27,0) 45%,rgba(20,11,27,.92) 100%)}
@@ -71,18 +71,34 @@ h1 em,h2 em,h3 em{font-style:italic;color:var(--gold)}
 .cap h2{font-size:clamp(46px,5.6vw,88px);margin-top:12px;text-shadow:0 10px 40px rgba(0,0,0,.45)}
 .cap p{font-size:16.5px;line-height:1.6;color:var(--mut);margin-top:14px;max-width:440px}
 @media(max-width:900px){.cap{left:6vw;right:6vw;bottom:110px}.cap h2{font-size:42px}.cap p{font-size:14.5px}}
-.prog{position:absolute;right:3vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:5;opacity:0;transition:opacity .5s}
+.prog{position:fixed;right:3vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:5;opacity:0;transition:opacity .5s}
 .prog.in{opacity:1}
+.prog{z-index:55;pointer-events:none}
 .prog span{display:flex;align-items:center;gap:10px;justify-content:flex-end;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,234,216,.38);transition:color .3s}
 .prog span i{width:8px;height:8px;border-radius:50%;border:1.5px solid currentColor;transition:all .3s}
 .prog span.on{color:var(--gold)}.prog span.on i{background:var(--gold);box-shadow:0 0 12px var(--gold)}
-@media(max-width:900px){.prog{right:auto;left:6vw;top:calc(78px + env(safe-area-inset-top));transform:none;flex-direction:row;gap:6px}.prog span{font-size:0;gap:0}.prog span i{width:24px;height:3px;border-radius:2px;border:0;background:rgba(244,234,216,.25)}.prog span.on i{background:var(--gold);box-shadow:none}}
+@media(max-width:900px){.prog{right:auto;left:6vw;top:calc(78px + env(safe-area-inset-top));z-index:55;transform:none;flex-direction:row;gap:6px}.prog span{font-size:0;gap:0}.prog span i{width:24px;height:3px;border-radius:2px;border:0;background:rgba(244,234,216,.25)}.prog span.on i{background:var(--gold);box-shadow:none}}
 .skip{position:absolute;right:4vw;bottom:26px;font-size:12px;font-weight:800;color:var(--mut);border:1px solid var(--line);padding:8px 13px;border-radius:99px;z-index:6;transition:color .2s,border-color .2s}
 .skip:hover{color:var(--gold);border-color:var(--gold)}
 @media(max-width:900px){.skip{display:none}}
 
+/* ============ 1b. INSIDE: the pen draws each room (sticky stacking cards) ============ */
+#rooms{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;padding-bottom:90vh}
+.room{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--night);margin-bottom:90vh;transform-origin:50% 30%}
+.room:last-child{margin-bottom:0}
+.room canvas{position:absolute;inset:0;width:100%;height:100%}
+.rshade{position:absolute;inset:0;pointer-events:none;opacity:.7;transition:opacity 1.2s var(--ease);background:linear-gradient(180deg,rgba(20,11,27,.5) 0%,rgba(20,11,27,0) 22%,rgba(20,11,27,0) 48%,rgba(20,11,27,.9) 100%)}
+@media(min-width:901px){.rshade{background:linear-gradient(90deg,rgba(20,11,27,.82) 0%,rgba(20,11,27,.4) 32%,rgba(20,11,27,0) 56%),linear-gradient(180deg,rgba(20,11,27,.5),transparent 20%,transparent 62%,rgba(20,11,27,.7))}}
+.room.lit .rshade{opacity:1}
+.rdim{position:absolute;inset:0;background:#0b0610;opacity:0;pointer-events:none}
+.glint{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:radial-gradient(circle,rgba(227,191,109,.95),rgba(227,191,109,0) 70%);opacity:0;pointer-events:none;will-change:transform}
+.rcap{position:absolute;left:6vw;bottom:14vh;max-width:520px;opacity:0;transform:translateY(26px);transition:opacity .55s var(--ease),transform .55s var(--ease);pointer-events:none;z-index:3}
+.rcap.on{opacity:1;transform:none}
+.rcap h2{font-size:clamp(46px,5.6vw,88px);margin-top:12px;text-shadow:0 10px 40px rgba(0,0,0,.45)}
+.rcap p{font-size:16.5px;line-height:1.6;color:var(--mut);margin-top:14px;max-width:440px}
+@media(max-width:900px){.rcap{left:6vw;right:6vw;bottom:110px}.rcap h2{font-size:42px}.rcap p{font-size:14.5px}}
 /* ============ 2. BY THE FIRE: DRINKS WHEEL (unchanged from v6) ============ */
-#menu{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh}
+#menu{position:relative;z-index:3;margin-top:-100vh;margin-top:-100svh}
 #menu .stage{background:var(--night)}
 #mbg{position:absolute;inset:0;width:100%;height:100%}
 #mpanel{position:absolute;inset:0;background:radial-gradient(120% 90% at 70% 100%,#3b1d55 0%,#24133a 45%,#160c20 100%);clip-path:circle(0% at 70% 80%);will-change:clip-path}
@@ -355,7 +371,7 @@ form.enq .note{font-size:12px;color:var(--mut)}
 <!-- ============ 1. ARRIVE + WALK IN ============ -->
 <section id="walk">
   <div class="stage">
-    <canvas id="cv" aria-label="The Bell's front drawn in pen, then the real photograph, then a walk inside to the bar and a seat by the fire"></canvas>
+    <canvas id="cv" aria-label="The Bell's front drawn in pen, then the real photograph"></canvas>
     <div class="shade" id="shade"></div>
     <div class="hcopy" id="hcopy">
       <span class="k">Horden · County Durham · since 1925</span>
@@ -366,14 +382,24 @@ form.enq .note{font-size:12px;color:var(--mut)}
     </div>
     <div class="cue" id="cue"><span>Scroll to come in</span><i></i></div>
 
-    <div class="cap" data-a=".18" data-b=".43"><span class="k">You're in</span><h2>Come in out<br><em>of the cold.</em></h2><p>The bar's just up ahead.</p></div>
-    <div class="cap" data-a=".60" data-b=".776"><span class="k">Up at the bar</span><h2>Over 200<br><em>spirits.</em></h2><p>Gins from all over, local ones from the North East included, plus draught, wine and proper hot drinks.</p></div>
-    <div class="cap" data-a=".87" data-b="1.01"><span class="k">This way</span><h2>Take the seat<br><em>by the fire.</em></h2><p>The best seat in the house on a cold County Durham night.</p></div>
-
-    <div class="prog" id="prog"><span><i></i>Outside</span><span><i></i>The bar</span><span><i></i>The fire</span><span><i></i>Drinks</span></div>
     <a class="skip" href="#day">Skip the walk ↓</a>
   </div>
 </section>
+
+<!-- ============ 1b. INSIDE: the pen draws each room ============ -->
+<section id="rooms" aria-label="Inside The Bell">
+  <article class="room" data-room="bar" data-fx=".46" data-fy=".42" data-sx=".5" data-sy=".37">
+    <canvas role="img" aria-label="The bar at The Bell, drawn in pen and then shown as the real photo"></canvas>
+    <div class="rshade"></div><i class="glint" aria-hidden="true"></i><div class="rdim"></div>
+    <div class="rcap"><span class="k">You're in</span><h2>Come in out<br><em>of the cold.</em></h2><p>Over 200 spirits behind the bar, cold draught and proper hot drinks.</p></div>
+  </article>
+  <article class="room" data-room="fire" data-fx=".52" data-fy=".42" data-sx=".51" data-sy=".37">
+    <canvas role="img" aria-label="The fireside room with its Merry Christmas fireplace, drawn in pen and then shown as the real photo"></canvas>
+    <div class="rshade"></div><i class="glint" aria-hidden="true"></i><div class="rdim"></div>
+    <div class="rcap"><span class="k">This way</span><h2>Take the seat<br><em>by the fire.</em></h2><p>The best seat in the house on a cold County Durham night.</p></div>
+  </article>
+</section>
+    <div class="prog" id="prog"><span><i></i>Outside</span><span><i></i>The bar</span><span><i></i>The fire</span><span><i></i>Drinks</span></div>
 
 <!-- ============ 2. BY THE FIRE ============ -->
 <section id="menu">
@@ -513,7 +539,7 @@ form.enq .note{font-size:12px;color:var(--mut)}
     <div><h3>Bar hours</h3><ul id="hours"><li data-d="1,2,3,4">Mon–Thu from 4pm</li><li data-d="5,6">Fri &amp; Sat from 2pm</li><li data-d="0">Sunday from 12 noon</li></ul>
       <h3 style="margin-top:22px">Get in touch</h3><p><a href="tel:01915863863">0191 586 3863</a><br><a href="mailto:info@thebellguesthouse.com">info@thebellguesthouse.com</a></p></div>
   </div>
-  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v7.5 · November 2026 · all photos are The Bell's own · the walk-in is animated from them · rooms booked through eviivo</span></div>
+  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v8 · November 2026 · all photos are The Bell's own · the drawings are traced from them · rooms booked through eviivo</span></div>
 </section>
 
 <script>
@@ -634,7 +660,6 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $=id=>document.getElementById(id);
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),seg=(p,a,b)=>clamp((p-a)/(b-a)),ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,lerp=(a,b,t)=>a+(b-a)*t;
 const BOOK='https://securebooking.eviivo.com/mywebsite/Bell_SR84PF.home';
-const FR={"a": ["walk/a001.jpg", "walk/a002.jpg", "walk/a003.jpg", "walk/a004.jpg", "walk/a005.jpg", "walk/a006.jpg", "walk/a007.jpg", "walk/a008.jpg", "walk/a009.jpg", "walk/a010.jpg", "walk/a011.jpg", "walk/a012.jpg", "walk/a013.jpg", "walk/a014.jpg", "walk/a015.jpg", "walk/a016.jpg", "walk/a017.jpg", "walk/a018.jpg", "walk/a019.jpg", "walk/a020.jpg", "walk/a021.jpg", "walk/a022.jpg", "walk/a023.jpg", "walk/a024.jpg", "walk/a025.jpg", "walk/a026.jpg", "walk/a027.jpg", "walk/a028.jpg", "walk/a029.jpg", "walk/a030.jpg", "walk/a031.jpg", "walk/a032.jpg", "walk/a033.jpg", "walk/a034.jpg", "walk/a035.jpg", "walk/a036.jpg", "walk/a037.jpg", "walk/a038.jpg", "walk/a039.jpg", "walk/a040.jpg", "walk/a041.jpg", "walk/a042.jpg", "walk/a043.jpg", "walk/a044.jpg", "walk/a045.jpg", "walk/a046.jpg", "walk/a047.jpg", "walk/a048.jpg", "walk/a049.jpg", "walk/a050.jpg", "walk/a051.jpg", "walk/a052.jpg", "walk/a053.jpg", "walk/a054.jpg", "walk/a055.jpg", "walk/a056.jpg", "walk/a057.jpg", "walk/a058.jpg", "walk/a059.jpg", "walk/a060.jpg"], "b": ["walk/b001.jpg", "walk/b002.jpg", "walk/b003.jpg", "walk/b004.jpg", "walk/b005.jpg", "walk/b006.jpg", "walk/b007.jpg", "walk/b008.jpg", "walk/b009.jpg", "walk/b010.jpg", "walk/b011.jpg", "walk/b012.jpg", "walk/b013.jpg", "walk/b014.jpg", "walk/b015.jpg", "walk/b016.jpg", "walk/b017.jpg", "walk/b018.jpg", "walk/b019.jpg", "walk/b020.jpg", "walk/b021.jpg", "walk/b022.jpg", "walk/b023.jpg", "walk/b024.jpg", "walk/b025.jpg", "walk/b026.jpg", "walk/b027.jpg", "walk/b028.jpg", "walk/b029.jpg", "walk/b030.jpg", "walk/b031.jpg", "walk/b032.jpg", "walk/b033.jpg", "walk/b034.jpg", "walk/b035.jpg", "walk/b036.jpg", "walk/b037.jpg"], "s": ["walk/s001.jpg", "walk/s002.jpg", "walk/s003.jpg", "walk/s004.jpg", "walk/s005.jpg", "walk/s006.jpg", "walk/s007.jpg", "walk/s008.jpg", "walk/s009.jpg", "walk/s010.jpg", "walk/s011.jpg", "walk/s012.jpg", "walk/s013.jpg", "walk/s014.jpg", "walk/s015.jpg", "walk/s016.jpg", "walk/s017.jpg", "walk/s018.jpg", "walk/s019.jpg", "walk/s020.jpg", "walk/s021.jpg", "walk/s022.jpg", "walk/s023.jpg", "walk/s024.jpg", "walk/s025.jpg", "walk/s026.jpg", "walk/s027.jpg", "walk/s028.jpg", "walk/s029.jpg", "walk/s030.jpg", "walk/s031.jpg", "walk/s032.jpg", "walk/s033.jpg", "walk/s034.jpg", "walk/s035.jpg", "walk/s036.jpg", "walk/s037.jpg", "walk/s038.jpg", "walk/s039.jpg", "walk/s040.jpg", "walk/s041.jpg", "walk/s042.jpg", "walk/s043.jpg", "walk/s044.jpg", "walk/s045.jpg", "walk/s046.jpg", "walk/s047.jpg", "walk/s048.jpg", "walk/s049.jpg", "walk/s050.jpg", "walk/s051.jpg", "walk/s052.jpg", "walk/s053.jpg", "walk/s054.jpg", "walk/s055.jpg", "walk/s056.jpg", "walk/s057.jpg", "walk/s058.jpg", "walk/s059.jpg", "walk/s060.jpg"]};
 const isDesk=()=>innerWidth>900;
 
 let lenis=null;
@@ -646,22 +671,18 @@ function ring(base=660,len=2.2,v=.16){try{AC=AC||new (window.AudioContext||windo
 
 function loadImg(src){const i=new Image();i.decoding='async';i.src=src;return i}
 const FRONT=loadImg('img/front_hd.jpg');
-const SEQ={a:[],b:[],s:[]};
-function loadSeq(k){FR[k].forEach((s,i)=>{if(SEQ[k][i])return;const im=loadImg(s);im.onload=()=>{needWalk=true;if(k==='s')needMenu=true};SEQ[k][i]=im})}
-// the walk-in frames wait until the pen drawing is done (or you start scrolling), so the drawing runs smoothly
-let seqOn=false;function startSeq(){if(seqOn)return;seqOn=true;loadSeq('a');setTimeout(()=>loadSeq('b'),250);setTimeout(()=>loadSeq('s'),600)}
+// the rooms (pen sketch, stroke order and photo) load once the opening drawing is done, or when you start scrolling
+let seqOn=false;function startSeq(){if(seqOn)return;seqOn=true;loadRooms()}
 setTimeout(startSeq,7000);
-function frame(k,u){const a=SEQ[k],n=FR[k].length,i=Math.round(clamp(u)*(n-1));for(let d=0;d<n;d++){for(const j of [i-d,i+d]){const im=a[j];if(im&&im.complete&&im.naturalWidth)return im}}return null}
 
 /* ===================================================================
    1. ARRIVE + WALK IN (pinned, full screen)
    The pen drawing plays on open over the night; the real front photo
    then fills in from the door outwards, edge to edge. Scroll pushes in
-   through the door, walks up to the bar, spins round on its own to the
-   fire, then sits you down at the table.
+   through the door; then the rooms (1b) slide up over it.
    =================================================================== */
-// scroll budget (vh): door 20-100, entry 100-200, real bar approach 200-400, spin 400-450, sit 450-530
-const T={door:[.034,.172],a:[.172,.466],mix:[.43,.483],b:[.466,.776],spin:[.776,.862],s:[.862,1]};const AU=.375,SU=.5;
+// scroll budget (vh): the push into the door runs 12-100; the bar card slides up over it from 100 to 200
+const T={door:[.06,.5]};
 const cv=$('cv'),cx=cv.getContext('2d');
 const oc=document.createElement('canvas'),ox=oc.getContext('2d');
 let W=0,H=0,DPR=1,P=0,PT=0,needWalk=true;
@@ -730,34 +751,88 @@ function drawFront(push){
   }
 }
 
-// the real-bar clip is portrait: on wide screens show it full height, feathered into a soft blur of itself
-const tiny=document.createElement('canvas');tiny.width=40;tiny.height=54;const tx=tiny.getContext('2d');
-function paintB(im,alpha=1,dx=0){if(!im||!im.naturalWidth)return;if(im.naturalWidth>im.naturalHeight||!isDesk()){paint(cx,im,1,.5,.5,alpha,dx);return}
-  tx.drawImage(im,0,0,40,54);const iw=im.naturalWidth,ih=im.naturalHeight;
-  cx.save();cx.globalAlpha=alpha;cx.imageSmoothingQuality='high';const s=Math.max(W/40,H/54)*1.08;cx.drawImage(tiny,W*.5-20*s+dx,H*.5-27*s,40*s,54*s);
-  cx.fillStyle='rgba(20,11,27,.35)';cx.fillRect(0,0,W,H);
-  const top=60,sh=H-top,sw=iw*sh/ih,x=W*.5-sw*.5+dx;
-  ox.setTransform(DPR,0,0,DPR,0,0);ox.globalCompositeOperation='source-over';ox.clearRect(0,0,W,H);ox.drawImage(im,x,top,sw,sh);
-  ox.globalCompositeOperation='destination-in';const g=ox.createLinearGradient(x,0,x+sw,0);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(.16,'rgba(0,0,0,1)');g.addColorStop(.84,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');ox.fillStyle=g;ox.fillRect(0,0,W,H);ox.globalCompositeOperation='source-over';
-  cx.setTransform(1,0,0,1,0,0);cx.drawImage(oc,0,0);cx.setTransform(DPR,0,0,DPR,0,0);cx.restore()}
-// the spin: a quick whip-pan from the bar round to the fire, played on its own
-let spinV=0,spinT=0,lastNow=0;
-function drawSpin(e){const A=frame('b',1),B=frame('s',0);const ee=ease(e),sw=W*1.12,bl=Math.sin(ee*Math.PI)*W*.05;
-  cx.fillStyle='#140b1b';cx.fillRect(0,0,W,H);
-  [[A,-ee*sw,1],[B,(1-ee)*sw,0]].forEach(([im,off,isB])=>{if(!im)return;const n=bl>2?5:1;for(let k=0;k<n;k++){const o=n>1?(k/(n-1)-.5)*bl*2:0;const a=n>1?1/n*1.5:1;if(isB)paintB(im,a,off+o);else paint(cx,im,1.02,.5,.5,a,off+o)}});
-  const fl=Math.sin(ee*Math.PI)*.18;if(fl>0){cx.fillStyle=`rgba(255,190,110,${fl})`;cx.fillRect(0,0,W,H)}}
-function drawWalk(){
-  if(!W)return;cx.setTransform(DPR,0,0,DPR,0,0);const p=P;
-  if(p<T.door[1]){const push=ease(seg(p,T.door[0],T.door[1]));drawFront(push);
-    const f=seg(p,T.door[0]+.06,T.door[1]-.005);if(f>0)paint(cx,frame('a',0),1.15-.15*f,.5,.5,ease(f));return}
-  cx.fillStyle='#140b1b';cx.fillRect(0,0,W,H);
-  const bfy=u=>isDesk()?lerp(.5,.28,u):.5;
-  if(p<T.b[0]){const u=seg(p,T.a[0],T.a[1]);paint(cx,frame('a',u*AU),1,isDesk()?.5:lerp(.5,.6,u),.5);
-    const m=ease(seg(p,T.mix[0],T.mix[1]));if(m>0)paintB(frame('b',0),m);return}
-  if(p<T.b[1]){const u=seg(p,T.b[0],T.b[1]);const m=ease(seg(p,T.mix[0],T.mix[1]));if(m<1)paint(cx,frame('a',AU),1,.5,.5);paintB(frame('b',u),m);return}
-  if(p<T.spin[1]){if(spinV<=0)paintB(frame('b',1));else if(spinV>=1)paint(cx,frame('s',0),1);else drawSpin(spinV);return}
-  paint(cx,frame('s',seg(p,T.s[0],T.s[1])*SU),1);
-}
+let lastNow=0;
+function drawWalk(){if(!W)return;cx.setTransform(DPR,0,0,DPR,0,0);drawFront(ease(seg(P,T.door[0],T.door[1])))}
+/* ===================================================================
+   1b. INSIDE: the pen draws each room from its own real photo, then the
+   photo fills in from the spot where the pen started. Each room is a
+   full-screen card that slides up over the last one (sticky stacking
+   cards). The strokes are traced from the photo (structured edges, thinned,
+   long lines first, then the pen moves to the nearest unfinished line),
+   so they sit exactly on it. Each frame adds only new strokes.
+   =================================================================== */
+const DRAW_MS=2600,FILL_MS=1400;
+const SPACES=[...document.querySelectorAll('.room')].map(el=>({el,name:el.dataset.room,cv:el.querySelector('canvas'),glint:el.querySelector('.glint'),
+  cap:el.querySelector('.rcap'),dim:el.querySelector('.rdim'),fx:+el.dataset.fx||.5,fy:+el.dataset.fy||.5,sx:+el.dataset.sx||.5,sy:+el.dataset.sy||.4,
+  photo:null,ink:null,pen:null,st:0,t:0,key:''}));
+function loadRooms(){SPACES.forEach(r=>{if(r.photo)return;r.photo=loadImg(`img/room_${r.name}.jpg`);
+  r.photo.onload=()=>{r.key='';needMenu=true};
+  fetch(`rooms/room_${r.name}.json`).then(x=>x.json()).then(j=>{r.pen=j;r.key=''}).catch(()=>{r.pen={w:1600,h:900,p:[]};r.key=''})})}
+const roomReady=r=>r.pen&&r.photo&&r.photo.naturalWidth;
+// cover the card with the 16:9 photo, keeping the room's focus point in view on tall phone screens
+function roomRect(r,RW,RH){const iw=r.pen?r.pen.w:16,ih=r.pen?r.pen.h:9,s=Math.max(RW/iw,RH/ih);
+  return{s,x:clamp(RW*.5-iw*s*r.fx,RW-iw*s,0),y:clamp(RH*.5-ih*s*r.fy,RH-ih*s,0),w:iw*s,h:ih*s}}
+function roomBg(r){const c=r.c,w=r.cv.width,h=r.cv.height,px=r.start[0],py=r.start[1];
+  c.globalAlpha=1;c.globalCompositeOperation='source-over';c.fillStyle='#140b1b';c.fillRect(0,0,w,h);
+  const g=c.createRadialGradient(px,py,10,px,py,Math.max(w,h)*.7);g.addColorStop(0,'rgba(114,55,156,.38)');g.addColorStop(1,'rgba(20,11,27,0)');c.fillStyle=g;c.fillRect(0,0,w,h)}
+function roomPrep(r){
+  const RW=r.cv.clientWidth,RH=r.cv.clientHeight,D=Math.min(DPR,1.5),key=RW+'x'+RH+'x'+D;
+  if(r.key===key)return true;if(!roomReady(r)||!RW)return false;
+  r.key=key;r.D=D;r.cv.width=Math.round(RW*D);r.cv.height=Math.round(RH*D);r.c=r.cv.getContext('2d');
+  const g=roomRect(r,RW,RH),X=g.x*D,Y=g.y*D,WW=g.w*D,HH=g.h*D;r.rect=[X,Y,WW,HH];
+  r.start=[X+WW*r.sx,Y+HH*r.sy];
+  if(r.st>=3){r.c.drawImage(r.photo,X,Y,WW,HH);return true}
+  // the strokes in screen pixels; only the ones you can see count towards the drawing time
+  const sc=WW/r.pen.w,Wd=r.cv.width,Hd=r.cv.height,S=[];let tot=0;
+  for(const p of r.pen.p){const q=new Float32Array(p.length);let a=1e9,b=-1e9,cc=1e9,d=-1e9;
+    for(let i=0;i<p.length;i+=2){const x=p[i]*sc+X,y=p[i+1]*sc+Y;q[i]=x;q[i+1]=y;if(x<a)a=x;if(x>b)b=x;if(y<cc)cc=y;if(y>d)d=y}
+    if(b<-8||a>Wd+8||d<-8||cc>Hd+8)continue;
+    const cum=[0];let L=0;for(let i=2;i<q.length;i+=2){L+=Math.hypot(q[i]-q[i-2],q[i+1]-q[i-1]);cum.push(L)}
+    S.push({q,cum,L,a:tot});tot+=L}
+  r.S=S;r.tot=tot||1;r.lw=(isDesk()?1.4:1.15)*D;r.cur=0;r.len=0;
+  // restart the drawing cleanly at this size (a resize mid-drawing starts the pen again)
+  roomBg(r);if(r.st===1||r.st===2){r.st=1;r.t=0}
+  return true}
+// draw the strokes from the current length to `to`; the last stroke may end part-way along a line
+function ptAt(s,L){const cum=s.cum,q=s.q;let k=1;while(k<cum.length-1&&cum[k]<L)k++;const l0=cum[k-1],l1=cum[k],u=l1>l0?clamp((L-l0)/(l1-l0)):0;
+  return[lerp(q[2*k-2],q[2*k],u),lerp(q[2*k-1],q[2*k+1],u)]}
+function penTo(r,to){const c=r.c;let last=null;c.save();c.setTransform(1,0,0,1,0,0);c.strokeStyle='#f1dfbf';c.lineWidth=r.lw;c.lineCap='round';c.lineJoin='round';
+  while(r.cur<r.S.length&&r.len<to){const s=r.S[r.cur];
+    if(s.L<=0){r.cur++;r.len=s.a;continue}
+    const from=Math.max(0,r.len-s.a),end=Math.min(s.L,to-s.a),p0=ptAt(s,from),p1=ptAt(s,end);
+    c.beginPath();c.moveTo(p0[0],p0[1]);
+    for(let i=1;i<s.cum.length;i++)if(s.cum[i]>from&&s.cum[i]<end)c.lineTo(s.q[2*i],s.q[2*i+1]);
+    c.lineTo(p1[0],p1[1]);c.stroke();last=p1;
+    if(end>=s.L){r.cur++;r.len=s.a+s.L}else r.len=to}
+  c.restore();return last}
+function roomFill(r,f){const c=r.c,[X,Y,WW,HH]=r.rect;c.setTransform(1,0,0,1,0,0);roomBg(r);
+  c.globalAlpha=1-f*.9;if(r.linesC)c.drawImage(r.linesC,0,0);c.globalAlpha=1;
+  // the photo fills in from where the pen started, edge to edge
+  const tmp=ROOMTMP;if(tmp.width!==r.cv.width||tmp.height!==r.cv.height){tmp.width=r.cv.width;tmp.height=r.cv.height}
+  const t=tmp.getContext('2d');t.globalCompositeOperation='source-over';t.clearRect(0,0,tmp.width,tmp.height);t.drawImage(r.photo,X,Y,WW,HH);
+  const R=Math.hypot(tmp.width,tmp.height)*1.15*f,gm=t.createRadialGradient(r.start[0],r.start[1],R*.55,r.start[0],r.start[1],Math.max(R,1));
+  gm.addColorStop(0,'rgba(0,0,0,1)');gm.addColorStop(1,'rgba(0,0,0,0)');t.globalCompositeOperation='destination-in';t.fillStyle=gm;t.fillRect(0,0,tmp.width,tmp.height);
+  c.drawImage(tmp,0,0)}
+const ROOMTMP=document.createElement('canvas');
+function roomDone(r){r.st=3;const c=r.c,[X,Y,WW,HH]=r.rect;c.setTransform(1,0,0,1,0,0);c.globalAlpha=1;c.drawImage(r.photo,X,Y,WW,HH);
+  r.linesC=null;r.glint.style.opacity=0;r.cap.classList.add('on');r.el.classList.add('lit')}
+function stepRooms(dt){const vh=innerHeight;
+  for(let i=0;i<SPACES.length;i++){const r=SPACES[i],b=r.el.getBoundingClientRect();
+    // the card underneath sinks back a little as the next one slides over it (desktop only)
+    if(isDesk()&&i<SPACES.length-1){const nt=SPACES[i+1].el.getBoundingClientRect().top,k=clamp(1-nt/vh);
+      r.el.style.transform=k>0?`scale(${1-.05*k})`:'';r.dim.style.opacity=(k*.6).toFixed(3)}
+    if(b.bottom<0||b.top>vh)continue;
+    if(!roomPrep(r))continue;
+    if(r.st===0&&b.top<vh*.18){if(RM){roomDone(r);continue}r.st=1;r.t=0}
+    if(r.st===1){r.t+=clamp(dt,0,34);const f=clamp(r.t/DRAW_MS);const p=penTo(r,f*r.tot);
+      if(p){r.glint.style.opacity=1;r.glint.style.transform=`translate(${p[0]/r.D}px,${p[1]/r.D}px)`}
+      if(f>.45)r.cap.classList.add('on');
+      if(f>=1){r.st=2;r.t=0;r.glint.style.opacity=0;
+        // keep the finished drawing to fade out while the photo fills in
+        const lc=document.createElement('canvas');lc.width=r.cv.width;lc.height=r.cv.height;lc.getContext('2d').drawImage(r.cv,0,0);r.linesC=lc}}
+    else if(r.st===2){r.t+=clamp(dt,0,34);const f=ease(clamp(r.t/FILL_MS));roomFill(r,f);if(f>.35)r.el.classList.add('lit');if(r.t>=FILL_MS)roomDone(r)}
+  }}
+
 function intro(){
   if(RM||introDone){drawP=1;photoP=1;introDone=true;needWalk=true;startSeq();$('hcopy').classList.add('in');$('cue').classList.add('in');return}
   const t0=performance.now(),D1=2800,D2=1500,GAP=0;
@@ -810,10 +885,11 @@ function setInfo(a){mshown=a;const d=DRINKS[a];$('iN').textContent=String(a+1).p
   $('iT').textContent=d.n;$('iP').textContent=d.d;$('iR').innerHTML=`<span class="chip">${d.c}</span>`+(d.p?`<span class="chip price">${d.p}</span>`:`<span class="chip ask">Ask at the bar</span>`);
   [...$('filters').children].forEach(b=>b.classList.toggle('on',b.dataset.c===d.c));
   const info=$('info');info.style.transition='none';info.style.opacity=0;info.style.transform='translateY(8px)';requestAnimationFrame(()=>{info.style.transition='opacity .4s,transform .4s';info.style.opacity=1;info.style.transform='none'})}
-function mpaint(im,zoom){if(!im||!im.naturalWidth)return;const iw=im.naturalWidth,ih=im.naturalHeight,s=Math.max(MW/iw,MH/ih)*zoom;mbx.drawImage(im,MW*.5-iw*s*.5,MH*.5-ih*s*.5,iw*s,ih*s)}
+function mpaint(r,zoom){const im=r&&r.photo;if(!im||!im.naturalWidth)return;const g=roomRect({pen:{w:16,h:9},fx:r.fx,fy:r.fy},MW,MH);
+  mbx.save();mbx.translate(MW*.5,MH*.5);mbx.scale(zoom,zoom);mbx.translate(-MW*.5,-MH*.5);mbx.drawImage(im,g.x,g.y,g.w,g.h);mbx.restore()}
 function drawMenu(){const r=menu.getBoundingClientRect(),len=menu.offsetHeight-innerHeight,q=clamp(-r.top/len);MQ=q;
   const intro=seg(q,0,MINTRO);
-  mbx.setTransform(DPR,0,0,DPR,0,0);mbx.fillStyle='#140b1b';mbx.fillRect(0,0,MW,MH);mpaint(frame('s',SU),1.0+intro*.04);
+  mbx.setTransform(DPR,0,0,DPR,0,0);mbx.fillStyle='#140b1b';mbx.fillRect(0,0,MW,MH);mpaint(SPACES[SPACES.length-1],1.0+intro*.04);
   const fx=isDesk()?66:50,fy=isDesk()?80:76;const rad=ease(seg(intro,.25,1))*150;
   $('mpanel').style.clipPath=`circle(${rad}% at ${fx}% ${fy}%)`;
   const appear=ease(seg(intro,.6,1));
@@ -983,16 +1059,15 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 /* ===================================================================
    SCROLL LOOP + SNAP
    =================================================================== */
-const walk=$('walk'),caps=[...document.querySelectorAll('.cap')],progs=[...document.querySelectorAll('#prog span')],navs=[...document.querySelectorAll('#top nav a')];
+const walk=$('walk'),progs=[...document.querySelectorAll('#prog span')],navs=[...document.querySelectorAll('#top nav a')];
 let idleT=null;
 function onScroll(){const r=walk.getBoundingClientRect(),tot=walk.offsetHeight-innerHeight;PT=clamp(-r.top/tot);
   if(PT>.002)startSeq();
   if(PT>.02&&!introDone){introDone=true;drawP=1;photoP=1;$('hcopy').classList.add('in')}
-  const pinned=r.top<=1&&r.bottom>=innerHeight-1;
-  caps.forEach(c=>c.classList.toggle('on',pinned&&PT>=+c.dataset.a&&PT<+c.dataset.b));
   const h=$('hcopy');h.style.opacity=1-seg(PT,.01,.05);h.style.transform=`translateY(${-30*seg(PT,.01,.05)}px)`;$('cue').style.opacity=introDone?1-seg(PT,0,.02):0;
   const mr=menu.getBoundingClientRect();
-  const st=mr.top<innerHeight*.5&&mr.bottom>0?3:PT<T.door[1]+.03?0:PT<T.spin[0]+.026?1:2;progs.forEach((s,i)=>s.classList.toggle('on',i===st));$('prog').classList.toggle('in',PT>.04&&mr.bottom>innerHeight*.5);
+  const rt=SPACES.map(x=>x.el.getBoundingClientRect().top),half=innerHeight*.5;
+  const st=mr.top<half&&mr.bottom>0?3:rt[1]<half?2:rt[0]<half?1:0;progs.forEach((s,i)=>s.classList.toggle('on',i===st));$('prog').classList.toggle('in',PT>.04&&mr.bottom>half);
   $('top').classList.toggle('solid',r.bottom<innerHeight*.5||PT>.04);
   const y=scrollY+innerHeight*.4;navs.forEach(a=>{const s=$(a.dataset.s);a.classList.toggle('cur',s.offsetTop<=y&&s.offsetTop+s.offsetHeight>y)});
   clearTimeout(idleT);idleT=setTimeout(snap,170);
@@ -1003,10 +1078,8 @@ function snap(){if(dragging)return;
 function loop(now){
   const dt=Math.min(64,now-(lastNow||now));lastNow=now;
   const dP=PT-P;if(Math.abs(dP)>.0002){P+=dP*(RM?1:.16);needWalk=true}else if(P!==PT){P=PT;needWalk=true}
-  // the spin plays on its own once you reach the bar (and back again if you scroll up)
-  const tgtS=P>=T.spin[0]+.026?1:0;if(P<T.spin[0])spinV=0;else if(P>=T.spin[1])spinV=1;
-  else if(spinV!==tgtS){spinV=clamp(spinV+(tgtS?1:-1)*dt/(RM?1:900));needWalk=true}
   if(needWalk){needWalk=false;const r=walk.getBoundingClientRect();if(r.bottom>-50)drawWalk()}
+  stepRooms(dt);
   const mr=menu.getBoundingClientRect();mstage.style.visibility=mr.top<=1?'visible':'hidden';if(mr.top<innerHeight&&mr.bottom>0)drawMenu();
   const dr=day.getBoundingClientRect();if(dr.top<innerHeight&&dr.bottom>0)drawDay();
   requestAnimationFrame(loop)}
@@ -1015,10 +1088,16 @@ addEventListener('resize',()=>{size();onScroll()});
 // decode and prepare the front photo while the page is loading, so the fade-in starts without a hitch
 function prepFront(){if(!W||!FRONT.naturalWidth)return;(FRONT.decode?FRONT.decode():Promise.resolve()).catch(()=>{}).then(()=>{frontPic(frontGeom(0),0);needWalk=true})}
 FRONT.onload=prepFront;
-function boot(){size();onScroll();prepFront();intro();requestAnimationFrame(loop);
+// springy presses on every button (studio_motion.js, loaded below)
+document.querySelectorAll('.pill,.tlink,#filters button,.marrows button,.rarrows button,.door,.olist button,.sthumbs button,.closeb').forEach(e=>e.classList.add('press'));
+function boot(){size();onScroll();prepFront();
+  // the sign is lettered in Cormorant: wait for the fonts (at most 1.2s) before the pen starts
+  Promise.race([document.fonts?document.fonts.ready:Promise.resolve(),new Promise(r=>setTimeout(r,1200))]).then(()=>{countLines();intro()});requestAnimationFrame(loop);
   if(!RM&&window.Lenis){lenis=new Lenis({lerp:.11,smoothWheel:true});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now())}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/motion@14.14.0/dist/motion.js"></script>
+<script src="studio_motion.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" async onload="if(!lenis&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lenis=new Lenis({lerp:.11});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now())}"></script>
 </body>
 </html>
