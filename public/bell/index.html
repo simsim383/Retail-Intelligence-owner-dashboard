@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#140b1b">
+<title>The Bell Guesthouse · Horden · Come on in (concept v7.5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--plum:#72379c;--night:#140b1b;--night2:#1b1024;--night3:#26163a;--gold:#e3bf6d;--cream:#f4ead8;--mut:rgba(244,234,216,.72);--line:rgba(244,234,216,.16);--ease:cubic-bezier(.65,0,.25,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night)}
+body{font-family:Manrope,system-ui,sans-serif;color:var(--cream);background:var(--night);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;text-align:left}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:.96;letter-spacing:-.01em}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--gold)}
+.k{font-size:11px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.wrap{width:min(1240px,88vw);margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;background:var(--gold);color:#1a1020;font-weight:800;font-size:14px;white-space:nowrap;transition:transform .3s var(--ease),box-shadow .3s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 12px 30px -12px rgba(227,191,109,.7)}
+.pill.ghost{background:transparent;border:1px solid rgba(244,234,216,.5);color:inherit}
+.tlink{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(227,191,109,.5);padding-bottom:6px;transition:gap .3s var(--ease)}
+.tlink:hover{gap:16px}
+.tbc{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#3a2600;background:#f0d08a;border-radius:4px;padding:2px 6px;vertical-align:2px}
+.logo{display:flex;align-items:center;gap:10px}
+.tile{width:40px;height:40px;background:#72379c;display:grid;place-items:center;flex:none}
+.tile img{width:78%}
+.logo b{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1}
+.logo small{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-top:3px}
+
+/* top + bottom bars */
+#top{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top)) 4vw 16px;transition:background .4s,box-shadow .4s}
+#top.solid{background:rgba(20,11,27,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+#top nav{display:flex;gap:24px;font-size:13.5px;font-weight:600}
+#top nav a{opacity:.8;transition:opacity .2s}#top nav a:hover,#top nav a.cur{opacity:1}
+#top nav a.cur{text-decoration:underline;text-underline-offset:7px;text-decoration-color:var(--gold)}
+#top .pill{padding:10px 16px;font-size:13px}
+#bar{display:none}
+@media(max-width:900px){
+  #top nav,#top .pill{display:none}
+  #bar{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:70;padding:7px;border-radius:20px;background:rgba(20,11,27,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.45);border:1px solid var(--line)}
+  #bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px;border-radius:14px;font-size:12.5px;font-weight:800;line-height:1.15;text-align:center}
+  #bar a small{font-size:10px;font-weight:500;opacity:.7}
+  #bar a.main{background:var(--gold);color:#1a1020}
+}
+
+/* ============ 1. ARRIVE + WALK IN (pinned, full screen) ============ */
+#walk{position:relative;height:680vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--night)}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,11,27,.55) 0%,rgba(20,11,27,0) 20%,rgba(20,11,27,0) 45%,rgba(20,11,27,.92) 100%)}
+@media(min-width:901px){.shade{background:linear-gradient(90deg,rgba(20,11,27,.88) 0%,rgba(20,11,27,.45) 34%,rgba(20,11,27,0) 58%),linear-gradient(180deg,rgba(20,11,27,.55),transparent 20%,transparent 62%,rgba(20,11,27,.75))}}
+.hcopy{position:absolute;left:6vw;bottom:13vh;max-width:600px;z-index:3}
+.hcopy>*{opacity:0;transform:translateY(24px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.hcopy.in>*{opacity:1;transform:none}
+.hcopy.in>*:nth-child(2){transition-delay:.1s}.hcopy.in>*:nth-child(3){transition-delay:.2s}.hcopy.in>*:nth-child(4){transition-delay:.3s}.hcopy.in>*:nth-child(5){transition-delay:.4s}
+.hcopy h1{font-size:clamp(54px,7vw,116px);margin:16px 0 20px;text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.hcopy p{font-size:17px;line-height:1.6;color:var(--mut);max-width:460px}
+.hcopy .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.proof{display:flex;gap:22px;margin-top:26px;font-size:12.5px;font-weight:700;color:var(--mut);flex-wrap:wrap}
+.proof b{color:var(--cream)}
+.cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:10.5px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;opacity:0;transition:opacity .8s}
+.cue.in{opacity:1}
+.cue i{width:1.5px;height:34px;background:linear-gradient(var(--gold),transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:900px){.hcopy{left:6vw;right:6vw;bottom:108px}.hcopy h1{font-size:50px;margin:10px 0 12px}.hcopy p{font-size:15px}.hcopy .ctas,.proof{display:none}.cue{bottom:96px}}
+.cap{position:absolute;left:6vw;bottom:14vh;max-width:520px;opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease);pointer-events:none;z-index:3}
+.cap.on{opacity:1;transform:none}
+.cap h2{font-size:clamp(46px,5.6vw,88px);margin-top:12px;text-shadow:0 10px 40px rgba(0,0,0,.45)}
+.cap p{font-size:16.5px;line-height:1.6;color:var(--mut);margin-top:14px;max-width:440px}
+@media(max-width:900px){.cap{left:6vw;right:6vw;bottom:110px}.cap h2{font-size:42px}.cap p{font-size:14.5px}}
+.prog{position:absolute;right:3vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:5;opacity:0;transition:opacity .5s}
+.prog.in{opacity:1}
+.prog span{display:flex;align-items:center;gap:10px;justify-content:flex-end;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,234,216,.38);transition:color .3s}
+.prog span i{width:8px;height:8px;border-radius:50%;border:1.5px solid currentColor;transition:all .3s}
+.prog span.on{color:var(--gold)}.prog span.on i{background:var(--gold);box-shadow:0 0 12px var(--gold)}
+@media(max-width:900px){.prog{right:auto;left:6vw;top:calc(78px + env(safe-area-inset-top));transform:none;flex-direction:row;gap:6px}.prog span{font-size:0;gap:0}.prog span i{width:24px;height:3px;border-radius:2px;border:0;background:rgba(244,234,216,.25)}.prog span.on i{background:var(--gold);box-shadow:none}}
+.skip{position:absolute;right:4vw;bottom:26px;font-size:12px;font-weight:800;color:var(--mut);border:1px solid var(--line);padding:8px 13px;border-radius:99px;z-index:6;transition:color .2s,border-color .2s}
+.skip:hover{color:var(--gold);border-color:var(--gold)}
+@media(max-width:900px){.skip{display:none}}
+
+/* ============ 2. BY THE FIRE: DRINKS WHEEL (unchanged from v6) ============ */
+#menu{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh}
+#menu .stage{background:var(--night)}
+#mbg{position:absolute;inset:0;width:100%;height:100%}
+#mpanel{position:absolute;inset:0;background:radial-gradient(120% 90% at 70% 100%,#3b1d55 0%,#24133a 45%,#160c20 100%);clip-path:circle(0% at 70% 80%);will-change:clip-path}
+#mpanel::after{content:"";position:absolute;inset:0;background:radial-gradient(50% 40% at 70% 92%,rgba(227,150,70,.22),transparent 70%);pointer-events:none}
+.mhead{position:absolute;left:6vw;top:15vh;width:min(420px,34vw);z-index:4;opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.mhead.on{opacity:1;transform:none}
+.mhead .sub{font-size:14.5px;line-height:1.6;color:var(--mut);margin-top:10px}
+#filters{display:flex;gap:8px;margin:18px 0 26px;flex-wrap:wrap}
+#filters button{padding:8px 13px;border-radius:99px;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--mut);transition:all .25s}
+#filters button.on{background:var(--gold);color:#1a1020;border-color:var(--gold)}
+.info .n{font-size:11px;font-weight:800;letter-spacing:.2em;color:rgba(244,234,216,.45)}
+.info h3{font-size:clamp(40px,4.4vw,70px);margin:10px 0 12px}
+.info p{font-size:15.5px;line-height:1.6;color:var(--mut);min-height:50px}
+.info .row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.chip{display:inline-block;font-size:11.5px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--mut)}
+.chip.price{background:var(--gold);color:#1a1020;border-color:var(--gold)}
+.chip.ask{color:var(--gold);border-color:rgba(227,191,109,.6)}
+#wheel{position:absolute;inset:0;z-index:3;touch-action:pan-y}
+.it{position:absolute;left:0;top:0;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);cursor:pointer;will-change:transform,opacity}
+.it .disc{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 35%,#f6ead2,#e2c992 70%,#c9a35a);box-shadow:0 24px 50px -20px rgba(0,0,0,.75),0 0 0 2px rgba(227,191,109,.5)}
+.it .disc.dark{background:radial-gradient(circle at 50% 35%,#5a2f7d,#36184d 70%,#24103a)}
+.it .disc img{position:absolute;inset:8% 8% 2%;width:84%;height:90%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
+.it .disc img.ph{inset:0;width:100%;height:100%;object-fit:cover;filter:none;transform:scale(1.08)}
+.it .disc svg{position:absolute;inset:22%;width:56%;height:56%;color:var(--gold)}
+.it span{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:12px;white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--mut);transition:opacity .3s}
+.it.act span{opacity:0}
+.it.act .disc{box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 2px var(--gold),0 0 50px rgba(227,191,109,.35)}
+.wring{position:absolute;border:1px dashed rgba(227,191,109,.28);border-radius:50%;pointer-events:none;z-index:2}
+.marrows{position:absolute;right:4vw;top:15vh;display:flex;gap:10px;z-index:5}
+.marrows button{width:50px;height:50px;border-radius:50%;border:1px solid rgba(227,191,109,.5);color:var(--gold);font-size:18px;text-align:center;transition:background .25s,color .25s}
+.marrows button:hover{background:var(--gold);color:#1a1020}
+.mnote{position:absolute;right:4vw;bottom:4vh;font-size:11px;font-weight:700;color:rgba(244,234,216,.4);z-index:4;text-align:right}
+.mhint{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,234,216,.45);z-index:4}
+@media(max-width:900px){
+  .mhead{left:6vw;right:6vw;width:auto;top:calc(84px + env(safe-area-inset-top))}
+  .mhead .sub{display:none}
+  #filters{margin:10px 0 12px}#filters button{padding:7px 11px;font-size:11px}
+  .info h3{font-size:34px;margin:6px 0 8px}.info p{font-size:14px;min-height:0}.info .row{margin-top:10px}
+  .marrows,.mnote{display:none}.mhint{bottom:96px}
+}
+
+/* ============ 3. A DAY AT THE BELL (full screen, the photo is the room) ============ */
+#day{position:relative;--bg:#f4e3cf;--fg:#24152c;--fgm:rgba(36,21,44,.74)}
+#day .stage{background:#140b1b;color:var(--fg)}
+.dph{position:absolute;inset:0;opacity:0;will-change:opacity}
+.dph img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.dph.side img.blur{position:absolute;inset:0;filter:blur(40px) brightness(.85);transform:scale(1.2)}
+.dph.side img.sharp{position:absolute;top:0;right:0;width:auto;max-width:none;height:100%;object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
+@media(max-width:900px){.dph.side img.sharp{top:64px;left:0;width:100%;height:auto;object-fit:contain;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}}
+.dtint{position:absolute;inset:0;background:var(--bg);mix-blend-mode:color;opacity:.22;pointer-events:none}
+.dwash{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,var(--bgA) 26%,var(--bgB) 44%,transparent 66%),linear-gradient(180deg,var(--bgB) 0%,transparent 24%)}
+@media(max-width:900px){.dwash{background:linear-gradient(0deg,var(--bg) 0%,var(--bgA) 34%,transparent 62%),linear-gradient(180deg,var(--bgB) 0%,transparent 26%)}}
+.sky{position:absolute;left:0;right:0;top:0;height:42vh;pointer-events:none;z-index:2}
+.sky svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stars{position:absolute;inset:0;opacity:0}
+.dtext{position:absolute;left:6vw;bottom:12vh;width:min(520px,40vw);height:430px;z-index:3}
+.clock{display:flex;align-items:baseline;gap:14px;font-family:'Cormorant Garamond',serif;font-size:clamp(60px,6vw,100px);line-height:1;font-weight:500;font-variant-numeric:lining-nums tabular-nums}
+.clock small{font-family:Manrope;font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--fgm)}
+.ch{position:absolute;left:0;right:0;top:118px;opacity:0;transform:translateY(24px);transition:opacity .55s var(--ease),transform .55s var(--ease);pointer-events:none}
+.ch.on{opacity:1;transform:none;pointer-events:auto}
+.ch .kk{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--acc,#9a5a1c)}
+.ch h2{font-size:clamp(48px,5vw,82px);margin:12px 0 16px}
+.ch h2 em{color:var(--acc,#9a5a1c)}
+.ch p{font-size:16px;line-height:1.65;color:var(--fgm);max-width:440px}
+.ch .row{margin-top:24px}
+.ch .tlink{color:var(--fg);border-color:var(--fgm)}
+.dtag{position:absolute;right:4vw;bottom:5vh;z-index:3;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.ddots{position:absolute;left:6vw;bottom:5vh;display:flex;gap:10px;z-index:4}
+.ddots button{display:flex;flex-direction:column;gap:6px;align-items:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--fg);opacity:.5;transition:opacity .3s}
+.ddots button i{width:46px;height:2px;border-radius:2px;background:currentColor;opacity:.4}
+.ddots button.on{opacity:1}.ddots button.on i{opacity:1}
+@media(max-width:900px){
+  .dtext{left:6vw;right:6vw;width:auto;bottom:104px;height:330px}
+  .clock{font-size:48px}
+  .ch{top:64px}
+  .ch h2{font-size:40px;margin:8px 0 10px}.ch p{font-size:14.5px}.ch .row{margin-top:14px}
+  .ddots,.dtag{display:none}
+  .sky{height:30vh}
+}
+
+/* ============ 4. CREATE YOUR MOMENT (full screen, editorial) ============ */
+#moment{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;padding:130px 0 110px}
+.mbgs{position:absolute;inset:0}
+.mbgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.1s var(--ease),transform 6s ease-out}
+.mbgs img.on{opacity:1;transform:scale(1)}
+.mshade{position:absolute;inset:0;background:radial-gradient(60% 55% at 85% 88%,rgba(20,11,27,.78),transparent 70%),linear-gradient(90deg,rgba(20,11,27,.94) 0%,rgba(20,11,27,.78) 36%,rgba(20,11,27,.3) 62%,rgba(20,11,27,.5) 100%),linear-gradient(180deg,var(--night) 0%,transparent 18%,transparent 78%,rgba(20,11,27,.95) 100%)}
+.mgrid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:end}
+.mleft h2{font-size:clamp(54px,6.4vw,108px);margin:14px 0 18px}
+.mleft>p{font-size:16px;line-height:1.65;color:var(--mut);max-width:440px}
+.olist{list-style:none;margin-top:34px;border-top:1px solid var(--line);max-width:480px}
+.olist button{width:100%;display:flex;align-items:baseline;gap:18px;padding:13px 0;border-bottom:1px solid var(--line);color:rgba(244,234,216,.55);transition:color .35s,padding .35s var(--ease)}
+.olist button .no{font-size:11px;font-weight:800;letter-spacing:.14em;color:rgba(244,234,216,.35);width:22px}
+.olist button .nm{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.3vw,34px);font-weight:500;line-height:1}
+.olist button:hover{color:var(--cream)}
+.olist button.on{color:var(--cream);padding-left:10px}
+.olist button.on .nm{font-style:italic;color:var(--gold)}
+.olist button.on .no{color:var(--gold)}
+.mright{padding-bottom:6px;max-width:470px;justify-self:end}
+.mright .k{display:block}
+.mright h3,.sright h3{text-shadow:0 4px 30px rgba(0,0,0,.5)}.mright h3{font-size:clamp(46px,4.6vw,76px);font-style:italic;color:var(--cream);margin:12px 0 16px;transition:opacity .4s,transform .4s}
+.mright p{font-size:16px;line-height:1.65;color:var(--mut);transition:opacity .4s,transform .4s}
+.mright .swap{opacity:0;transform:translateY(10px)}
+.mright .tlink{margin-top:24px}
+form.enq{display:none;grid-template-columns:1fr 1fr;gap:14px 18px;margin-top:26px}
+form.enq.open{display:grid;animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+form.enq label{display:flex;flex-direction:column;gap:4px;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+form.enq input{font:inherit;font-size:16px;letter-spacing:0;text-transform:none;color:var(--cream);background:transparent;border:0;border-bottom:1px solid rgba(244,234,216,.35);padding:8px 0;border-radius:0}
+form.enq input:focus{outline:0;border-bottom-color:var(--gold)}
+form.enq .full{grid-column:1/-1;display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:6px}
+form.enq .note{font-size:12px;color:var(--mut)}
+.mcred{position:absolute;right:4vw;bottom:4vh;z-index:2;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,234,216,.55)}
+@media(max-width:900px){
+  #moment{padding:100px 0 120px;align-items:flex-start}
+  .mshade{background:linear-gradient(180deg,rgba(20,11,27,.96) 0%,rgba(20,11,27,.55) 34%,rgba(20,11,27,.55) 60%,rgba(20,11,27,.97) 100%)}
+  .mgrid{grid-template-columns:1fr;gap:30px}
+  .mleft h2{font-size:52px}.olist button .nm{font-size:26px}.olist button{padding:10px 0}
+  .mright{justify-self:start}.mright h3,.sright h3{text-shadow:0 4px 30px rgba(0,0,0,.5)}.mright h3{font-size:44px}
+  form.enq{grid-template-columns:1fr}.mcred{display:none}
+}
+
+/* sections shared */
+.sec{padding:130px 0;position:relative}
+.shead{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:end;margin-bottom:46px}
+.shead h2{font-size:clamp(48px,5.6vw,92px);margin-top:12px}
+.shead p{font-size:16px;line-height:1.65;color:var(--mut);max-width:470px}
+@media(max-width:900px){.sec{padding:84px 0}.shead{grid-template-columns:1fr;gap:14px;margin-bottom:28px}.shead h2{font-size:48px}}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.in{opacity:1;transform:none}
+
+/* what's on */
+#whatson{background:linear-gradient(180deg,var(--night) 0%,var(--night2) 14%,var(--night2) 86%,var(--night) 100%)}
+.adv{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:start}
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.door{position:relative;aspect-ratio:3/4;perspective:900px;border-radius:14px;text-align:center}
+.door .behind{position:absolute;inset:0;border-radius:14px;overflow:hidden;background:#000}
+.door .behind img{width:100%;height:100%;object-fit:cover}
+.door .behind span{position:absolute;left:8px;right:8px;bottom:8px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .4s .4s;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.door.open .behind span{opacity:1}
+.door .leaf{position:absolute;inset:0;border-radius:14px;background:linear-gradient(150deg,#6b3a91,#4a2468 60%,#371a4f);transform-origin:left center;transition:transform .9s var(--ease);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);box-shadow:inset 0 0 0 6px rgba(227,191,109,.18),inset 0 0 0 7px rgba(227,191,109,.4)}
+.door .leaf b{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:600;line-height:1}
+.door .leaf small{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+.door .leaf::after{content:"";position:absolute;right:12%;top:52%;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.door.open{z-index:2}.door.open .leaf{transform:rotateY(-105deg)}
+.door.closed .leaf{background:linear-gradient(150deg,#2b2034,#1d1526);color:rgba(244,234,216,.45);box-shadow:inset 0 0 0 6px rgba(255,255,255,.04)}
+.detail{border-top:1px solid var(--line);padding-top:26px;min-height:320px}
+.detail h3{font-size:clamp(40px,4vw,60px);margin:12px 0 10px}
+.detail .when{font-weight:800;font-size:15px;color:var(--gold)}
+.detail p{font-size:15.5px;line-height:1.65;color:var(--mut);margin-top:12px;max-width:480px}
+.detail .row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.detail .closeb{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:5px}
+.next{margin-top:80px}
+.next .nh{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}
+.next h3{font-size:clamp(38px,3.6vw,56px)}
+.next .nh p{font-size:14px;color:var(--mut);max-width:360px;line-height:1.6}
+.ncards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.nc{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4.2;background:#000;isolation:isolate}
+.nc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75;transition:transform 1.2s var(--ease),opacity .6s}
+.nc:hover img{transform:scale(1.06);opacity:.9}
+.nc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,11,27,.1) 30%,rgba(20,11,27,.94) 100%);z-index:1}
+.nc .t{position:absolute;left:18px;right:18px;bottom:18px;z-index:2}
+.nc .d{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.nc h4{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;line-height:1;margin:8px 0 8px}
+.nc p{font-size:13px;line-height:1.5;color:var(--mut)}
+.nc .tbc{margin-top:10px}
+@media(max-width:900px){.adv{grid-template-columns:1fr}.doors{gap:9px}.door .leaf b{font-size:40px}.next .nh{flex-direction:column;align-items:flex-start}
+  .ncards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -6vw;padding:0 6vw;scrollbar-width:none}.nc{flex:none;width:68vw;scroll-snap-align:start}}
+
+/* stay with us (full screen, editorial) */
+#stay{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end;padding:140px 0 100px}
+.sbgs{position:absolute;inset:0}
+.sbgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.1s var(--ease),transform 6s ease-out}
+.sbgs img.on{opacity:1;transform:scale(1)}
+.sshade{position:absolute;inset:0;background:radial-gradient(60% 70% at 84% 76%,rgba(20,11,27,.9),transparent 75%),linear-gradient(90deg,rgba(20,11,27,.94) 0%,rgba(20,11,27,.72) 34%,rgba(20,11,27,.2) 60%,rgba(20,11,27,.45) 100%),linear-gradient(180deg,var(--night) 0%,transparent 20%,transparent 70%,rgba(20,11,27,.92) 100%)}
+.sgrid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:end}
+.sleft h2{font-size:clamp(54px,6.4vw,108px);margin:14px 0 18px}
+.sleft>p{font-size:16px;line-height:1.65;color:var(--mut);max-width:440px}
+.sright{justify-self:end;max-width:460px}
+.sright h3{font-size:clamp(40px,4vw,64px);font-style:italic;margin:12px 0 14px}
+.sright p{font-size:15.5px;line-height:1.65;color:var(--mut)}
+.sthumbs{display:flex;gap:8px;margin-top:20px}
+.sthumbs button{width:64px;height:48px;border-radius:8px;overflow:hidden;opacity:.55;outline:1px solid transparent;transition:opacity .3s,outline-color .3s}
+.sthumbs button.on{opacity:1;outline-color:var(--gold)}
+.sthumbs img{width:100%;height:100%;object-fit:cover}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:26px;border-top:1px solid var(--line)}
+.facts div{padding:14px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--mut);line-height:1.4}
+.facts div:nth-child(odd){padding-right:14px}
+.facts b{display:block;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream)}
+.sright .pill{margin-top:26px}
+@media(max-width:900px){
+  #stay{padding:100px 0 120px;align-items:flex-start}
+  .sshade{background:linear-gradient(180deg,rgba(20,11,27,.95) 0%,rgba(20,11,27,.5) 32%,rgba(20,11,27,.6) 55%,rgba(20,11,27,.97) 100%)}
+  .sgrid{grid-template-columns:1fr;gap:30px}.sleft h2{font-size:52px}.sright{justify-self:start}
+}
+
+/* reviews */
+#reviews{background:linear-gradient(180deg,var(--night) 0%,#1a0f22 100%);overflow:hidden}
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}
+.rhead h2{font-size:clamp(48px,5.6vw,92px);margin-top:12px}
+.gscore{display:flex;align-items:center;gap:18px}
+.gscore b{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:500;line-height:1;color:var(--gold)}
+.gscore div{font-size:13px;line-height:1.6;color:var(--mut)}
+.gscore .st{display:flex;gap:3px;margin-bottom:4px}
+.rrail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 6vw 10px;margin:0 -6vw;scrollbar-width:none}
+.rrail::-webkit-scrollbar{display:none}
+.rc{flex:none;width:min(400px,80vw);scroll-snap-align:start;border:1px solid var(--line);border-radius:22px;padding:30px 28px 26px;display:flex;flex-direction:column;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.01))}
+.rc .st{display:flex;gap:3px}
+.rc blockquote{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.35;color:var(--cream);margin:18px 0 24px;flex:1}
+.rc blockquote::before{content:"“";display:block;font-size:54px;line-height:.6;color:var(--gold);margin-bottom:6px}
+.rc footer{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.rc .av{width:38px;height:38px;border-radius:50%;background:var(--plum);display:grid;place-items:center;font-size:12px;font-weight:800;letter-spacing:.06em}
+.rc footer b{display:block;font-size:14px}
+.rc footer small{font-size:11.5px;color:var(--mut)}
+.rfoot{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:28px;flex-wrap:wrap}
+.rarrows{display:flex;gap:10px}
+.rarrows button{width:50px;height:50px;border-radius:50%;border:1px solid rgba(227,191,109,.5);color:var(--gold);font-size:18px;text-align:center;transition:background .25s,color .25s}
+.rarrows button:hover{background:var(--gold);color:#1a1020}
+@media(max-width:900px){.rhead{flex-direction:column;align-items:flex-start}.gscore b{font-size:56px}.rc blockquote{font-size:20px}.rarrows{display:none}}
+
+/* bell wall */
+#wall{background:radial-gradient(80% 60% at 20% 30%,#2a1840,var(--night) 70%)}
+.wgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:4vw;align-items:start}
+.cab{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px var(--line)}
+.bb{position:absolute;width:9%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%}
+.bb::after{content:"";position:absolute;inset:18%;border-radius:50%;border:1.5px solid transparent;transition:border-color .2s}
+.cab.show .bb::after{border-color:rgba(255,255,255,.6)}
+.tag2{position:absolute;transform:translate(-50%,-140%);background:var(--night);color:#fff;font-size:12px;font-weight:800;padding:6px 10px;border-radius:99px;white-space:nowrap;pointer-events:none;animation:pop .25s ease-out;border:1px solid var(--line)}
+.tag2.win{background:var(--plum);box-shadow:0 0 0 3px var(--gold)}
+@keyframes pop{from{transform:translate(-50%,-110%) scale(.6);opacity:0}}
+.ripple{position:absolute;width:12%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2px solid var(--gold);pointer-events:none;animation:rip .9s ease-out forwards}
+@keyframes rip{from{transform:translate(-50%,-50%) scale(.3);opacity:1}to{transform:translate(-50%,-50%) scale(2.2);opacity:0}}
+.game{border-top:1px solid var(--line);padding-top:26px;position:sticky;top:100px}
+.game h3{font-size:44px;margin:12px 0 8px}
+.game p{font-size:14.5px;line-height:1.6;color:var(--mut)}
+.score{display:flex;gap:6px;margin:18px 0}
+.score i{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);transition:all .3s}
+.score i.done{background:var(--gold);border-color:var(--gold)}
+.game .row{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.bring{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.6;color:var(--mut)}
+.bring b{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;display:block;margin-bottom:4px;color:var(--cream)}
+@media(max-width:900px){.wgrid{grid-template-columns:1fr}.game{position:relative;top:0;order:-1}.game h3{font-size:34px}}
+
+/* visit */
+#visit{background:#0e0713;padding:100px 0 50px}
+.vgrid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:4vw}
+.vgrid h3{font-size:30px;margin-bottom:12px;color:var(--gold)}
+.vgrid p,.vgrid li{font-size:14.5px;line-height:1.8;color:var(--mut);list-style:none}
+.vgrid li.today{color:var(--cream);font-weight:800}
+.vgrid li.today::after{content:" · today";color:var(--gold)}
+.vgrid a{text-decoration:underline;text-underline-offset:3px}
+.front{border-radius:16px;overflow:hidden;margin-bottom:16px;max-height:340px}
+.front img{width:100%;height:100%;object-fit:cover}
+.foot{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:12px;color:rgba(244,234,216,.45);flex-wrap:wrap}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr}#visit{padding-bottom:120px}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <a href="#walk" class="logo" aria-label="The Bell Guesthouse, back to the top"><span class="tile"><img src="img/logo.png" alt=""></span><span><b>The Bell</b><small>Guesthouse · Horden</small></span></a>
+  <nav><a href="#menu" data-s="menu">Drinks</a><a href="#day" data-s="day">A day here</a><a href="#moment" data-s="moment">Events</a><a href="#whatson" data-s="whatson">What's on</a><a href="#stay" data-s="stay">Stay</a><a href="#reviews" data-s="reviews">Reviews</a><a href="#wall" data-s="wall">Bell wall</a><a href="#visit" data-s="visit">Find us</a></nav>
+  <a class="pill" href="https://securebooking.eviivo.com/mywebsite/Bell_SR84PF.home" target="_blank" rel="noopener">Book a room</a>
+</header>
+<nav id="bar">
+  <a class="main" href="https://securebooking.eviivo.com/mywebsite/Bell_SR84PF.home" target="_blank" rel="noopener">Book a room<small>check dates</small></a>
+  <a href="#whatson">What's on<small>December</small></a>
+  <a href="tel:01915863863">Call<small>0191 586 3863</small></a>
+</nav>
+
+<!-- ============ 1. ARRIVE + WALK IN ============ -->
+<section id="walk">
+  <div class="stage">
+    <canvas id="cv" aria-label="The Bell's front drawn in pen, then the real photograph, then a walk inside to the bar and a seat by the fire"></canvas>
+    <div class="shade" id="shade"></div>
+    <div class="hcopy" id="hcopy">
+      <span class="k">Horden · County Durham · since 1925</span>
+      <h1>Feel at home<br><em>when you're away.</em></h1>
+      <p>A bar with real fires, rooms upstairs and a room for every occasion. Scroll to come in.</p>
+      <div class="ctas"><a class="pill" href="https://securebooking.eviivo.com/mywebsite/Bell_SR84PF.home" target="_blank" rel="noopener">Book a room</a><a class="pill ghost" href="#whatson">What's on this December</a></div>
+      <div class="proof"><span><b>AA ★★★★</b> Guest House</span><span><b>4.6 on Google</b> · 265 reviews</span><span><b>100 years</b> in Horden</span></div>
+    </div>
+    <div class="cue" id="cue"><span>Scroll to come in</span><i></i></div>
+
+    <div class="cap" data-a=".18" data-b=".43"><span class="k">You're in</span><h2>Come in out<br><em>of the cold.</em></h2><p>The bar's just up ahead.</p></div>
+    <div class="cap" data-a=".60" data-b=".776"><span class="k">Up at the bar</span><h2>Over 200<br><em>spirits.</em></h2><p>Gins from all over, local ones from the North East included, plus draught, wine and proper hot drinks.</p></div>
+    <div class="cap" data-a=".87" data-b="1.01"><span class="k">This way</span><h2>Take the seat<br><em>by the fire.</em></h2><p>The best seat in the house on a cold County Durham night.</p></div>
+
+    <div class="prog" id="prog"><span><i></i>Outside</span><span><i></i>The bar</span><span><i></i>The fire</span><span><i></i>Drinks</span></div>
+    <a class="skip" href="#day">Skip the walk ↓</a>
+  </div>
+</section>
+
+<!-- ============ 2. BY THE FIRE ============ -->
+<section id="menu">
+  <div class="stage">
+    <canvas id="mbg"></canvas>
+    <div id="mpanel"></div>
+    <div class="wring" id="wring"></div>
+    <div id="wheel"></div>
+    <div class="mhead" id="mhead">
+      <span class="k">Sat by the fire</span>
+      <p class="sub">Christmas cocktails are any two for £12, mix and match, all December.</p>
+      <div id="filters"></div>
+      <div class="info" id="info"><span class="n" id="iN"></span><h3 id="iT"></h3><p id="iP"></p><div class="row" id="iR"></div></div>
+    </div>
+    <div class="marrows"><button id="mprev" aria-label="Previous drink">←</button><button id="mnext" aria-label="Next drink">→</button></div>
+    <p class="mhint" id="mhint">Scroll, swipe or tap a drink</p>
+    <p class="mnote">Prices on the cocktails are this December's · everything else, ask at the bar</p>
+  </div>
+</section>
+
+<!-- ============ 3. A DAY AT THE BELL ============ -->
+<section id="day">
+  <div class="stage">
+    <div id="dphoto"></div>
+    <div class="dtint"></div>
+    <div class="dwash"></div>
+    <div class="sky"><svg viewBox="0 0 1000 400" preserveAspectRatio="none" id="skysvg"><path id="arc" d="M40 390 Q500 -30 960 390" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="2 8" stroke-width="1.5"/></svg>
+      <svg class="stars" id="stars" viewBox="0 0 1000 400" preserveAspectRatio="none"></svg><svg viewBox="0 0 1000 400" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"></svg></div>
+    <div class="dtext">
+      <div class="clock"><span id="clk">08:00</span><small id="clkl">A day at The Bell</small></div>
+      <div id="chs"></div>
+    </div>
+    <span class="dtag" id="dtag"></span>
+    <div class="ddots" id="ddots"></div>
+  </div>
+</section>
+
+<!-- ============ 4. CREATE YOUR MOMENT ============ -->
+<section id="moment">
+  <div class="mbgs" id="mbgs"></div>
+  <div class="mshade"></div>
+  <div class="wrap mgrid">
+    <div class="mleft rv">
+      <span class="k">The Bell event space</span>
+      <h2>Create your<br><em>moment.</em></h2>
+      <p>A room set up around your day, with its own bar and wood burner, and rooms upstairs for anyone staying over.</p>
+      <ol class="olist" id="olist"></ol>
+    </div>
+    <div class="mright rv" id="mright">
+      <span class="k" id="ok">01 · At The Bell</span>
+      <h3 id="oh">Baby shower</h3>
+      <p id="op"></p>
+      <button class="tlink" id="oform">Tell us your date <span>→</span></button>
+      <form class="enq" id="enq">
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Date, roughly<input name="date" placeholder="e.g. Sat 20 March"></label>
+        <label>Guests<input name="guests" inputmode="numeric" placeholder="How many?"></label>
+        <div class="full"><button class="pill" type="submit">Send enquiry</button><span class="note">Opens an email to info@thebellguesthouse.com. Or call <a href="tel:01915863863" style="text-decoration:underline">0191 586 3863</a>.</span></div>
+      </form>
+    </div>
+  </div>
+  <span class="mcred" id="mcred"></span>
+</section>
+
+<!-- ============ WHAT'S ON ============ -->
+<section id="whatson" class="sec">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="k">What's on · December</span><h2>Open a door,<br><em>pick a night.</em></h2></div>
+      <p>Every door is a real night at The Bell. Tap one to open it, tap it again to close it.</p></div>
+    <div class="adv"><div class="doors" id="doors"></div><div class="detail" id="detail"></div></div>
+    <div class="next">
+      <div class="nh rv"><h3>Into the <em>new year</em></h3><p>Times and prices for the new year are coming soon. Ask at the bar or call 0191 586 3863.</p></div>
+      <div class="ncards" id="ncards"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAY WITH US ============ -->
+<section id="stay">
+  <div class="sbgs" id="sbgs"></div>
+  <div class="sshade"></div>
+  <div class="wrap sgrid">
+    <div class="sleft rv">
+      <span class="k">Rooms at The Bell</span>
+      <h2>Stay<br><em>with us.</em></h2>
+      <p>Every room en suite, from a single to a family of four, with breakfast cooked to order in the morning.</p>
+      <ol class="olist" id="slist"></ol>
+    </div>
+    <div class="sright rv">
+      <span class="k" id="sk"></span>
+      <h3 id="sh"></h3>
+      <p id="sp"></p>
+      <div class="sthumbs" id="sthumbs"></div>
+      <div class="facts"><div><b>AA ★★★★</b>Guest House</div><div><b>4.6 on Google</b>from 265 reviews</div><div><b>Breakfast</b>cooked to order</div><div><b>Free parking</b>and free wifi</div></div>
+      <a class="pill" href="https://securebooking.eviivo.com/mywebsite/Bell_SR84PF.home" target="_blank" rel="noopener">Check availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="sec">
+  <div class="wrap">
+    <div class="rhead rv"><div><span class="k">In their words</span><h2>What our<br><em>guests say.</em></h2></div>
+      <div class="gscore"><b>4.6</b><div>out of 5 on Google<br>from 265 reviews</div></div></div>
+    <div class="rrail" id="rrail"></div>
+    <div class="rfoot"><a class="tlink" href="https://maps.google.com/?cid=4020815678857747456" target="_blank" rel="noopener">Read all 265 reviews on Google <span>→</span></a><div class="rarrows"><button id="rprev" aria-label="Previous reviews">←</button><button id="rnext" aria-label="More reviews">→</button></div></div>
+  </div>
+</section>
+
+<!-- ============ BELL WALL ============ -->
+<section id="wall" class="sec">
+  <div class="wrap">
+    <div class="shead rv"><div><span class="k">The bell wall</span><h2>Bells from<br><em>everywhere.</em></h2></div>
+      <p>Brought home from holidays by the family and by guests, from Monaco to the Dominican Republic. Tap any bell to see where it's from.</p></div>
+    <div class="wgrid">
+      <div class="cab" id="cab"><img src="img/bellwall.jpg" alt="Glass cabinet of souvenir bells from around the world"></div>
+      <div class="game">
+        <span class="k">Can you find it?</span>
+        <h3>Find the bell from <em id="target">Venice</em></h3>
+        <p id="gp">Tap the bell you think it is. Five to find.</p>
+        <div class="score" id="score"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="row"><button class="pill" id="skipb">Skip this one</button><button class="tlink" id="hintb">Show me the bells</button></div>
+        <div class="bring"><b>Going somewhere nice?</b>Bring us a bell back and it goes on the wall.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit">
+  <div class="wrap vgrid">
+    <div><div class="front"><img src="img/corner.jpg" alt="The Bell Guesthouse on the corner of Sunderland Road" loading="lazy"></div>
+      <div class="logo"><span class="tile"><img src="img/logo.png" alt=""></span><span><b>The Bell</b><small>Guesthouse · Horden</small></span></div></div>
+    <div><h3>Find us</h3><p>Sunderland Road, Horden<br>Peterlee, County Durham<br>SR8 4PF</p>
+      <p style="margin-top:12px">2 minutes from the A19. Horden station is close by.<br><a href="https://www.google.com/maps/search/?api=1&query=The+Bell+Guesthouse+Horden+SR8+4PF" target="_blank" rel="noopener">Open in Google Maps</a></p></div>
+    <div><h3>Bar hours</h3><ul id="hours"><li data-d="1,2,3,4">Mon–Thu from 4pm</li><li data-d="5,6">Fri &amp; Sat from 2pm</li><li data-d="0">Sunday from 12 noon</li></ul>
+      <h3 style="margin-top:22px">Get in touch</h3><p><a href="tel:01915863863">0191 586 3863</a><br><a href="mailto:info@thebellguesthouse.com">info@thebellguesthouse.com</a></p></div>
+  </div>
+  <div class="wrap foot"><span>The Bell Guesthouse · since 1925</span><span>Concept v7.5 · November 2026 · all photos are The Bell's own · the walk-in is animated from them · rooms booked through eviivo</span></div>
+</section>
+
+<script>
+/* ======== bell_draw.js ======== */
+let ctx;
+// Pen-and-ink line drawing of The Bell, Horden, traced from the real front elevation (photo coordinates, 1206 wide).
+let S = 2.4, OX = 153, OY = 620;
+let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+let INK = '#1d1c21';
+let W0 = 3.6;  // pen width in output px
+function pen(w = 1) { ctx.lineWidth = W0 * w / S; ctx.strokeStyle = INK; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; }
+// hand-drawn line: slight wobble + tiny overshoot
+let BUD = null, BLO = null, CNT = [0, 0];
+function L(x1, y1, x2, y2, w = 1, j = .35) {
+  const cls = w >= .8 ? 0 : 1; CNT[cls]++; const skip = BUD && (CNT[cls] > BUD[cls] || (BLO && CNT[cls] <= BLO[cls]));
+  pen(w); const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len;
+  const o = Math.min(1.2, len * .02); x1 -= dx / len * o * rnd(); y1 -= dy / len * o * rnd(); x2 += dx / len * o * rnd(); y2 += dy / len * o * rnd();
+  const n = Math.max(2, Math.ceil(len / 25)); ctx.beginPath(); ctx.moveTo(x1, y1);
+  for (let i = 1; i <= n; i++) { const t = i / n, w2 = (i === n ? 0 : (rnd() - .5) * j); ctx.lineTo(x1 + (x2 - x1) * t + nx * w2, y1 + (y2 - y1) * t + ny * w2); }
+  if (!skip) { ctx.stroke(); if (BUD && CNT[cls] > BUD[cls] - 3) LASTPT = [x2, y2]; }
+}
+let LASTPT = null;
+function R(x, y, w, h, wt = 1) { L(x, y, x + w, y, wt); L(x + w, y, x + w, y + h, wt); L(x + w, y + h, x, y + h, wt); L(x, y + h, x, y, wt); }
+function poly(pts, wt = 1, close = true) { for (let i = 0; i < pts.length - (close ? 0 : 1); i++) { const a = pts[i], b = pts[(i + 1) % pts.length]; L(a[0], a[1], b[0], b[1], wt); } }
+function hatch(x, y, w, h, gap = 4, wt = .45, ang = 1) { ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip(); for (let k = -h; k < w + h; k += gap) L(x + k, y + h, x + k + h * ang, y, wt, .2); ctx.restore(); }
+function bricks(x, y, w, h, ch = 6, bw = 14, wt = .4) { ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  for (let r = 0, yy = y; yy < y + h; r++, yy += ch) { L(x, yy, x + w, yy, wt, .15); for (let xx = x + (r % 2 ? bw / 2 : 0); xx < x + w; xx += bw) if (rnd() > .08) L(xx, yy, xx, yy + ch, wt, .1); } ctx.restore(); }
+// sash window with transom + net curtain lines
+function win(x, y, w, h, tr = .22, curtains = true) {
+  R(x, y, w, h, 1.1); R(x + 3, y + 3, w - 6, h - 6, .6);
+  const ty = y + h * tr; L(x + 3, ty, x + w - 3, ty, .8);
+  if (curtains) for (let xx = x + 7; xx < x + w - 5; xx += 4.5) L(xx, ty + 4, xx, y + h - 6, .3, .3);
+  L(x - 4, y + h + 2, x + w + 4, y + h + 2, 1); L(x - 4, y + h + 6, x + w + 4, y + h + 6, .7);
+}
+function glint(x, y, w, h) { ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip(); for (let k = 0; k < 3; k++) L(x + w * .2 + k * 5, y + h, x + w * .2 + k * 5 + h * .8, y, .35, .1); ctx.restore(); }
+function post(x, y1, y2, w = 12) { L(x, y1, x, y2, .9); L(x + w, y1, x + w, y2, .9); }
+function beam(x1, x2, y, h = 12) { L(x1, y, x2, y, .9); L(x1, y + h, x2, y + h, .9); }
+function leaves(cx, cy, n, spread) { for (let i = 0; i < n; i++) { const x = cx + (rnd() - .5) * spread, y = cy + (rnd() - .5) * spread * .6, a = rnd() * 6.28, r = 3 + rnd() * 3; CNT[1]++; if (BUD && (CNT[1] > BUD[1] || (BLO && CNT[1] <= BLO[1]))) continue;
+  pen(.5); ctx.beginPath(); ctx.ellipse(x, y, r, r * .45, a, 0, 6.29); ctx.stroke(); } }
+function roofTiles(left, right, yTop, yBot, gap = 8) { // left(y), right(y) give x bounds per y
+  for (let y = yTop + gap * .6, r = 0; y < yBot - 2; y += gap, r++) { const xa = left(y), xb = right(y); L(xa, y, xb, y, .5, .25);
+    for (let x = xa + (r % 2 ? 6 : 0); x < xb - 3; x += 12) L(x, y, x, y + gap * .55, .35, .1); } }
+
+function drawBell() {
+  ctx.save(); ctx.translate(OX, OY); ctx.scale(S, S);
+  // ---- chimneys
+  [[20, 63], [1068, 57]].forEach(([x, w]) => { R(x, 150, w, 85, 1.1); R(x - 4, 138, w + 8, 12, 1); bricks(x, 152, w, 80, 6, 12, .35); R(x + w * .32, 118, w * .26, 20, 1); });
+  // ---- left hipped roof
+  poly([[0, 252], [235, 168], [497, 168]], 1.2, false); L(0, 296, 352, 296, 1.2); L(0, 303, 352, 303, .8);
+  roofTiles(y => Math.max(0, 235 - (y - 168) * (235 / 84)), y => 620 - (y - 55) * (273 / 252) - 6, 168, 294);
+  // ---- right hipped roof
+  poly([[742, 172], [960, 172], [1206, 262]], 1.2, false); L(886, 300, 1206, 300, 1.2); L(886, 307, 1206, 307, .8);
+  roofTiles(y => 620 + (y - 55) * (270 / 252) + 6, y => Math.min(1206, 960 + (y - 172) * (246 / 90)), 172, 298);
+  // ---- gable: bargeboards, finial, timbers
+  const yL = x => 55 + (620 - x) * (252 / 273), yR = x => 55 + (x - 620) * (252 / 270);
+  L(620, 50, 345, 304, 1.4); L(620, 66, 360, 306, 1.0); L(620, 50, 893, 304, 1.4); L(620, 66, 878, 306, 1.0);
+  L(618, 18, 618, 62, 1.1); L(622, 18, 622, 62, 1.1); L(616, 30, 624, 30, .8);
+  for (let k = 0; k < 18; k++) { const t = k / 18; L(620 - 273 * t, 50 + 254 * t, 620 - 273 * t + 6, 50 + 254 * t - 6, .5, .1); L(620 + 273 * t, 50 + 254 * t, 620 + 273 * t - 6, 50 + 254 * t - 6, .5, .1); }  // slate edging
+  beam(425, 806, 258, 13);       // tie beam
+  [475, 520, 567, 612, 655, 707, 752].forEach(x => { const top = Math.max(yL(x), yR(x + 12)) + 16; if (top < 256) post(x, top, 258, 13); });
+  beam(355, 885, 300, 14);       // gable base
+  // first floor of gable
+  [375, 427, 520, 572, 660, 710, 805, 852].forEach(x => post(x, 314, 425, 13));
+  L(586, 314, 540, 425, .9); L(598, 314, 552, 425, .9); L(650, 314, 696, 425, .9); L(662, 314, 708, 425, .9);   // braces
+  win(447, 318, 70, 104); win(587, 318, 70, 104); win(725, 318, 72, 104);
+  beam(360, 880, 425, 12);
+  for (let x = 360; x < 880; x += 46) post(x, 437, 472, 10);
+  beam(368, 878, 472, 16);       // porch canopy
+  for (let x = 380; x < 870; x += 60) L(x, 488, x + 6, 498, .6);
+  // ---- wings first floor
+  [[0, 350], [886, 1206]].forEach(([a, b]) => { beam(a, b, 312, 10); beam(a, b, 446, 10); beam(a, b, 476, 9); });
+  [62, 102, 202, 248, 338].forEach(x => post(x, 322, 446, 13)); [870, 962, 999, 1092, 1128].forEach(x => post(x, 322, 446, 13));
+  for (let x = 4; x < 350; x += 40) post(x, 456, 476, 9); for (let x = 890; x < 1206; x += 40) post(x, 456, 476, 9);
+  win(0, 345, 57, 98); win(128, 345, 69, 98); win(265, 345, 68, 98);
+  win(883, 343, 67, 100); win(1012, 343, 69, 100); win(1140, 343, 64, 100);
+  // downpipes
+  [[352, 304, 520], [878, 308, 520]].forEach(([x, a, b]) => { L(x, a, x, b, .8); L(x + 6, a, x + 6, b, .8); });
+  // ---- ground floor wings
+  [[0, 372], [870, 1206]].forEach(([a, b]) => { bricks(a, 486, b - a, 34, 6, 14, .4); L(a, 486, b, 486, 1); L(a, 520, b, 520, 1); bricks(a, 676, b - a, 64, 6, 14, .4); L(a, 676, b, 676, 1); });
+  [[0, 52], [117, 80], [255, 77], [890, 72], [1020, 75], [1150, 56]].forEach(([x, w]) => win(x, 535, w, 135, .2, false));
+  [[0, 535, 52], [117, 535, 80], [255, 535, 77], [890, 535, 72], [1020, 535, 75], [1150, 535, 56]].forEach(([x, y, w]) => { for (let k = 1; k < 3; k++) L(x + w * k / 3, y + 30, x + w * k / 3, y + 132, .5); L(x + 3, y + 85, x + w - 3, y + 85, .5); });
+  [[62, 38], [204, 42], [977, 38], [1107, 40]].forEach(([x, w]) => { for (let y = 528, k = 0; y < 668; y += 14, k++) R(x + (k % 2 ? 4 : 0), y, w - 4, 10, .55); });
+  // ---- porch
+  post(375, 498, 742, 22); post(846, 498, 742, 22);
+  R(405, 540, 122, 160, .9); R(718, 540, 112, 160, .9);
+  win(462, 552, 60, 133, .15, false); win(725, 552, 62, 133, .15, false); glint(465, 575, 54, 105); glint(728, 575, 56, 105);
+  [[0,535,52],[117,535,80],[255,535,77],[890,535,72],[1020,535,75],[1150,535,56]].forEach(([x,y,w])=>glint(x+3,y+3,w-6,24));
+  // wall lamps
+  [[480,252],[760,252],[232,316],[960,316],[90,316],[1132,316]].forEach(([x,y])=>{R(x,y,10,9,.7);L(x+5,y+9,x+5,y+14,.6);});
+  // garland around sign (inverted U)
+  for (let x = 520; x <= 735; x += 10) leaves(x, 492, 6, 22);
+  for (let y = 500; y <= 552; y += 9) { leaves(522, y, 5, 18); leaves(733, y, 5, 18); }
+  [[566, 536], [598, 487], [667, 485], [712, 517], [535, 548]].forEach(([x, y]) => { pen(.8); ctx.beginPath(); ctx.arc(x, y, 5, 0, 6.3); ctx.stroke(); });
+  // sign
+  R(540, 515, 175, 66, 1.2);
+  if (!BUD || (BUD[2] && !(BLO && BLO[2]))) { ctx.fillStyle = INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '600 30px "Cormorant Garamond", serif'; ctx.fillText('The Bell', 627.5, 541);
+  ctx.font = '700 11px Manrope'; ctx.letterSpacing = '2px'; ctx.fillText('GUESTHOUSE', 627.5, 566); ctx.letterSpacing = '0px'; }
+  // doors
+  R(560, 581, 137, 160, 1.2); L(628.5, 581, 628.5, 741, 1);
+  [[566, 597], [636, 597]].forEach(([x, y]) => R(x, y, 56, 13, .7));
+  for (let r = 0; r < 4; r++) [[572, 0], [598, 0], [642, 0], [668, 0]].forEach(([x]) => R(x, 625 + r * 27, 14, 14, .6));
+  L(620, 640, 620, 705, 1); L(637, 640, 637, 705, 1);
+  R(700, 610, 12, 12, .6); if (!BUD || (BUD[2] && !(BLO && BLO[2]))) { ctx.font = '700 6px Manrope'; ctx.fillText('AA', 706, 616.5); }
+  // ---- planters and base
+  [[60, 77], [1028, 77]].forEach(([x, w]) => { R(x, 700, w, 80, 1); L(x + 4, 708, x + w - 4, 708, .5); for (let k = 0; k < 4; k++) leaves(x + w / 2, 692 - k * 4, 6, 40); });
+  L(0, 742, 1206, 742, 1.3);
+  L(0, 795, 1206, 795, .7); L(0, 803, 1206, 803, 1.2); L(0, 815, 1206, 815, 1.2);
+  for (let x = 30; x < 1206; x += 120) L(x, 750, x + 30, 790, .35);
+  for (let x = 0; x < 1206; x += 70) L(x + 20, 840, x + 55, 840, .4);
+  // soft shading under eaves and canopy
+  hatch(0, 304, 350, 7, 4, .35, .6); hatch(886, 308, 320, 7, 4, .35, .6); hatch(400, 488, 440, 10, 4, .35, .6);
+  ctx.restore();
+}
+
+
+/* ============================== */
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),seg=(p,a,b)=>clamp((p-a)/(b-a)),ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,lerp=(a,b,t)=>a+(b-a)*t;
+const BOOK='https://securebooking.eviivo.com/mywebsite/Bell_SR84PF.home';
+const FR={"a": ["walk/a001.jpg", "walk/a002.jpg", "walk/a003.jpg", "walk/a004.jpg", "walk/a005.jpg", "walk/a006.jpg", "walk/a007.jpg", "walk/a008.jpg", "walk/a009.jpg", "walk/a010.jpg", "walk/a011.jpg", "walk/a012.jpg", "walk/a013.jpg", "walk/a014.jpg", "walk/a015.jpg", "walk/a016.jpg", "walk/a017.jpg", "walk/a018.jpg", "walk/a019.jpg", "walk/a020.jpg", "walk/a021.jpg", "walk/a022.jpg", "walk/a023.jpg", "walk/a024.jpg", "walk/a025.jpg", "walk/a026.jpg", "walk/a027.jpg", "walk/a028.jpg", "walk/a029.jpg", "walk/a030.jpg", "walk/a031.jpg", "walk/a032.jpg", "walk/a033.jpg", "walk/a034.jpg", "walk/a035.jpg", "walk/a036.jpg", "walk/a037.jpg", "walk/a038.jpg", "walk/a039.jpg", "walk/a040.jpg", "walk/a041.jpg", "walk/a042.jpg", "walk/a043.jpg", "walk/a044.jpg", "walk/a045.jpg", "walk/a046.jpg", "walk/a047.jpg", "walk/a048.jpg", "walk/a049.jpg", "walk/a050.jpg", "walk/a051.jpg", "walk/a052.jpg", "walk/a053.jpg", "walk/a054.jpg", "walk/a055.jpg", "walk/a056.jpg", "walk/a057.jpg", "walk/a058.jpg", "walk/a059.jpg", "walk/a060.jpg"], "b": ["walk/b001.jpg", "walk/b002.jpg", "walk/b003.jpg", "walk/b004.jpg", "walk/b005.jpg", "walk/b006.jpg", "walk/b007.jpg", "walk/b008.jpg", "walk/b009.jpg", "walk/b010.jpg", "walk/b011.jpg", "walk/b012.jpg", "walk/b013.jpg", "walk/b014.jpg", "walk/b015.jpg", "walk/b016.jpg", "walk/b017.jpg", "walk/b018.jpg", "walk/b019.jpg", "walk/b020.jpg", "walk/b021.jpg", "walk/b022.jpg", "walk/b023.jpg", "walk/b024.jpg", "walk/b025.jpg", "walk/b026.jpg", "walk/b027.jpg", "walk/b028.jpg", "walk/b029.jpg", "walk/b030.jpg", "walk/b031.jpg", "walk/b032.jpg", "walk/b033.jpg", "walk/b034.jpg", "walk/b035.jpg", "walk/b036.jpg", "walk/b037.jpg"], "s": ["walk/s001.jpg", "walk/s002.jpg", "walk/s003.jpg", "walk/s004.jpg", "walk/s005.jpg", "walk/s006.jpg", "walk/s007.jpg", "walk/s008.jpg", "walk/s009.jpg", "walk/s010.jpg", "walk/s011.jpg", "walk/s012.jpg", "walk/s013.jpg", "walk/s014.jpg", "walk/s015.jpg", "walk/s016.jpg", "walk/s017.jpg", "walk/s018.jpg", "walk/s019.jpg", "walk/s020.jpg", "walk/s021.jpg", "walk/s022.jpg", "walk/s023.jpg", "walk/s024.jpg", "walk/s025.jpg", "walk/s026.jpg", "walk/s027.jpg", "walk/s028.jpg", "walk/s029.jpg", "walk/s030.jpg", "walk/s031.jpg", "walk/s032.jpg", "walk/s033.jpg", "walk/s034.jpg", "walk/s035.jpg", "walk/s036.jpg", "walk/s037.jpg", "walk/s038.jpg", "walk/s039.jpg", "walk/s040.jpg", "walk/s041.jpg", "walk/s042.jpg", "walk/s043.jpg", "walk/s044.jpg", "walk/s045.jpg", "walk/s046.jpg", "walk/s047.jpg", "walk/s048.jpg", "walk/s049.jpg", "walk/s050.jpg", "walk/s051.jpg", "walk/s052.jpg", "walk/s053.jpg", "walk/s054.jpg", "walk/s055.jpg", "walk/s056.jpg", "walk/s057.jpg", "walk/s058.jpg", "walk/s059.jpg", "walk/s060.jpg"]};
+const isDesk=()=>innerWidth>900;
+
+let lenis=null;
+function scrollToY(y,opt={}){if(lenis)lenis.scrollTo(y,{duration:opt.d??.9,immediate:!!opt.now});else window.scrollTo({top:y,behavior:opt.now?'auto':'smooth'})}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const el=document.getElementById(a.getAttribute('href').slice(1));if(!el)return;e.preventDefault();scrollToY(el.getBoundingClientRect().top+scrollY)}));
+
+let AC=null;
+function ring(base=660,len=2.2,v=.16){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const t=AC.currentTime,m=AC.createGain();m.gain.value=v;m.connect(AC.destination);[[1,1],[2.01,.6],[2.4,.45],[3.0,.3],[4.16,.22],[5.43,.12]].forEach(([r,a])=>{const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=base*r;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(a,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+len/(r*.6+.4));o.connect(g);g.connect(m);o.start(t);o.stop(t+len+.1)})}catch(e){}}
+
+function loadImg(src){const i=new Image();i.decoding='async';i.src=src;return i}
+const FRONT=loadImg('img/front_hd.jpg');
+const SEQ={a:[],b:[],s:[]};
+function loadSeq(k){FR[k].forEach((s,i)=>{if(SEQ[k][i])return;const im=loadImg(s);im.onload=()=>{needWalk=true;if(k==='s')needMenu=true};SEQ[k][i]=im})}
+// the walk-in frames wait until the pen drawing is done (or you start scrolling), so the drawing runs smoothly
+let seqOn=false;function startSeq(){if(seqOn)return;seqOn=true;loadSeq('a');setTimeout(()=>loadSeq('b'),250);setTimeout(()=>loadSeq('s'),600)}
+setTimeout(startSeq,7000);
+function frame(k,u){const a=SEQ[k],n=FR[k].length,i=Math.round(clamp(u)*(n-1));for(let d=0;d<n;d++){for(const j of [i-d,i+d]){const im=a[j];if(im&&im.complete&&im.naturalWidth)return im}}return null}
+
+/* ===================================================================
+   1. ARRIVE + WALK IN (pinned, full screen)
+   The pen drawing plays on open over the night; the real front photo
+   then fills in from the door outwards, edge to edge. Scroll pushes in
+   through the door, walks up to the bar, spins round on its own to the
+   fire, then sits you down at the table.
+   =================================================================== */
+// scroll budget (vh): door 20-100, entry 100-200, real bar approach 200-400, spin 400-450, sit 450-530
+const T={door:[.034,.172],a:[.172,.466],mix:[.43,.483],b:[.466,.776],spin:[.776,.862],s:[.862,1]};const AU=.375,SU=.5;
+const cv=$('cv'),cx=cv.getContext('2d');
+const oc=document.createElement('canvas'),ox=oc.getContext('2d');
+let W=0,H=0,DPR=1,P=0,PT=0,needWalk=true;
+const PW=2048,PH=1536,DOOR=[1050,1124];
+// drawing (1206-wide trace) -> the HD front photo
+const MA=[1.72860540,0.03147051,-0.03147051,1.72860540,-15.6575514,46.5013554];
+function size(){DPR=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;oc.width=cv.width;oc.height=cv.height;sizeMenu();needWalk=needMenu=true;countLines()}
+function frontGeom(push){
+  const s0=Math.max(W/PW,H/PH)*(isDesk()?1.045:1.03);
+  const k=Math.pow(4.5,push),s=s0*k;
+  const fx=isDesk()?.5:DOOR[0]/PW,fy=isDesk()?.56:.62;
+  // base: photo covers the screen; door position on screen
+  const bx=W*.5-PW*s0*fx,by=H*.5-PH*s0*fy;const dx0=bx+DOOR[0]*s0,dy0=by+DOOR[1]*s0;
+  const tx=lerp(dx0,W*.5,ease(push)),ty=lerp(dy0,H*.5,ease(push));
+  return{s,x:tx-DOOR[0]*s,y:ty-DOOR[1]*s,door:[tx,ty]}}
+function cover(iw,ih,zoom=1,fx=.5,fy=.5,dx=0){const s=Math.max(W/iw,H/ih)*zoom;return{x:W*.5-iw*s*fx+dx,y:H*.5-ih*s*fy,w:iw*s,h:ih*s}}
+function paint(c,im,zoom=1,fx=.5,fy=.5,alpha=1,dx=0){if(!im||!im.naturalWidth)return;const r=cover(im.naturalWidth,im.naturalHeight,zoom,fx,fy,dx);c.save();c.globalAlpha=alpha;c.drawImage(im,r.x,r.y,r.w,r.h);c.restore()}
+
+let TOT=[0,0],drawP=0,photoP=0,introDone=false;
+const SIGN=[.81,.97]; // the outline finishes at 85% (the sign board at about 80%), then the lettering is written // when the sign is written, as a share of the drawing time
+// the HD photo was taken about 1 degree off level: turn photo and drawing together so the building sits straight
+const ROT=-Math.atan2(MA[1],MA[0]);
+function rotAt(c,g){c.translate(g.door[0],g.door[1]);c.rotate(ROT);c.translate(-g.door[0],-g.door[1])}
+// the pen drawing builds up on its own layer: each frame only adds the new strokes
+const LAY=document.createElement('canvas'),lay=LAY.getContext('2d');let layKey='',layDone=[0,0,0];
+// the straightened front photo, prepared once at screen size for the opening
+const PC=document.createElement('canvas'),pcx=PC.getContext('2d');let pcKey='';
+function frontPic(g,push){if(push>0)return null;const key=cv.width+'x'+cv.height;if(key!==pcKey){pcKey=key;PC.width=cv.width;PC.height=cv.height;pcx.setTransform(DPR,0,0,DPR,0,0);rotAt(pcx,g);pcx.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s)}return PC}
+function countLines(){const keep=ctx;ctx=document.createElement('canvas').getContext('2d');S=1;OX=0;OY=0;BUD=null;CNT=[0,0];seed=7;drawBell();TOT=CNT.slice();ctx=keep}
+function drawFront(push){
+  const g=frontGeom(push);
+  cx.setTransform(DPR,0,0,DPR,0,0);cx.fillStyle='#140b1b';cx.fillRect(0,0,W,H);
+  // a soft plum glow where the building will be
+  if(photoP<1){const gr=cx.createRadialGradient(g.door[0],g.door[1]-H*.15,10,g.door[0],g.door[1]-H*.15,Math.max(W,H)*.7);gr.addColorStop(0,'rgba(114,55,156,.42)');gr.addColorStop(1,'rgba(20,11,27,0)');cx.fillStyle=gr;cx.fillRect(0,0,W,H)}
+  // the photo fills in from the door outwards, edge to edge
+  if(photoP>0&&FRONT.naturalWidth){
+    const pic=frontPic(g,push);
+    if(photoP>=1){if(pic){cx.save();cx.setTransform(1,0,0,1,0,0);cx.drawImage(pic,0,0);cx.restore()}else{cx.save();rotAt(cx,g);cx.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s);cx.restore()}}
+    else{ox.setTransform(DPR,0,0,DPR,0,0);ox.globalCompositeOperation='source-over';ox.clearRect(0,0,W,H);if(pic){ox.setTransform(1,0,0,1,0,0);ox.drawImage(pic,0,0)}else{rotAt(ox,g);ox.drawImage(FRONT,g.x,g.y,PW*g.s,PH*g.s)}ox.setTransform(DPR,0,0,DPR,0,0);
+      const R=Math.hypot(W,H)*1.15*photoP;ox.globalCompositeOperation='destination-in';const gm=ox.createRadialGradient(g.door[0],g.door[1],R*.55,g.door[0],g.door[1],Math.max(R,1));gm.addColorStop(0,'rgba(0,0,0,1)');gm.addColorStop(1,'rgba(0,0,0,0)');ox.fillStyle=gm;ox.fillRect(0,0,W,H);ox.globalCompositeOperation='source-over';
+      cx.setTransform(1,0,0,1,0,0);cx.drawImage(oc,0,0);cx.setTransform(DPR,0,0,DPR,0,0)}
+    // a touch of evening on the daylight photo
+    cx.fillStyle=`rgba(20,11,27,${.16*photoP})`;cx.fillRect(0,0,W,H)}
+  // the pen lines, sitting exactly on the photo
+  const la=photoP<1?1-photoP*.9:0;
+  if(la>0){
+    const key=cv.width+'x'+cv.height+'x'+push.toFixed(4);
+    if(key!==layKey){layKey=key;LAY.width=cv.width;LAY.height=cv.height;layDone=[0,0,0]}
+    const tgt=drawP>=1?[TOT[0],TOT[1],1]:[Math.floor(TOT[0]*clamp(drawP/.85)),Math.floor(TOT[1]*Math.max(0,drawP*1.15-.15)),0];
+    if(tgt[0]>layDone[0]||tgt[1]>layDone[1]||tgt[2]>layDone[2]){const keep=ctx;ctx=lay;lay.save();
+      lay.setTransform(DPR,0,0,DPR,0,0);rotAt(lay,g);lay.translate(g.x,g.y);lay.scale(g.s,g.s);lay.transform(...MA);
+      S=1;OX=0;OY=0;INK='#f1dfbf';W0=(isDesk()?1.6:1.25)/(g.s*MA[0]);seed=7;CNT=[0,0];BUD=tgt;BLO=layDone;drawBell();BLO=null;
+      layDone=tgt;lay.restore();ctx=keep}
+    cx.save();cx.setTransform(1,0,0,1,0,0);cx.globalAlpha=la;cx.drawImage(LAY,0,0);cx.restore();
+    // the sign is written letter by letter, left to right, while the rest of the drawing carries on
+    let penAt=null;const wf=drawP<1?seg(drawP,SIGN[0],SIGN[1]):0;
+    if(wf>0){const x0=548,x1=712,xe=lerp(x0,x1,wf);cx.save();cx.globalAlpha=la;cx.setTransform(DPR,0,0,DPR,0,0);rotAt(cx,g);cx.translate(g.x,g.y);cx.scale(g.s,g.s);cx.transform(...MA);
+      cx.beginPath();cx.rect(530,500,xe-530,130);cx.clip();cx.fillStyle='#f1dfbf';cx.textAlign='center';cx.textBaseline='middle';
+      cx.font='600 30px "Cormorant Garamond", serif';cx.fillText('The Bell',627.5,541);cx.font='700 11px Manrope';cx.letterSpacing='2px';cx.fillText('GUESTHOUSE',627.5,566);cx.letterSpacing='0px';
+      cx.font='700 6px Manrope';cx.fillText('AA',706,616.5);cx.restore();if(wf<1)penAt=[xe,xe<700?(xe<600||xe>655?545:555):616]}
+    // the pen's glint, where the last stroke ended
+    const LP=penAt||LASTPT;
+    if(drawP<1&&LP){const lx=MA[0]*LP[0]+MA[2]*LP[1]+MA[4],ly=MA[1]*LP[0]+MA[3]*LP[1]+MA[5];
+      const qx=g.x+lx*g.s-g.door[0],qy=g.y+ly*g.s-g.door[1],c=Math.cos(ROT),sn=Math.sin(ROT);const px=g.door[0]+qx*c-qy*sn,py=g.door[1]+qx*sn+qy*c;
+      cx.setTransform(DPR,0,0,DPR,0,0);const gg=cx.createRadialGradient(px,py,0,px,py,20);gg.addColorStop(0,'rgba(227,191,109,.95)');gg.addColorStop(1,'rgba(227,191,109,0)');cx.fillStyle=gg;cx.fillRect(px-22,py-22,44,44)}
+  }
+}
+
+// the real-bar clip is portrait: on wide screens show it full height, feathered into a soft blur of itself
+const tiny=document.createElement('canvas');tiny.width=40;tiny.height=54;const tx=tiny.getContext('2d');
+function paintB(im,alpha=1,dx=0){if(!im||!im.naturalWidth)return;if(im.naturalWidth>im.naturalHeight||!isDesk()){paint(cx,im,1,.5,.5,alpha,dx);return}
+  tx.drawImage(im,0,0,40,54);const iw=im.naturalWidth,ih=im.naturalHeight;
+  cx.save();cx.globalAlpha=alpha;cx.imageSmoothingQuality='high';const s=Math.max(W/40,H/54)*1.08;cx.drawImage(tiny,W*.5-20*s+dx,H*.5-27*s,40*s,54*s);
+  cx.fillStyle='rgba(20,11,27,.35)';cx.fillRect(0,0,W,H);
+  const top=60,sh=H-top,sw=iw*sh/ih,x=W*.5-sw*.5+dx;
+  ox.setTransform(DPR,0,0,DPR,0,0);ox.globalCompositeOperation='source-over';ox.clearRect(0,0,W,H);ox.drawImage(im,x,top,sw,sh);
+  ox.globalCompositeOperation='destination-in';const g=ox.createLinearGradient(x,0,x+sw,0);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(.16,'rgba(0,0,0,1)');g.addColorStop(.84,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');ox.fillStyle=g;ox.fillRect(0,0,W,H);ox.globalCompositeOperation='source-over';
+  cx.setTransform(1,0,0,1,0,0);cx.drawImage(oc,0,0);cx.setTransform(DPR,0,0,DPR,0,0);cx.restore()}
+// the spin: a quick whip-pan from the bar round to the fire, played on its own
+let spinV=0,spinT=0,lastNow=0;
+function drawSpin(e){const A=frame('b',1),B=frame('s',0);const ee=ease(e),sw=W*1.12,bl=Math.sin(ee*Math.PI)*W*.05;
+  cx.fillStyle='#140b1b';cx.fillRect(0,0,W,H);
+  [[A,-ee*sw,1],[B,(1-ee)*sw,0]].forEach(([im,off,isB])=>{if(!im)return;const n=bl>2?5:1;for(let k=0;k<n;k++){const o=n>1?(k/(n-1)-.5)*bl*2:0;const a=n>1?1/n*1.5:1;if(isB)paintB(im,a,off+o);else paint(cx,im,1.02,.5,.5,a,off+o)}});
+  const fl=Math.sin(ee*Math.PI)*.18;if(fl>0){cx.fillStyle=`rgba(255,190,110,${fl})`;cx.fillRect(0,0,W,H)}}
+function drawWalk(){
+  if(!W)return;cx.setTransform(DPR,0,0,DPR,0,0);const p=P;
+  if(p<T.door[1]){const push=ease(seg(p,T.door[0],T.door[1]));drawFront(push);
+    const f=seg(p,T.door[0]+.06,T.door[1]-.005);if(f>0)paint(cx,frame('a',0),1.15-.15*f,.5,.5,ease(f));return}
+  cx.fillStyle='#140b1b';cx.fillRect(0,0,W,H);
+  const bfy=u=>isDesk()?lerp(.5,.28,u):.5;
+  if(p<T.b[0]){const u=seg(p,T.a[0],T.a[1]);paint(cx,frame('a',u*AU),1,isDesk()?.5:lerp(.5,.6,u),.5);
+    const m=ease(seg(p,T.mix[0],T.mix[1]));if(m>0)paintB(frame('b',0),m);return}
+  if(p<T.b[1]){const u=seg(p,T.b[0],T.b[1]);const m=ease(seg(p,T.mix[0],T.mix[1]));if(m<1)paint(cx,frame('a',AU),1,.5,.5);paintB(frame('b',u),m);return}
+  if(p<T.spin[1]){if(spinV<=0)paintB(frame('b',1));else if(spinV>=1)paint(cx,frame('s',0),1);else drawSpin(spinV);return}
+  paint(cx,frame('s',seg(p,T.s[0],T.s[1])*SU),1);
+}
+function intro(){
+  if(RM||introDone){drawP=1;photoP=1;introDone=true;needWalk=true;startSeq();$('hcopy').classList.add('in');$('cue').classList.add('in');return}
+  const t0=performance.now(),D1=2800,D2=1500,GAP=0;
+  setTimeout(()=>$('hcopy').classList.add('in'),1200);
+  // time only moves on while frames are actually drawn, so a busy moment pauses the pen instead of making it jump
+  let t=0,last=t0;
+  (function step(now){t+=clamp(now-last,0,34);last=now;drawP=clamp(t/D1);photoP=ease(seg(t,D1+GAP,D1+GAP+D2));needWalk=true;
+    if(t<D1+GAP+D2&&!introDone)requestAnimationFrame(step);else{drawP=1;photoP=1;introDone=true;$('cue').classList.add('in');startSeq()}})(t0);
+}
+
+/* ===================================================================
+   2. BY THE FIRE: the drinks wheel (as v6, sat at the table)
+   =================================================================== */
+const ICON={
+ pint:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 9h20l-2.5 32h-15z"/><path d="M14 16h18"/><path d="M13.5 9c1-3 4-3.5 6-2.5 2-2 6-2 8 0 2-1 5-.5 5.5 2.5"/><path d="M20 24v10M26 22v6"/></svg>',
+ wine:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h18c0 11-3 17-9 17S15 17 15 6z"/><path d="M16 13h16"/><path d="M24 23v15M17 41h14"/></svg>',
+ coffee:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h26v8a12 12 0 0 1-12 12h-2A12 12 0 0 1 9 26z"/><path d="M35 21h3a5 5 0 0 1 0 10h-4"/><path d="M6 42h34"/><path d="M17 6c-2 3 2 5 0 8M24 6c-2 3 2 5 0 8"/></svg>'};
+const DRINKS=[
+ {c:'Christmas',n:'Hazelnut Snowstorm',d:'Frangelico, Baileys and vodka shaken with cream, over ice with a chocolate dusting.',img:'img/c_snow.png',p:'Any 2 for £12'},
+ {c:'Christmas',n:'Spiced Cranberry Fizz',d:'Cranberry and spiced syrup topped with prosecco, finished with fresh cranberries and rosemary.',img:'img/c_fizz.png',p:'Any 2 for £12'},
+ {c:'Christmas',n:'Gingerbread Espresso Martini',d:'Vodka, coffee liqueur and espresso with gingerbread syrup. The classic, with Christmas in it.',img:'img/c_ginger.png',p:'Any 2 for £12'},
+ {c:'Christmas',n:'Merry Mistletoe',d:'Vanilla vodka, peach schnapps, cranberry and lemonade, finished with a splash of fizz.',img:'img/c_mistletoe.png',p:'Any 2 for £12'},
+ {c:'Hot drinks',n:'Toasted marshmallow hot chocolate',d:'Topped with cream and a giant marshmallow, toasted at the bar.',img:'img/hotchoc.jpg',ph:1},
+ {c:'Hot drinks',n:'Coffee & Ringtons tea',d:'Proper coffee and a pot of Ringtons, for when it’s a bit early for anything else.',icon:'coffee'},
+ {c:'The bar',n:'The gin wall',d:'Over 200 spirits behind the bar, from the classics to small-batch gins from the North East.',img:'img/gin.jpg',ph:1},
+ {c:'The bar',n:'Draught',d:'Cold pints on draught. Ask what’s on today.',icon:'pint'},
+ {c:'The bar',n:'Wine by the glass',d:'Red, white and rosé, by the glass or the bottle.',icon:'wine'}];
+const CATS=[...new Set(DRINKS.map(d=>d.c))];
+const menu=$('menu'),mstage=menu.querySelector('.stage'),wheel=$('wheel'),wring=$('wring'),mbg=$('mbg'),mbx=mbg.getContext('2d');
+let MW=0,MH=0,WR=0,WCX=0,WCY=0,DS=0,STEP=0,mpos=0,mshown=-1,needMenu=true,MQ=0;
+const MINTRO=.08;
+menu.style.height=(100+60+(DRINKS.length-1)*48)+'vh';
+function sizeMenu(){MW=innerWidth;MH=innerHeight;mbg.width=MW*DPR;mbg.height=MH*DPR;
+  if(isDesk()){WR=Math.min(MW*.44,MH*.86);WCX=MW*.64;WCY=MH*.62+WR;DS=Math.min(160,MH*.18);STEP=21}else{WR=MW*.82;WCX=MW*.5;WCY=MH*.66+WR;DS=Math.min(100,MW*.25);STEP=27}
+  Object.assign(wring.style,{left:(WCX-WR)+'px',top:(WCY-WR)+'px',width:2*WR+'px',height:2*WR+'px'});
+  [...wheel.children].forEach(el=>el.style.setProperty('--s',DS+'px'))}
+wheel.innerHTML=DRINKS.map((d,i)=>`<div class="it" data-i="${i}"><div class="disc ${d.icon?'dark':''}">${d.icon?ICON[d.icon]:`<img src="${d.img}" alt="${d.n}" class="${d.ph?'ph':''}">`}</div><span>${d.n}</span></div>`).join('');
+$('filters').innerHTML=CATS.map(c=>`<button data-c="${c}">${c}</button>`).join('');
+function menuRange(){const top=menu.offsetTop,len=menu.offsetHeight-innerHeight;return{top,len,a:top+len*MINTRO,b:top+len}}
+function yForItem(i){const r=menuRange();return r.a+(r.b-r.a)*(i/(DRINKS.length-1))}
+function goItem(i,now){i=clamp(Math.round(i),0,DRINKS.length-1);scrollToY(yForItem(i),{d:.7,now})}
+function placeWheel(pos,appear){const its=wheel.children;for(let i=0;i<its.length;i++){const d=i-pos,a=(d*STEP-90)*Math.PI/180,x=WCX+WR*Math.cos(a),y=WCY+WR*Math.sin(a);
+    const k=Math.max(0,1-Math.abs(d)),sc=(1+k*(isDesk()?.6:.55))*(.6+.4*appear),vis=Math.abs(d)*STEP<100;
+    const dy=(1-appear)*120;
+    its[i].style.transform=`translate(${x}px,${y+dy}px) scale(${sc})`;its[i].style.opacity=(vis?Math.max(0,1-Math.abs(d)*.2):0)*appear;its[i].style.zIndex=100-Math.round(Math.abs(d)*10);
+    its[i].classList.toggle('act',Math.round(pos)===i)}
+  wring.style.opacity=appear;
+  const a=clamp(Math.round(pos),0,DRINKS.length-1);if(a!==mshown)setInfo(a)}
+function setInfo(a){mshown=a;const d=DRINKS[a];$('iN').textContent=String(a+1).padStart(2,'0')+' / '+String(DRINKS.length).padStart(2,'0');
+  $('iT').textContent=d.n;$('iP').textContent=d.d;$('iR').innerHTML=`<span class="chip">${d.c}</span>`+(d.p?`<span class="chip price">${d.p}</span>`:`<span class="chip ask">Ask at the bar</span>`);
+  [...$('filters').children].forEach(b=>b.classList.toggle('on',b.dataset.c===d.c));
+  const info=$('info');info.style.transition='none';info.style.opacity=0;info.style.transform='translateY(8px)';requestAnimationFrame(()=>{info.style.transition='opacity .4s,transform .4s';info.style.opacity=1;info.style.transform='none'})}
+function mpaint(im,zoom){if(!im||!im.naturalWidth)return;const iw=im.naturalWidth,ih=im.naturalHeight,s=Math.max(MW/iw,MH/ih)*zoom;mbx.drawImage(im,MW*.5-iw*s*.5,MH*.5-ih*s*.5,iw*s,ih*s)}
+function drawMenu(){const r=menu.getBoundingClientRect(),len=menu.offsetHeight-innerHeight,q=clamp(-r.top/len);MQ=q;
+  const intro=seg(q,0,MINTRO);
+  mbx.setTransform(DPR,0,0,DPR,0,0);mbx.fillStyle='#140b1b';mbx.fillRect(0,0,MW,MH);mpaint(frame('s',SU),1.0+intro*.04);
+  const fx=isDesk()?66:50,fy=isDesk()?80:76;const rad=ease(seg(intro,.25,1))*150;
+  $('mpanel').style.clipPath=`circle(${rad}% at ${fx}% ${fy}%)`;
+  const appear=ease(seg(intro,.6,1));
+  $('mhead').classList.toggle('on',appear>.5);
+  if(!dragging){mpos=seg(q,MINTRO,1)*(DRINKS.length-1)}
+  placeWheel(mpos,appear);$('mhint').style.opacity=appear*(mpos<.3?1:0);
+}
+wheel.querySelectorAll('.it').forEach(el=>el.addEventListener('click',()=>{if(moved)return;ring(700+(+el.dataset.i)*40,1.2,.1);goItem(+el.dataset.i)}));
+$('mprev').onclick=()=>goItem(mshown-1);$('mnext').onclick=()=>goItem(mshown+1);
+$('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>goItem(DRINKS.findIndex(d=>d.c===b.dataset.c)));
+addEventListener('keydown',e=>{const r=menu.getBoundingClientRect();if(r.top<=1&&r.bottom>=innerHeight-1){if(e.key==='ArrowRight'){e.preventDefault();goItem(mshown+1)}if(e.key==='ArrowLeft'){e.preventDefault();goItem(mshown-1)}}});
+let dragging=false,moved=false,dx0=0,dy0=0,pos0=0;
+wheel.addEventListener('pointerdown',e=>{dragging=true;moved=false;dx0=e.clientX;dy0=e.clientY;pos0=mpos});
+addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-dx0,dy=e.clientY-dy0;if(!moved&&Math.abs(dx)<8)return;if(!moved&&Math.abs(dy)>Math.abs(dx)){dragging=false;return}moved=true;
+  mpos=clamp(pos0-dx/(isDesk()?160:110),0,DRINKS.length-1);placeWheel(mpos,1)});
+addEventListener('pointerup',()=>{if(!dragging)return;dragging=false;if(moved){goItem(Math.round(mpos));setTimeout(()=>moved=false,50)}});
+
+/* ===================================================================
+   3. A DAY AT THE BELL: the photo fills the screen, the hour's colour
+   washes in from the side, the sun and moon cross in front.
+   =================================================================== */
+const DAY=[
+ {t:'08:00',lab:'Morning',k:'Breakfast',h:'Breakfast,<br><em>cooked fresh.</em>',p:'Bacon, sausage, black pudding and eggs how you like them, with vegetarian and continental options and a proper pot of Ringtons. Locally sourced, cooked to order.',img:'img/breakfast.jpg',pos:'50% 60%',side:1,tag:'Breakfast at The Bell',cta:['Book a room',BOOK],bg:'#f4e3cf',acc:'#9a5a1c'},
+ {t:'11:00',lab:'Late morning',k:'Number 12',h:'A place of<br><em>your own.</em>',p:'Number 12 is our self-catering stay: a lounge, a fitted kitchen and a bright bedroom. For when the family is coming for a few days, or you just want your own front door.',img:'img/n12_1.jpg',pos:'50% 55%',tag:'Number 12 · the lounge',cta:['Ask us about Number 12','tel:01915863863'],tbc:'sleeps and booking to confirm',bg:'#e9edf0',acc:'#3d5a78'},
+ {t:'14:00',lab:'Afternoon',k:'The Courtyard',h:'Out the<br><em>back.</em>',p:'Our Courtyard rooms are on the ground floor, no stairs, each with a double bed, a TV and a kitchenette. At Christmas the Courtyard itself becomes a mini market with hot chocolate, hot dogs and a snow machine.',img:'img/court1.jpg',pos:'60% 55%',tag:'A Courtyard room',cta:['Check dates',BOOK],tbc:'market dates to come',bg:'#efd8a8',acc:'#8a5410'},
+ {t:'17:00',lab:'Evening',k:'The bar',h:'Pull up<br><em>a stool.</em>',p:'Over 200 spirits, cold draught, wine and proper hot drinks, with the fire going. Open from 4pm in the week, 2pm on Friday and Saturday and 12 noon on Sunday.',img:'img/gin.jpg',pos:'50% 50%',tag:'Behind the bar',cta:['See the drinks','#menu'],bg:'#9c4f43',acc:'#ffd99a'},
+ {t:'20:00',lab:'Night',k:'The event space',h:'The room for<br><em>big nights.</em>',p:'Birthdays, christenings, baby showers, engagements and weddings, with its own bar and wood burner. Tell us the day and we set it up around you.',img:'img/occ_party.jpg',pos:'40% 50%',tag:'The event space, set for a party',cta:['Create your moment','#moment'],bg:'#3c1c56',acc:'#e3bf6d'},
+ {t:'23:00',lab:'Late',k:'Rooms upstairs',h:'And bed’s<br><em>just upstairs.</em>',p:'Every room en suite, from a single to a family of four, with a welcome tray of coffee, Ringtons tea and biscuits. AA four-star. Breakfast is in the morning.',img:'img/room_a.jpg',pos:'45% 60%',tag:'One of our rooms',cta:['Check dates & book',BOOK],bg:'#140b1b',acc:'#e3bf6d'}];
+const day=$('day');day.style.height=(100+(DAY.length-1)*75+30)+'vh';
+$('chs').innerHTML=DAY.map((c,i)=>`<div class="ch" data-i="${i}"><span class="kk">${c.lab} · ${c.k}</span><h2>${c.h}</h2><p>${c.p}${c.tbc?` <span class="tbc">${c.tbc}</span>`:''}</p><div class="row"><a class="tlink" href="${c.cta[1]}" ${c.cta[1].startsWith('http')?'target="_blank" rel="noopener"':''}>${c.cta[0]} <span>→</span></a></div></div>`).join('');
+$('dphoto').innerHTML=DAY.map(c=>c.side?`<div class="dph side"><img src="${c.img}" alt="" class="blur"><img src="${c.img}" alt="${c.tag}" class="sharp" style="object-position:${c.pos}"></div>`:`<div class="dph"><img src="${c.img}" alt="${c.tag}" style="object-position:${c.pos}"></div>`).join('');
+$('ddots').innerHTML=DAY.map((c,i)=>`<button data-i="${i}"><i></i>${c.t}</button>`).join('');
+const PHS=[...document.querySelectorAll('.dph')],CHS=[...document.querySelectorAll('.ch')],DOTS=[...document.querySelectorAll('#ddots button')];
+DOTS.forEach(b=>b.onclick=()=>goChapter(+b.dataset.i));
+// stars + the sun/moon (an HTML disc so it stays round on any screen)
+(function(){const s=$('stars');let h='';let r=3;const rn=()=>{r=(r*16807)%2147483647;return r/2147483647};for(let i=0;i<70;i++)h+=`<circle cx="${(rn()*1000).toFixed(0)}" cy="${(rn()*360).toFixed(0)}" r="${(rn()*1.4+.4).toFixed(1)}" fill="#f4ead8" opacity="${(rn()*.6+.3).toFixed(2)}"/>`;s.innerHTML=h;
+  document.querySelector('.sky').insertAdjacentHTML('beforeend','<div id="orb" style="position:absolute;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#f6c65e;box-shadow:0 0 0 8px rgba(246,198,94,.18),0 0 60px 18px rgba(255,205,110,.55);transition:background .4s"><i id="orbm" style="position:absolute;inset:0;border-radius:50%;opacity:0"></i></div>')})();
+const arc=$('arc'),ALEN=arc.getTotalLength();
+function hex(h){const n=parseInt(h.slice(1),16);return[n>>16,n>>8&255,n&255]}
+function mixA(a,b,t){const A=hex(a),B=hex(b);return A.map((v,i)=>Math.round(lerp(v,B[i],t)))}
+function lum(m){return(.299*m[0]+.587*m[1]+.114*m[2])/255}
+function dayRange(){const top=day.offsetTop,len=day.offsetHeight-innerHeight;return{top,len}}
+function goChapter(i){const r=dayRange();i=clamp(i,0,DAY.length-1);scrollToY(r.top+r.len*(i/(DAY.length-1)),{d:.9})}
+let dshown=-1;
+function drawDay(){const r=day.getBoundingClientRect(),len=day.offsetHeight-innerHeight,q=clamp(-r.top/len),f=q*(DAY.length-1);
+  const i0=Math.floor(f),i1=Math.min(DAY.length-1,i0+1),t=ease(clamp((f-i0-.35)/.5));
+  const c=mixA(DAY[i0].bg,DAY[i1].bg,t),rgb=c.join(',');
+  day.style.setProperty('--bg',`rgb(${rgb})`);day.style.setProperty('--bgA',`rgba(${rgb},.8)`);day.style.setProperty('--bgB',`rgba(${rgb},.42)`);
+  const L=lum(c),dark=L>.55;day.style.setProperty('--fg',dark?'#24152c':'#f4ead8');day.style.setProperty('--fgm',dark?'rgba(36,21,44,.76)':'rgba(244,234,216,.78)');
+  const cur=Math.round(f);day.style.setProperty('--acc',DAY[cur].acc);
+  const hrs=8+q*15,hh=Math.floor(hrs),mm=Math.floor((hrs-hh)*60/15)*15;$('clk').textContent=String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0');
+  // sun -> moon, in front of the photo
+  const sk=document.querySelector('.sky'),sw=sk.clientWidth,sh=sk.clientHeight;const pt=arc.getPointAtLength(ALEN*(.06+q*.88));
+  const orb=$('orb');orb.style.transform=`translate(${pt.x/1000*sw}px,${pt.y/400*sh}px)`;
+  const night=seg(q,.6,.85);orb.style.background=night>.5?'#f1e6d2':'#f6c65e';orb.style.boxShadow=night>.5?'0 0 0 8px rgba(241,230,210,.12),0 0 50px 12px rgba(220,210,255,.35)':'0 0 0 8px rgba(246,198,94,.18),0 0 60px 18px rgba(255,205,110,.55)';
+  const om=$('orbm');om.style.opacity=night;om.style.background=`radial-gradient(circle at 70% 35%,rgb(${rgb}) 46%,transparent 47%)`;
+  $('stars').style.opacity=seg(q,.6,.95);$('skysvg').style.color=dark?'#24152c':'#f4ead8';
+  // photos cross-dissolve with a slow drift
+  PHS.forEach((ph,i)=>{const v=i===0?1:ease(clamp((f-(i-1)-.3)/.55));ph.style.opacity=v;const loc=clamp(f-i+1,0,2);ph.lastChild.style.transform=`scale(${1.12-loc*.04})`});
+  if(cur!==dshown){dshown=cur;CHS.forEach((c,i)=>c.classList.toggle('on',i===cur));DOTS.forEach((d,i)=>d.classList.toggle('on',i===cur));$('clkl').textContent=DAY[cur].lab;$('dtag').textContent=DAY[cur].tag}
+}
+
+/* ===================================================================
+   4. CREATE YOUR MOMENT: the room behind changes with each occasion
+   =================================================================== */
+const OCC=[
+ {n:'Afternoon tea',img:'img/occ_tea.jpg',pos:'30% 50%',cr:'Afternoon tea in the event space',p:'Afternoon tea for larger groups, with the tables laid and the room dressed for the day. Mother’s Day afternoon tea needs a 50% deposit when you book.'},
+ {n:'Baby shower',img:'img/occ_party.jpg',pos:'75% 60%',cr:'The event space, set for a party',p:'Afternoon tea for the whole group, the room dressed how you want it, and somewhere comfy for the mum-to-be.'},
+ {n:'Christening',img:'img/occ_tea.jpg',pos:'85% 75%',cr:'Tables laid in the event space',p:'After the service, bring everyone back to ours. Food, drinks and room for the little ones, with rooms upstairs for family travelling in.'},
+ {n:'Birthday',img:'img/occ_party.jpg',pos:'10% 30%',cr:'Balloons up in the event space',p:'Big number or no number, we set up the room, run the bar and keep the night going.'},
+ {n:'Engagement',img:'img/bar2.jpg',pos:'70% 45%',cr:'A table by the fire in the bar',p:'Say yes, then say cheers. A night for both families in one room, with a toast to start it.'},
+ {n:'Wedding',img:'img/occ_party.jpg',pos:'50% 50%',cr:'The event space, dressed in white and purple',p:'Take The Bell for the weekend. Exclusive use of the guesthouse, with bed and breakfast for 18 guests and food from lunch through to late nibbles.'},
+ {n:'Christmas party',img:'img/event.jpg',pos:'50% 40%',cr:'The event space at Christmas',p:'Work do or family do, the room is yours with the Christmas cocktails on, any two for £12 all December. Rooms upstairs so nobody has to drive.'},
+ {n:'Celebrating a life',img:'img/event.jpg',pos:'0% 65%',cr:'The wood burner in the event space',p:'A warm room and a quiet bar to remember someone together. Tell us what you need and we will take care of the rest.'}];
+let occ=0;
+$('mbgs').innerHTML=OCC.map((o,i)=>`<img src="${o.img}" alt="" style="object-position:${o.pos}" class="${i?'':'on'}" loading="${i?'lazy':'eager'}">`).join('');
+$('olist').innerHTML=OCC.map((o,i)=>`<li><button data-i="${i}" class="${i?'':'on'}"><span class="no">${String(i+1).padStart(2,'0')}</span><span class="nm">${o.n}</span></button></li>`).join('');
+const MB=[...$('mbgs').children],OB=[...$('olist').querySelectorAll('button')];
+function setOcc(i){if(i===occ&&$('op').textContent)return;occ=i;const o=OCC[i];OB.forEach((b,k)=>b.classList.toggle('on',k===i));MB.forEach((m,k)=>m.classList.toggle('on',k===i));
+  ['oh','op'].forEach(id=>$(id).classList.add('swap'));setTimeout(()=>{$('ok').textContent=String(i+1).padStart(2,'0')+' · At The Bell';$('oh').textContent=o.n;$('op').textContent=o.p;$('mcred').textContent=o.cr;['oh','op'].forEach(id=>$(id).classList.remove('swap'))},260)}
+OB.forEach(b=>{b.onclick=()=>setOcc(+b.dataset.i);b.onmouseenter=()=>{if(isDesk())setOcc(+b.dataset.i)}});
+$('op').textContent='';setOcc(0);$('op').textContent=OCC[0].p;$('mcred').textContent=OCC[0].cr;
+$('oform').onclick=()=>{$('enq').classList.toggle('open');$('oform').style.display='none'};
+$('enq').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),v=k=>(f.get(k)||'').toString().trim();const o=OCC[occ].n;
+  const body=`Name: ${v('name')}\nEmail: ${v('email')}\nOccasion: ${o}\nDate: ${v('date')}\nGuests: ${v('guests')}\n`;
+  location.href=`mailto:info@thebellguesthouse.com?subject=${encodeURIComponent('Event enquiry: '+o+(v('date')?' · '+v('date'):''))}&body=${encodeURIComponent(body)}`});
+
+/* ===================================================================
+   WHAT'S ON: doors open and close; the new year as proper cards
+   =================================================================== */
+const EV=[{d:1,k:'All December',t:'Christmas cocktails',w:'From 1 December',p:'Any two Christmas cocktails for £12, mix and match, all month.',img:'img/adv_d1.jpg'},
+{d:6,k:'Sunday 6 December',t:'Bauble Paint & Sip',w:'Sun 6 Dec · 3pm · £20',p:'A glass of prosecco, a Christmas cocktail and two baubles to paint and take home.',img:'img/adv_d6.jpg'},
+{d:13,k:'Sundays 6 & 13 December',t:'Breakfast with Santa',w:'Sun 6 & Sun 13 Dec',p:'Breakfast with the big man himself. Booking ahead only.',img:'img/adv_d13.jpg',tbc:'price to confirm'},
+{d:19,k:'Saturday 19 December',t:'Christmas Jumpers & Cocktails',w:'Sat 19 Dec · 7pm–midnight · £5',p:'A DJ, Christmas cocktails, and prizes for the best and the worst jumper.',img:'img/adv_d19.jpg'},
+{d:24,k:'Christmas Eve',t:'Christmas Eve at The Bell',w:'Thu 24 Dec · 2pm–9pm',p:'A relaxed family afternoon by the fire: hot chocolates, drinks and Christmas music. Kids\' pack £5, with a gift bag to colour, a biscuit to decorate and a treat.',img:'img/adv_d24.jpg'},
+{d:25,k:'Christmas Day',t:'Closed for Christmas',w:'Fri 25 Dec',p:'We\'re closed on Christmas Day and open as usual on Boxing Day. Merry Christmas from all of us.',closed:1}];
+const doors=$('doors'),det=$('detail');let openI=-1;
+const DET0='<span class="k">Five nights to book</span><h3>Tap a door.</h3><p>Paint &amp; Sip, Breakfast with Santa, the jumper party and a family Christmas Eve, plus Christmas cocktails all month.</p>';
+EV.forEach((e,i)=>{const d=document.createElement('button');d.className='door'+(e.closed?' closed':'');d.innerHTML=(e.img?`<div class="behind"><img src="${e.img}" alt="" loading="lazy"><span>Tap to close</span></div>`:'')+`<div class="leaf"><b>${e.d}</b><small>${e.closed?'closed':'Dec'}</small></div>`;d.onclick=()=>toggleDoor(i);doors.appendChild(d)});
+function closeDoors(){[...doors.children].forEach(d=>d.classList.remove('open'));openI=-1;det.innerHTML=DET0}
+function toggleDoor(i){if(openI===i){closeDoors();return}const e=EV[i];[...doors.children].forEach((d,k)=>d.classList.toggle('open',k===i&&!e.closed));openI=i;ring(e.closed?520:760+i*60,1.6);
+  det.innerHTML=`<span class="k">${e.k}</span><h3>${e.t}</h3><div class="when">${e.w} ${e.tbc?`<span class="tbc">${e.tbc}</span>`:''}</div><p>${e.p}</p><div class="row">${e.closed?'':`<a class="pill" href="tel:01915863863">Call to book</a>`}<button class="closeb" id="closeb">Close the door</button></div>${e.closed?'':'<p>Or book at the bar · 0191 586 3863</p>'}`;
+  $('closeb').onclick=closeDoors}
+det.innerHTML=DET0;
+const NEXT=[
+ {d:'Sat 26 December',t:'Boxing Day',p:'Open as usual. Walk off the turkey and come in by the fire.',img:'img/bar3.jpg'},
+ {d:'Thu 31 December',t:'New Year’s Eve',p:'See the new year in at The Bell, with a DJ and the bar open late.',img:'img/bar1.jpg'},
+ {d:'Fri 1 January',t:'New Year’s Day',p:'Open for a quiet one and a hot chocolate by the fire.',img:'img/bar4.jpg'},
+ {d:'17 March',t:'St Patrick’s Day',p:'Our St Patrick’s celebration, with the bar in full swing.',img:'img/gin.jpg'},
+ {d:'Fri 26 March',t:'Good Friday',p:'Fish and chips at The Bell for Good Friday.',img:'img/corner.jpg'}];
+$('ncards').innerHTML=NEXT.map(n=>`<article class="nc rv"><img src="${n.img}" alt="" loading="lazy"><div class="t"><span class="d">${n.d}</span><h4>${n.t}</h4><p>${n.p}</p><span class="tbc">times &amp; prices to confirm</span></div></article>`).join('');
+
+/* ===================================================================
+   STAY WITH US
+   =================================================================== */
+const ROOMS=[
+ {n:'Double rooms',k:'En suite',p:'Big, comfortable doubles with a welcome tray of coffee, Ringtons tea and biscuits, and breakfast cooked to order in the morning.',imgs:['img/room_a.jpg','img/room_d.jpg','img/room_h.jpg']},
+ {n:'Family rooms',k:'Sleeps up to four',p:'Room for everyone under one roof, so the whole family can come for the weekend.',imgs:['img/room_g.jpg','img/room_d.jpg']},
+ {n:'Singles & cosy doubles',k:'Working nearby',p:'A desk, a TV, a kettle and fast wifi, with free parking and the A19 two minutes away.',imgs:['img/room_b.jpg','img/room_c.jpg']},
+ {n:'Courtyard rooms',k:'Ground floor · no stairs',p:'Out by the Courtyard on the ground floor, each with a double bed, a TV and a kitchenette.',imgs:['img/court1.jpg']},
+ {n:'Number 12',k:'Self-catering',p:'Our self-catering house, with a lounge, a fitted kitchen and a bedroom. For longer stays, or when you want your own front door.',imgs:['img/n12_1.jpg'],tbc:'sleeps & booking to confirm'}];
+let sroom=-1,simg=0;
+const ALLR=[...new Set(ROOMS.flatMap(r=>r.imgs))];
+$('sbgs').innerHTML=ALLR.map(s=>`<img src="${s}" alt="" loading="lazy">`).join('');
+$('slist').innerHTML=ROOMS.map((r,i)=>`<li><button data-i="${i}"><span class="no">${String(i+1).padStart(2,'0')}</span><span class="nm">${r.n}</span></button></li>`).join('');
+const SB=[...$('sbgs').children],SL=[...$('slist').querySelectorAll('button')];
+function showRoomImg(src){SB.forEach(im=>im.classList.toggle('on',im.getAttribute('src')===src))}
+function setRoom(i){if(i===sroom)return;sroom=i;const r=ROOMS[i];SL.forEach((b,k)=>b.classList.toggle('on',k===i));
+  ['sh','sp'].forEach(id=>$(id).classList.add('swap'));
+  setTimeout(()=>{$('sk').textContent=String(i+1).padStart(2,'0')+' · '+r.k;$('sh').textContent=r.n;$('sp').innerHTML=r.p+(r.tbc?` <span class="tbc">${r.tbc}</span>`:'');['sh','sp'].forEach(id=>$(id).classList.remove('swap'))},240);
+  $('sthumbs').innerHTML=r.imgs.length>1?r.imgs.map((s,k)=>`<button class="${k?'':'on'}" data-s="${s}" aria-label="Photo ${k+1}"><img src="${s}" alt=""></button>`).join(''):'';
+  $('sthumbs').querySelectorAll('button').forEach(b=>b.onclick=()=>{showRoomImg(b.dataset.s);$('sthumbs').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))});
+  showRoomImg(r.imgs[0])}
+SL.forEach(b=>{b.onclick=()=>setRoom(+b.dataset.i);b.onmouseenter=()=>{if(isDesk())setRoom(+b.dataset.i)}});
+document.head.insertAdjacentHTML('beforeend','<style>.sright h3,.sright p{transition:opacity .4s,transform .4s}.sright .swap{opacity:0;transform:translateY(10px)}</style>');
+setRoom(0);
+
+
+/* ===================================================================
+   GOOGLE REVIEWS (Places API, fetched 22 Nov 2026; newest first)
+   =================================================================== */
+const REV=[
+ {n:'Ian Curry',s:4,d:'October 2026',t:'Great local guest house highly recommended. Nicely situated by the sea. Within a hour travelling distance to highly recommended tourist spots. Daulton park designer clothing outlet nearby'},
+ {n:'Dean Ryan',s:5,d:'October 2026',t:'Very warm and welcoming friendly staff clean rooms comfortable warm delight place to stay.will be back very soon'},
+ {n:'Paul Arkle',s:5,d:'March 2026',t:'Wife has mobility issues so we got the Courtyard room so no stairs ! Smart and comfy; minor issues with heating and hot water but heating sorted and not bothered about the water. Brekkies amazing and staff in general lovely and helpful. Nothing was a bother and we\'ll be back !'},
+ {n:'Mark Morgan',s:5,d:'December 2025',t:'We have used the Bell several times now and have always had a very warm and friendly welcome. All the staff are so friendly and polite and will do anything to make your stay wonderful. The rooms are clean and comfortable. The breakfast is fantastic as it is cooked to order always hot and great quality. I would recommend the Bell anytime.'},
+ {n:'Ami Crabb',s:5,d:'November 2025',t:'Beautiful little stay. Fab little pub attached, rooms were great, everyone was lovely and welcoming. It was a work trip so I didn\'t get to explore. But room was fab and an brilliant build your own cooked breakfast the next day. I would definitely go back.'}];
+const star=on=>`<svg viewBox="0 0 20 20" width="15" height="15"><path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8z" fill="${on?'#e3bf6d':'none'}" stroke="#e3bf6d" stroke-width="1.2"/></svg>`;
+$('rrail').innerHTML=REV.map(r=>`<article class="rc rv"><div class="st">${[1,2,3,4,5].map(k=>star(k<=r.s)).join('')}</div><blockquote>${r.t}</blockquote><footer><span class="av">${r.n.split(' ').map(w=>w[0]).join('')}</span><span><b>${r.n}</b><small>${r.d} · Google review</small></span></footer></article>`).join('');
+const rr=$('rrail');$('rprev').onclick=()=>rr.scrollBy({left:-rr.clientWidth*.8,behavior:'smooth'});$('rnext').onclick=()=>rr.scrollBy({left:rr.clientWidth*.8,behavior:'smooth'});
+
+/* ===================================================================
+   BELL WALL (from v5/v6)
+   =================================================================== */
+const BELLS=[['Croatia',9.1,12.7],['Tenerife',42.3,14.2],['Greece',77.5,14.6],['Monaco',89.2,13.7],['Zakopane, Poland',7.2,30.3],['Wrocław, Poland',38.4,29.3],['New York',49.5,34.2],['London',60.9,29.3],['Switzerland',68.4,27.3],['Washington DC',76.8,27.3],['San Francisco',91.1,27.3],['Cyprus',19.5,52.7],['Zakynthos',27.3,51.8],['Venice',44.3,50.8],['Pisa',52.7,48.8],['Ireland',60.5,50.8],['Norway',84,51.8],['Florence',91.1,49.8],['Malta',9.1,68.4],['Berlin',17.6,69.3],['Belgium',24.7,68.4],['Hamburg',33.9,70.3],['Cancún',41,70.8],['Albania',63.2,69.8],['The Vatican',78.1,71.3],['Málaga',85.3,73.2],['Corfu',24.1,87.9],['Skiathos',36.5,90.8],['Kos',45.6,92.8],['Türkiye',56.6,91.3],['Wales',69,91.8],['Dominican Republic',88.5,91.8]];
+const TARGETS=['Venice','New York','Türkiye','Monaco','Dominican Republic','Ireland','Berlin','Málaga','Skiathos','London'];
+let ti=0,found=0;const cab=$('cab'),tgt=$('target'),sc5=[...document.querySelectorAll('#score i')];
+BELLS.forEach(([n,x,y])=>{const b=document.createElement('button');b.className='bb';b.style.left=x+'%';b.style.top=y+'%';b.setAttribute('aria-label',n);b.onclick=()=>tapBell(n,x,y);cab.appendChild(b)});
+function tagAt(n,x,y,win){cab.querySelectorAll('.tag2').forEach(t=>t.remove());const t=document.createElement('div');t.className='tag2'+(win?' win':'');t.textContent=(win?'✓ ':'')+n;t.style.left=Math.min(85,Math.max(15,x))+'%';t.style.top=y+'%';cab.appendChild(t);const r=document.createElement('div');r.className='ripple';r.style.left=x+'%';r.style.top=y+'%';cab.appendChild(r);setTimeout(()=>r.remove(),900)}
+function tapBell(n,x,y){const win=n===TARGETS[ti%TARGETS.length]&&found<5;ring(win?880:700+Math.random()*300,win?2.6:1.2);tagAt(n,x,y,win);if(win){sc5[found].classList.add('done');found++;ti++;setTimeout(()=>{tgt.textContent=found>=5?'everywhere!':TARGETS[ti%TARGETS.length];if(found>=5)$('gp').textContent='All five found. Next time, bring one back for the wall.'},700)}}
+$('skipb').onclick=()=>{ti++;tgt.textContent=TARGETS[ti%TARGETS.length]};$('hintb').onclick=()=>cab.classList.toggle('show');
+
+const dow=new Date().getDay();document.querySelectorAll('#hours li').forEach(li=>{if(li.dataset.d.split(',').includes(String(dow)))li.classList.add('today')});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ===================================================================
+   SCROLL LOOP + SNAP
+   =================================================================== */
+const walk=$('walk'),caps=[...document.querySelectorAll('.cap')],progs=[...document.querySelectorAll('#prog span')],navs=[...document.querySelectorAll('#top nav a')];
+let idleT=null;
+function onScroll(){const r=walk.getBoundingClientRect(),tot=walk.offsetHeight-innerHeight;PT=clamp(-r.top/tot);
+  if(PT>.002)startSeq();
+  if(PT>.02&&!introDone){introDone=true;drawP=1;photoP=1;$('hcopy').classList.add('in')}
+  const pinned=r.top<=1&&r.bottom>=innerHeight-1;
+  caps.forEach(c=>c.classList.toggle('on',pinned&&PT>=+c.dataset.a&&PT<+c.dataset.b));
+  const h=$('hcopy');h.style.opacity=1-seg(PT,.01,.05);h.style.transform=`translateY(${-30*seg(PT,.01,.05)}px)`;$('cue').style.opacity=introDone?1-seg(PT,0,.02):0;
+  const mr=menu.getBoundingClientRect();
+  const st=mr.top<innerHeight*.5&&mr.bottom>0?3:PT<T.door[1]+.03?0:PT<T.spin[0]+.026?1:2;progs.forEach((s,i)=>s.classList.toggle('on',i===st));$('prog').classList.toggle('in',PT>.04&&mr.bottom>innerHeight*.5);
+  $('top').classList.toggle('solid',r.bottom<innerHeight*.5||PT>.04);
+  const y=scrollY+innerHeight*.4;navs.forEach(a=>{const s=$(a.dataset.s);a.classList.toggle('cur',s.offsetTop<=y&&s.offsetTop+s.offsetHeight>y)});
+  clearTimeout(idleT);idleT=setTimeout(snap,170);
+}
+function snap(){if(dragging)return;
+  const m=menuRange();if(scrollY>m.a+4&&scrollY<m.b-4){const p=(scrollY-m.a)/(m.b-m.a)*(DRINKS.length-1),n=Math.round(p);if(Math.abs(p-n)>.03)goItem(n)}
+  const d=dayRange();if(scrollY>d.top+4&&scrollY<d.top+d.len-4){const f=(scrollY-d.top)/d.len*(DAY.length-1),n=Math.round(f);if(Math.abs(f-n)>.03)goChapter(n)}}
+function loop(now){
+  const dt=Math.min(64,now-(lastNow||now));lastNow=now;
+  const dP=PT-P;if(Math.abs(dP)>.0002){P+=dP*(RM?1:.16);needWalk=true}else if(P!==PT){P=PT;needWalk=true}
+  // the spin plays on its own once you reach the bar (and back again if you scroll up)
+  const tgtS=P>=T.spin[0]+.026?1:0;if(P<T.spin[0])spinV=0;else if(P>=T.spin[1])spinV=1;
+  else if(spinV!==tgtS){spinV=clamp(spinV+(tgtS?1:-1)*dt/(RM?1:900));needWalk=true}
+  if(needWalk){needWalk=false;const r=walk.getBoundingClientRect();if(r.bottom>-50)drawWalk()}
+  const mr=menu.getBoundingClientRect();mstage.style.visibility=mr.top<=1?'visible':'hidden';if(mr.top<innerHeight&&mr.bottom>0)drawMenu();
+  const dr=day.getBoundingClientRect();if(dr.top<innerHeight&&dr.bottom>0)drawDay();
+  requestAnimationFrame(loop)}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',()=>{size();onScroll()});
+// decode and prepare the front photo while the page is loading, so the fade-in starts without a hitch
+function prepFront(){if(!W||!FRONT.naturalWidth)return;(FRONT.decode?FRONT.decode():Promise.resolve()).catch(()=>{}).then(()=>{frontPic(frontGeom(0),0);needWalk=true})}
+FRONT.onload=prepFront;
+function boot(){size();onScroll();prepFront();intro();requestAnimationFrame(loop);
+  if(!RM&&window.Lenis){lenis=new Lenis({lerp:.11,smoothWheel:true});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now())}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" async onload="if(!lenis&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lenis=new Lenis({lerp:.11});(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now())}"></script>
+</body>
+</html>

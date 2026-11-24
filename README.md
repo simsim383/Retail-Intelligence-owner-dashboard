@@ -1,16 +1,7 @@
-# The Bell Guesthouse — website concept (v7.5)
+# retail-intelligence.co.uk
 
-A scroll-through website concept for The Bell Guesthouse, Horden. It's temporarily hosted on the Retail Intelligence domain to show the idea.
+- `/` — the Retail Intelligence studio site (v3, "One photo. Everything we make."). `index.html` plus `public/img/` and `public/media/`.
+- `/bell/` — The Bell Guesthouse website concept (v7.5), in `public/bell/` (noindex).
+- `/rand/` — the RAND Coffee Roastery pitch pack (unofficial concept, noindex), in `public/rand/`.
 
-- `index.html` is the whole page: the styles, the script and the copy.
-- `public/img/` holds The Bell's photos.
-- `public/walk/` holds the frames of the walk-in, which are played as you scroll.
-
-Built with Vite, so Vercel picks it up with its default settings.
-
-```bash
-npm install
-npm run dev
-```
-
-To put the Retail Intelligence site back, replace this repo's files with the saved Retail Intelligence files and push.
+Built with Vite; everything in `public/` is copied to `dist/` untouched.
