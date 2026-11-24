@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /rand/
+Disallow: /bell/

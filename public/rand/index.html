@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Made for RAND · a website, a reel and nine posts</title>
+<link rel="icon" href="site/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:opsz,wght@9..40,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b1714;--cream:#f5f0e6;--paper:#ebe5d8;--sand:#d9d0bb;--mut:#6f6457;--bark:#4a3f37;--rust:#b5462e;--terra:#d9744d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+a{color:inherit}img,video{display:block;max-width:100%}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:350;letter-spacing:-.02em;line-height:1}
+em{font-style:italic;color:var(--rust)}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{width:min(1120px,90vw);margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--ink);color:var(--cream);text-decoration:none;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn.rust{background:var(--rust)}
+.flag{background:var(--ink);color:var(--cream);text-align:center;padding:9px 16px;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+header{padding:34px 0 0}
+.who{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.who .r{display:flex;align-items:center;gap:12px}.who .r img{width:42px;height:42px;border-radius:50%;background:var(--paper)}
+.who .r b{font-family:'Fraunces';font-weight:500;letter-spacing:.16em;font-size:20px}
+.who .by{color:var(--mut)}
+.hero{padding:9vh 0 7vh}
+.hero h1{font-size:clamp(46px,7.4vw,112px);max-width:13ch}
+.hero p{font-size:19px;max-width:620px;margin-top:26px;color:var(--bark)}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+#intro[hidden]{display:none}
+#intro{margin:0 auto 10vh;display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:48px;align-items:center}
+#intro video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:22px;background:var(--ink)}
+#intro h2{font-size:clamp(32px,4vw,52px)}#intro p{margin-top:16px;color:var(--bark);max-width:460px}
+.sec{padding:11vh 0;border-top:1px solid rgba(27,23,20,.1)}
+.sh{display:flex;align-items:baseline;gap:18px;margin-bottom:34px;flex-wrap:wrap}
+.sh .n{font-family:'Fraunces';font-style:italic;font-size:44px;color:var(--rust);line-height:1}
+.sh h2{font-size:clamp(36px,5vw,68px)}
+.sh p{flex-basis:100%;color:var(--bark);max-width:640px;font-size:17px;margin-top:10px}
+.site{display:grid;grid-template-columns:1fr 250px;gap:26px;align-items:end}
+.laptop{border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(27,23,20,.55);border:1px solid rgba(27,23,20,.12)}
+.laptop .bar{height:28px;background:#e3dccd;display:flex;align-items:center;gap:6px;padding:0 12px}.laptop .bar i{width:9px;height:9px;border-radius:50%;background:#cbbfa9}
+.phone{border-radius:34px;overflow:hidden;border:7px solid var(--ink);box-shadow:0 30px 70px -30px rgba(27,23,20,.6);background:var(--ink)}
+.under{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;align-items:center}
+.under small{color:var(--mut)}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.feat div{background:var(--paper);border-radius:16px;padding:18px 20px;font-size:15px;color:var(--bark)}
+.feat b{display:block;color:var(--ink);font-family:'Fraunces';font-weight:450;font-size:21px;margin-bottom:4px}
+.reel{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:56px;align-items:center}
+.reel .phone video{width:100%;aspect-ratio:9/16;object-fit:cover}
+.beats{list-style:none;counter-reset:b}
+.beats li{counter-increment:b;padding:16px 0;border-top:1px solid rgba(27,23,20,.12);display:grid;grid-template-columns:64px 1fr;gap:10px}
+.beats li:before{content:counter(b,decimal-leading-zero);font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--rust);padding-top:4px}
+.beats b{font-family:'Fraunces';font-weight:450;font-size:21px;display:block}
+.beats span{color:var(--bark);font-size:15px}
+.snd{margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px}
+.grid button{border:0;padding:0;cursor:zoom-in;background:none;aspect-ratio:4/5;overflow:hidden;border-radius:4px}
+.grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.grid button:hover img{transform:scale(1.03)}
+.posts{display:grid;grid-template-columns:minmax(0,760px) 1fr;gap:48px;align-items:start}
+.posts ul{list-style:none;color:var(--bark);font-size:15px}.posts li{padding:10px 0;border-top:1px solid rgba(27,23,20,.12)}
+.posts li b{color:var(--ink)}
+dialog{border:0;padding:0;background:transparent;max-width:min(92vw,560px);margin:auto}
+dialog::backdrop{background:rgba(27,23,20,.85)}
+dialog img{width:100%;border-radius:6px}
+dialog button{position:fixed;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:0;background:var(--cream);font-size:22px;cursor:pointer}
+.notice{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--paper);border-radius:20px;padding:28px}
+.card .k{color:var(--rust);display:block;margin-bottom:12px}
+.card h3{font-size:30px;margin-bottom:12px}
+.card p{color:var(--bark)}
+.card table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.card td{padding:8px 0;border-top:1px solid rgba(27,23,20,.12);vertical-align:top}.card td:first-child{color:var(--mut);width:42%}
+.shots{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px}
+.shots div{background:var(--paper);border-radius:14px;padding:16px;font-size:14.5px;color:var(--bark)}
+.shots div b{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;color:var(--rust);margin-bottom:8px}
+footer{background:var(--ink);color:var(--cream);padding:12vh 0 8vh}
+footer h2{font-size:clamp(44px,6.5vw,96px)}footer h2 em{color:var(--terra)}
+footer p.l{color:#cfc4b4;max-width:560px;margin-top:18px;font-size:17px}
+.contact{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.contact .btn{background:var(--cream);color:var(--ink)}.contact .btn.line{background:transparent;color:var(--cream);border-color:rgba(245,240,230,.5)}
+.sig{margin-top:56px;padding-top:26px;border-top:1px solid rgba(245,240,230,.15);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#cfc4b4;font-size:14px}
+.fine{margin-top:30px;color:#8f8476;font-size:12px;max-width:820px;line-height:1.7}
+@media (max-width:860px){
+  .hero{padding:6vh 0 5vh}.hero p{font-size:17px}
+  #intro{grid-template-columns:1fr;gap:22px}#intro video{max-width:300px}
+  .site{grid-template-columns:1fr}.site .phone{max-width:240px;margin:0 auto}
+  .feat{grid-template-columns:1fr}
+  .reel{grid-template-columns:1fr;gap:30px}.reel .phone{max-width:300px;margin:0 auto}
+  .posts{grid-template-columns:1fr}.grid{gap:4px}
+  .notice{grid-template-columns:1fr}
+  .shots{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="flag">Unofficial concept made for RAND Coffee Roastery · not RAND's website · AI drink images are illustrative</div>
+
+<header class="wrap">
+  <div class="who">
+    <div class="r"><img src="site/img/icon.png" alt="RAND logo"><b>RAND</b></div>
+    <span class="mono by">Made by Sim · Retail Intelligence · Leeds</span>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <span class="mono" style="color:var(--rust)">For Aydin and the RAND team</span>
+  <h1 style="margin-top:18px">People search for your coffee. <em>Let's make sure they find it.</em></h1>
+  <p>I searched for a Spanish latte in Leeds and couldn't find RAND's café menu or a single price online. So I made you three things to show what it could look like: a menu-first website, a 14-second reel and nine posts, all in RAND's own colours and type.</p>
+  <div class="acts"><a class="btn" href="site/">Open the website →</a><a class="btn line" href="#reel">Watch the reel</a><a class="btn line" href="#posts">See the posts</a></div>
+</section>
+
+<section class="wrap" id="intro" hidden>
+  <video id="simv" src="sim.mp4" controls playsinline preload="metadata"></video>
+  <div><span class="mono" style="color:var(--rust)">60 seconds</span><h2 style="margin-top:12px">Hi, I'm Sim. <em>Here's the idea.</em></h2>
+    <p>A quick walkthrough from me, so you know there's a real person behind this and what I'd do next.</p></div>
+</section>
+
+<section class="sec wrap" id="site">
+  <div class="sh"><span class="n">01</span><h2>The <em>website.</em></h2>
+    <p>Built around what people come for: the drinks. Your menu on a wheel you can swipe, each shop with today's hours and "open now", then the roastery story and the beans.</p></div>
+  <div class="site">
+    <a class="laptop" href="site/" aria-label="Open the website concept"><div class="bar"><i></i><i></i><i></i></div><img src="shots/desk_menu.jpg" alt="The website concept on a laptop: the menu wheel" loading="lazy"></a>
+    <a class="phone" href="site/" aria-label="Open the website concept on your phone"><img src="shots/phone_menu.jpg" alt="The website concept on a phone: the menu wheel" loading="lazy"></a>
+  </div>
+  <div class="feat">
+    <div><b>Walk in</b>Scroll and you walk through the door to the counter and the roaster.</div>
+    <div><b>The menu wheel</b>Ten drinks and bakes people mention in your reviews, ready for your prices.</div>
+    <div><b>Open now</b>All three shops with live opening times and directions.</div>
+  </div>
+  <div class="under"><a class="btn" href="site/">Open the website →</a><small>Best on your phone. Scroll slowly.</small></div>
+</section>
+
+<section class="sec wrap" id="reel">
+  <div class="sh"><span class="n">02</span><h2>The <em>reel.</em></h2>
+    <p>14 seconds that follow what a customer actually does: search, find RAND, open the menu, then the drink being made.</p></div>
+  <div class="reel">
+    <div class="phone"><video id="rv" src="media/rand_reel.mp4" poster="media/poster.jpg" muted loop playsinline autoplay preload="metadata"></video></div>
+    <div>
+      <ol class="beats">
+        <li><div><b>The search</b><span>"best spanish iced latte in leeds", typed the way people really search.</span></div></li>
+        <li><div><b>RAND comes up</b><span>Your real Google rating, one tap away.</span></div></li>
+        <li><div><b>The menu</b><span>The wheel from the website spins to the iced Spanish latte.</span></div></li>
+        <li><div><b>The pour and the stir</b><span>The money shots, with "Beans roasted in Leeds".</span></div></li>
+        <li><div><b>Grab yours at RAND</b><span>All three shops, and a question to get comments going.</span></div></li>
+      </ol>
+      <button class="btn line snd" id="snd" type="button">Play with sound</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="posts">
+  <div class="sh"><span class="n">03</span><h2>Nine posts from <em>one photo.</em></h2>
+    <p>One drink, nine different posts: something to stop the scroll, something to make people smile, a question for the comments and the useful facts. Tap any post to see it full size.</p></div>
+  <div class="posts">
+    <div class="grid" id="grid"></div>
+    <ul>
+      <li><b>One photo, a month of posts.</b> Shoot one good drink and get nine posts out of it.</li>
+      <li><b>RAND in every tile.</b> Your colours, your type, your logo.</li>
+      <li><b>Each post has a job.</b> Some stop the scroll, some get comments, and some say where you are.</li>
+      <li><b>Your photo goes here.</b> The drink is illustrative; the real one would be shot at Roundhay.</li>
+    </ul>
+  </div>
+</section>
+<dialog id="dlg"><button type="button" aria-label="Close" onclick="dlg.close()">×</button><img id="dimg" alt=""></dialog>
+
+<section class="sec wrap" id="noticed">
+  <div class="sh"><span class="n">04</span><h2>Two things <em>I noticed.</em></h2></div>
+  <div class="notice">
+    <div class="card"><span class="mono k">The menu</span><h3>Your drinks aren't online yet.</h3>
+      <p>I couldn't find your café menu or any prices on your website, on Google or on the delivery apps. People search for the drink first, so a menu with photos and prices is the quickest win.</p></div>
+    <div class="card"><span class="mono k">Opening hours</span><h3>Two sets of hours.</h3>
+      <p>Your website says all three shops open 7am–6pm every day. Google shows something different (checked in November):</p>
+      <table><tr><td>Roundhay</td><td>7am–6pm · Sun from 7:30am</td></tr><tr><td>University</td><td>8am–5pm · Sun from 9am</td></tr><tr><td>City Centre</td><td>8am–4pm weekdays · closed weekends</td></tr></table>
+      <p style="margin-top:14px">It's worth checking which is right, because customers trust Google.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="real">
+  <div class="sh"><span class="n">05</span><h2>Making it <em>real.</em></h2>
+    <p>Everything above uses illustrative drink images. To make it yours, it's one short shoot with your own drinks, plus your prices. I'll bring a shot list, so nobody has to think about what to film.</p></div>
+  <div class="shots">
+    <div><b>01</b>10–15 drinks and bakes, shot from the same angle</div>
+    <div><b>02</b>The shopfront of each shop</div>
+    <div><b>03</b>A phone video walking in the door at Roundhay</div>
+    <div><b>04</b>The roaster running</div>
+    <div><b>05</b>Your menu prices</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Fancy a coffee <em>and a chat?</em></h2>
+    <p class="l">If any of this is useful, I'd love 15 minutes at Roundhay. If it's not for you, no worries at all, and thanks for looking.</p>
+    <div class="contact">
+      <a class="btn" href="mailto:retail.intelligence@outlook.com?subject=RAND%20concept">Email Sim</a>
+      <a class="btn line" href="https://wa.me/447756579701?text=Hi%20Sim%2C%20I%27ve%20seen%20the%20RAND%20concept">WhatsApp</a>
+      <a class="btn line" href="tel:+447756579701">Call 07756 579701</a>
+    </div>
+    <div class="sig"><span>Sim · Retail Intelligence · Websites, reels and posts for independent businesses in Leeds</span><a href="/">retail-intelligence.co.uk</a></div>
+    <p class="fine">This is an unofficial concept made to show RAND Coffee Roastery an idea. It isn't RAND's website and isn't affiliated with RAND. The drink, food and interior images are illustrative (AI-generated) and would be replaced with RAND's own photos before anything went live. The logo, the bag photo, bean prices and shop details come from randcoffeeroastery.com. Ratings and opening hours are from Google Maps, November 2026. The café prices are still to be confirmed.</p>
+  </div>
+</footer>
+
+<script>
+const g=document.getElementById('grid'),dlg=document.getElementById('dlg'),dimg=document.getElementById('dimg');
+const ALT=['Now stir: the iced Spanish latte','Spanish latte, defined','The search and the RAND result','The menu card: iced Spanish latte','Polaroid: Friday\'s sorted','Meet the team: head of stirring','Layered or stirred? A question post','Good coffee, good life','Good to know: shops and beans'];
+g.innerHTML=ALT.map((a,i)=>`<button type="button" data-i="${i+1}" aria-label="View post ${i+1}: ${a}"><img src="posts/thumb_${i+1}.jpg" alt="${a} (illustrative)" loading="lazy"></button>`).join('');
+g.querySelectorAll('button').forEach(b=>b.onclick=()=>{dimg.src='posts/rand_post_'+b.dataset.i+'.jpg';dimg.alt=b.querySelector('img').alt;dlg.showModal()});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+const rv=document.getElementById('rv'),snd=document.getElementById('snd');
+snd.onclick=()=>{rv.muted=!rv.muted;if(!rv.muted){rv.currentTime=0;rv.play()}snd.textContent=rv.muted?'Play with sound':'Mute'};
+// Sim's intro video shows only once sim.mp4 is uploaded
+const sv=document.getElementById('simv');sv.addEventListener('loadedmetadata',()=>{document.getElementById('intro').hidden=false});
+</script>
+</body>
+</html>

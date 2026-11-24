@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>RAND Coffee Roastery · concept v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:opsz,wght@9..40,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b1714;--cream:#f5f0e6;--paper:#ebe5d8;--sand:#d9d0bb;--mut:#6f6457;--bark:#4a3f37;--rust:#b5462e;--terra:#d9744d;--ok:#4f7a45}
+*{box-sizing:border-box;margin:0;padding:0}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:350;letter-spacing:-.02em;line-height:.98}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--rust);font-weight:350}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{width:min(1240px,90vw);margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;background:var(--ink);color:var(--cream);font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:transform .3s,background .3s;white-space:nowrap}
+.pill:hover{transform:translateY(-2px)}.pill.line{background:transparent;color:inherit;border:1px solid currentColor}
+.pill.light{background:var(--cream);color:var(--ink)}
+.chip{display:inline-block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(27,23,20,.25);border-radius:999px;padding:7px 11px 6px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:8px;vertical-align:1px}
+.dot.on{background:var(--ok);box-shadow:0 0 0 4px rgba(79,122,69,.18)}
+.badge{position:fixed;left:12px;bottom:12px;z-index:90;background:var(--ink);color:var(--cream);font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:8px 11px}
+.tag{position:absolute;font-family:'JetBrains Mono';font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;background:rgba(27,23,20,.72);color:var(--cream);padding:5px 8px;border-radius:3px}
+
+/* nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 4vw;color:var(--cream);transition:background .4s,color .4s}
+#nav.solid{background:rgba(245,240,230,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(27,23,20,.08);color:var(--ink)}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:36px;height:36px;border-radius:50%;background:var(--cream)}
+.brand b{font-family:'Fraunces';font-weight:500;font-size:21px;letter-spacing:.14em}
+.links{display:flex;gap:24px}.links a{opacity:.8}.links a:hover,.links a.cur{opacity:1}.links a.cur{text-decoration:underline;text-underline-offset:6px}
+.navr{display:flex;gap:16px;align-items:center}
+#nav .pill{background:var(--cream);color:var(--ink)}#nav.solid .pill{background:var(--ink);color:var(--cream)}
+.status{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+#mob{display:none}
+
+/* 1 walk in */
+#walk{position:relative;height:100vh;overflow:hidden;background:#211a15}
+#walk canvas{position:absolute;inset:0;width:100%;height:100%}
+#walk .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,12,.72) 0%,rgba(20,15,12,.35) 45%,rgba(20,15,12,0) 70%),linear-gradient(0deg,rgba(20,15,12,.5),rgba(20,15,12,0) 40%)}
+#walk .t{position:absolute;left:4vw;top:50%;transform:translateY(-46%);max-width:640px;color:var(--cream);z-index:2}
+#walk .k{color:var(--terra);display:block;margin-bottom:20px}
+#walk h1{font-size:clamp(54px,7.4vw,124px)}#walk h1 em{color:var(--terra)}
+#walk p{margin-top:22px;max-width:430px;font-size:17px;line-height:1.6;color:#e7dccb}
+#walk .ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+#walk .now{margin-top:26px;color:#e7dccb}
+#walk .inside{position:absolute;left:4vw;bottom:9vh;color:var(--cream);opacity:0;z-index:2}
+#walk .inside h2{font-size:clamp(40px,5vw,78px)}#walk .inside h2 em{color:var(--terra)}
+#walk .tag{right:4vw;bottom:4vh;left:auto}
+#walk .cue{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);color:#e7dccb;z-index:2}
+
+/* 2 menu wheel */
+#menu{position:relative;height:100vh;overflow:hidden;background:var(--paper)}
+#menu .head{position:absolute;left:5vw;top:16vh;width:min(400px,30vw);z-index:3}
+#menu .head .k{color:var(--rust)}
+#filters{display:flex;gap:8px;margin:18px 0 30px;flex-wrap:wrap}
+#filters button{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(27,23,20,.3);border-radius:999px;padding:8px 13px 7px;transition:background .3s,color .3s}
+#filters button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.info .n{color:var(--mut)}
+.info h2{font-size:clamp(40px,4.6vw,74px);margin:10px 0 14px}
+.info p{font-size:16px;line-height:1.6;color:var(--bark);min-height:52px}
+.info .row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}.info .price{border-color:var(--rust);color:var(--rust)}
+#wheel{position:absolute;inset:0;z-index:2}
+.it{position:absolute;left:0;top:0;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);cursor:pointer;will-change:transform}
+.it .disc{width:100%;height:100%;border-radius:50%;overflow:hidden;box-shadow:0 18px 40px -18px rgba(27,23,20,.45);background:var(--cream)}
+.it img{width:100%;height:100%;object-fit:cover;transform:scale(1.18)}
+.it span{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:10px;white-space:nowrap;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bark);transition:opacity .3s}
+.it.act span{opacity:0}
+.ring{position:absolute;border:1px dashed rgba(27,23,20,.18);border-radius:50%;pointer-events:none}
+#menu .note{position:absolute;right:4vw;bottom:4vh;color:var(--mut);text-align:right;z-index:3;max-width:330px;line-height:1.7}
+#menu .arrows{position:absolute;right:4vw;top:16vh;display:flex;gap:10px;z-index:3}
+#menu .arrows button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(27,23,20,.3);font-size:18px}
+#menu .arrows button:hover{background:var(--ink);color:var(--cream)}
+
+/* 3 reviews */
+#reviews{padding:16vh 0 14vh;background:var(--cream)}
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.rhead h2{font-size:clamp(44px,5.6vw,92px)}.rhead .k{color:var(--rust);display:block;margin-bottom:16px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
+.tab{border:1px solid rgba(27,23,20,.22);border-radius:14px;padding:12px 16px;text-align:left;transition:background .3s,color .3s}
+.tab b{display:block;font-family:'Fraunces';font-size:26px;font-weight:400}.tab small{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.tab.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.cards{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:40px 5vw 20px;scrollbar-width:none}
+.cards::-webkit-scrollbar{display:none}
+.rc{flex:0 0 min(330px,78vw);scroll-snap-align:start;background:var(--paper);border-radius:18px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:14px;transition:opacity .4s,transform .4s}
+.rc.hide{display:none}
+.rc .st{color:var(--rust);letter-spacing:.18em;font-size:14px}
+.rc q{font-family:'Fraunces';font-size:20px;line-height:1.35;quotes:none;flex:1}
+.rc .who{display:flex;align-items:center;gap:10px;font-size:13.5px}.rc .who i{width:32px;height:32px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-style:normal;font-weight:700;font-size:13px}
+.rc .who small{display:block;color:var(--mut);font-size:12px}
+.rc .src{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(27,23,20,.1);padding-top:12px}
+.rc .src a{text-decoration:underline;text-underline-offset:3px}
+.g{display:inline-flex;align-items:center;gap:6px}
+.rnote{color:var(--mut);margin-top:6px}
+
+/* 4 shops */
+#shops{padding:14vh 0;background:var(--paper)}
+#shops h2{font-size:clamp(44px,5.6vw,92px);margin:16px 0 50px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.shop{background:var(--cream);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.shop .num{font-family:'Fraunces';font-style:italic;font-size:46px;color:var(--rust);line-height:1}
+.shop h3{font-size:34px}
+.shop .addr{color:var(--bark);line-height:1.55}
+.shop .xtra{font-size:14.5px;line-height:1.55;color:var(--bark)}
+.shop .open{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 0;border-top:1px solid rgba(27,23,20,.1);border-bottom:1px solid rgba(27,23,20,.1)}
+.shop details{font-size:13.5px;color:var(--bark)}.shop summary{cursor:pointer;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.shop details ul{list-style:none;margin-top:10px;line-height:1.8}.shop details li.td{color:var(--ink);font-weight:600}
+.shop .acts{display:flex;gap:10px;margin-top:auto;padding-top:10px;flex-wrap:wrap}
+.shop .rate{font-size:13px;color:var(--mut)}
+
+/* 5 our coffee */
+#coffee{position:relative;height:100vh;overflow:hidden;background:#171717;color:var(--cream)}
+#coffee canvas{position:absolute;left:28%;top:50%;transform:translate(-50%,-50%);width:min(70vh,46vw);height:min(70vh,46vw);-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent 100%);mask-image:radial-gradient(closest-side,#000 72%,transparent 100%)}
+#coffee .side{position:absolute;right:6vw;top:50%;transform:translateY(-50%);width:min(500px,42vw)}
+#coffee .k{color:var(--terra)}#coffee h2{font-size:clamp(42px,4.8vw,80px);margin:16px 0 20px}#coffee h2 em{color:var(--terra)}
+#coffee p{color:#cfc4b4;line-height:1.65;font-size:16px}
+.ors{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
+.or{border:1px solid rgba(245,240,230,.18);border-radius:14px;padding:14px;opacity:.25;transition:opacity .4s}
+.or.on{opacity:1}
+.or i{font-family:'Fraunces';font-size:26px;color:var(--terra)}.or b{display:block;font-family:'Fraunces';font-weight:400;font-size:20px;margin:4px 0}.or small{font-family:'JetBrains Mono';font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#9a8f82}
+#coffee .pill{background:var(--cream);color:var(--ink)}
+
+/* 6 beans */
+#beans{position:relative;background:#e9dcc6;overflow:hidden}
+#beans .img{position:relative;height:min(62vh,600px);background:url(img/bags.jpg) 72% 50%/cover}
+#beans .img .tag{left:auto;right:2vw;top:2vh;background:rgba(27,23,20,.55)}
+#beans .t{position:absolute;left:5vw;top:50%;transform:translateY(-50%);max-width:470px}
+#beans .k{color:var(--rust)}#beans h2{font-size:clamp(46px,5.4vw,88px);margin:14px 0 18px}
+#beans p{color:var(--bark);line-height:1.6}
+.tiers{display:flex;gap:8px;margin:20px 0 26px;flex-wrap:wrap}
+#beans .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+/* footer */
+footer{background:var(--ink);color:var(--cream);padding:14vh 0 8vh}
+footer h2{font-size:clamp(56px,9vw,160px)}footer h2 em{color:var(--terra)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-top:70px;padding-top:30px;border-top:1px solid rgba(245,240,230,.15);font-size:14px;line-height:1.8;color:#cfc4b4}
+.fgrid .mono{color:var(--cream);display:block;margin-bottom:10px}
+.fine{margin-top:50px;font-size:12px;color:#8f8476;line-height:1.7;max-width:860px}
+
+.reveal{opacity:0;transform:translateY(28px)}
+
+@media (max-width:900px){
+  .links,.navr .pill{display:none}
+  #nav{padding:12px 5vw}.brand b{font-size:18px}.brand img{width:32px;height:32px}
+  .badge{bottom:76px;left:10px;font-size:9px;padding:6px 9px}
+  #mob{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:10px;right:10px;bottom:10px;z-index:80;background:var(--ink);border-radius:16px;padding:6px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+  #mob a{color:var(--cream);text-align:center;padding:12px 4px;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;border-radius:11px}
+  #mob a.hot{background:var(--rust)}
+  #walk .shade{background:linear-gradient(0deg,rgba(20,15,12,.82) 0%,rgba(20,15,12,.45) 55%,rgba(20,15,12,.15) 100%)}
+  #walk .t{top:auto;bottom:15vh;transform:none;right:5vw;left:5vw}
+  #walk h1{font-size:54px}#walk p{font-size:15.5px}
+  #walk .cue{display:none}#walk .tag{top:76px;bottom:auto}
+  #walk .inside{bottom:16vh;left:5vw}
+  #menu .head{left:5vw;right:5vw;width:auto;top:84px}
+  #filters{margin:12px 0 14px}
+  .info h2{font-size:38px;margin:6px 0 8px}.info p{font-size:14.5px;min-height:0}.info .row{margin-top:10px}
+  #menu .arrows{display:none}
+  #menu .note{left:5vw;right:5vw;bottom:118px;text-align:center;max-width:none;font-size:9.5px}
+  .sgrid{grid-template-columns:1fr}
+  #coffee canvas{left:50%;top:30%;width:62vw;height:62vw}
+  #coffee .side{left:5vw;right:5vw;width:auto;top:auto;bottom:100px;transform:none}
+  #coffee h2{font-size:38px;margin:10px 0 12px}#coffee p{font-size:14.5px}.ors{margin:16px 0}.or{padding:10px}.or b{font-size:16px}
+  #beans .img{height:300px;background-position:80% 50%}
+  #beans .t{position:static;transform:none;padding:40px 5vw 60px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  footer{padding-bottom:120px}
+}
+</style>
+</head>
+<body>
+<div class="badge">Unofficial concept v2 · not RAND's website</div>
+
+<nav id="nav">
+  <a class="brand" href="#top"><img src="img/icon.png" alt="RAND logo: two hands holding a coffee bean"><b>RAND</b></a>
+  <div class="links mono"><a href="#menu">Menu</a><a href="#shops">Shops</a><a href="#reviews">Reviews</a><a href="#coffee">Our coffee</a><a href="#beans">Beans</a></div>
+  <div class="navr"><span class="status" id="navStatus"></span>
+    <a class="pill" href="https://www.randcoffeeroastery.com/collections/coffee-beans" target="_blank" rel="noopener">Shop beans →</a></div>
+</nav>
+<div id="mob"><a href="#menu" class="hot">Menu</a><a href="#shops">Shops</a><a href="#beans">Beans</a></div>
+
+<!-- 1  WALK IN -->
+<section id="walk" data-id="top">
+  <canvas id="cw"></canvas>
+  <div class="shade"></div>
+  <div class="t" id="walkT">
+    <span class="mono k">RAND Coffee Roastery · Leeds · since 2010</span>
+    <h1>Come in.<br><em>It's roasting.</em></h1>
+    <p>Three cafés across Leeds and a roaster in Roundhay. The coffee in your cup was roasted a few streets away.</p>
+    <div class="ctas"><a class="pill light" href="#menu">See the menu</a><a class="pill line" href="#shops">Find a shop</a></div>
+    <div class="now status" id="heroStatus"></div>
+  </div>
+  <div class="inside" id="walkIn"><span class="mono" style="color:var(--terra)">You're in</span><h2>Grab a seat by <em>the roaster.</em></h2></div>
+  <span class="tag">Illustrative shopfront and interior · RAND's own footage goes here</span>
+  <div class="cue mono">Scroll to walk in ↓</div>
+</section>
+
+<!-- 2  MENU WHEEL -->
+<section id="menu">
+  <div class="head">
+    <span class="mono k">On the counter</span>
+    <div id="filters"><button data-f="all" class="on">All</button><button data-f="coffee">Coffee</button><button data-f="iced">Iced</button><button data-f="sweet">Sweet</button></div>
+    <div class="info" id="info"><span class="mono n" id="iN"></span><h2 id="iT"></h2><p id="iP"></p><div class="row" id="iR"></div></div>
+  </div>
+  <div class="arrows"><button id="prev" aria-label="Previous item">←</button><button id="next" aria-label="Next item">→</button></div>
+  <div class="ring" id="ring"></div>
+  <div id="wheel"></div>
+  <p class="note mono">Pictures illustrative · RAND's own photos go here<br>Menu from what customers order in Google reviews · prices to confirm</p>
+</section>
+
+<!-- 3  REVIEWS -->
+<section id="reviews">
+  <div class="wrap rhead reveal">
+    <div><span class="mono k">Heard at the counter</span><h2>Don't take <em>our</em> word.</h2></div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+  <div class="cards" id="cards"></div>
+  <p class="wrap mono rnote">Real Google reviews, word for word · ratings as of Nov 2026</p>
+</section>
+
+<!-- 4  SHOPS -->
+<section id="shops">
+  <div class="wrap">
+    <span class="mono reveal" style="color:var(--rust);display:block">Three shops · one roaster</span>
+    <h2 class="reveal">Pick your <em>nearest.</em></h2>
+    <div class="sgrid" id="sgrid"></div>
+  </div>
+</section>
+
+<!-- 5  OUR COFFEE -->
+<section id="coffee">
+  <canvas id="cr" width="540" height="540"></canvas>
+  <div class="side">
+    <span class="mono k">Why it tastes like this</span>
+    <h2>Roasted in Roundhay,<br><em>every day.</em></h2>
+    <p>Small batches, cupped before roasting and again three days after. The House Blend in your flat white is three coffees, each roasted on its own curve.</p>
+    <div class="ors" id="ors">
+      <div class="or"><i>I</i><b>Brazil</b><small>Body · sweetness</small></div>
+      <div class="or"><i>II</i><b>Ethiopia</b><small>Brightness · lift</small></div>
+      <div class="or"><i>III</i><b>Vietnam</b><small>Crema · finish</small></div>
+    </div>
+    <a class="pill" href="https://www.randcoffeeroastery.com/quiz" target="_blank" rel="noopener">Find your coffee: take the quiz →</a>
+  </div>
+</section>
+
+<!-- 6  BEANS -->
+<section id="beans">
+  <div class="img"><span class="tag">RAND's own product image</span></div>
+  <div class="t reveal">
+    <span class="mono k">Take it home</span>
+    <h2>The same beans, <em>for your kitchen.</em></h2>
+    <p>13 single origins and 2 blends, shipped within 48 hours of roasting. From <b>£8.95</b> · 200g, 500g or 1kg · free UK delivery over £30.</p>
+    <div class="tiers"><span class="chip">Weekly · save 15%</span><span class="chip">Fortnightly · save 12%</span><span class="chip">Monthly · save 10%</span></div>
+    <div class="acts"><a class="pill" href="https://www.randcoffeeroastery.com/collections/coffee-beans" target="_blank" rel="noopener">Shop beans →</a><a class="pill line" href="https://www.randcoffeeroastery.com/collections/subscription" target="_blank" rel="noopener">Subscribe</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Good coffee,<br><em>good life.</em></h2>
+    <div class="fgrid" id="fgrid">
+      <div><span class="mono">RAND Coffee Roastery</span>Family-run since 2010.<br>Roasting in Roundhay since 2020.<br>contact@randcoffeeroastery.com</div>
+    </div>
+    <p class="fine">Unofficial concept made to show RAND an idea. It is not RAND's website and is not affiliated with RAND Coffee Roastery. Drink, food and interior pictures are illustrative (AI-generated) and would be replaced with RAND's own photos. Ratings and opening hours are from Google Maps, November 2026. Prices for café drinks still to be confirmed with RAND. Bean prices and subscription savings are from randcoffeeroastery.com.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const WALK=["walk/001.jpg", "walk/002.jpg", "walk/003.jpg", "walk/004.jpg", "walk/005.jpg", "walk/006.jpg", "walk/007.jpg", "walk/008.jpg", "walk/009.jpg", "walk/010.jpg", "walk/011.jpg", "walk/012.jpg", "walk/013.jpg", "walk/014.jpg", "walk/015.jpg", "walk/016.jpg", "walk/017.jpg", "walk/018.jpg", "walk/019.jpg", "walk/020.jpg", "walk/021.jpg", "walk/022.jpg", "walk/023.jpg", "walk/024.jpg", "walk/025.jpg", "walk/026.jpg", "walk/027.jpg", "walk/028.jpg", "walk/029.jpg", "walk/030.jpg", "walk/031.jpg", "walk/032.jpg", "walk/033.jpg", "walk/034.jpg", "walk/035.jpg", "walk/036.jpg", "walk/037.jpg", "walk/038.jpg", "walk/039.jpg", "walk/040.jpg", "walk/041.jpg", "walk/042.jpg", "walk/043.jpg", "walk/044.jpg", "walk/045.jpg", "walk/046.jpg", "walk/047.jpg", "walk/048.jpg", "walk/049.jpg"], ROAST=["roast/001.jpg", "roast/002.jpg", "roast/003.jpg", "roast/004.jpg", "roast/005.jpg", "roast/006.jpg", "roast/007.jpg", "roast/008.jpg", "roast/009.jpg", "roast/010.jpg", "roast/011.jpg", "roast/012.jpg", "roast/013.jpg", "roast/014.jpg", "roast/015.jpg", "roast/016.jpg", "roast/017.jpg", "roast/018.jpg", "roast/019.jpg", "roast/020.jpg", "roast/021.jpg", "roast/022.jpg", "roast/023.jpg", "roast/024.jpg", "roast/025.jpg", "roast/026.jpg", "roast/027.jpg", "roast/028.jpg", "roast/029.jpg", "roast/030.jpg", "roast/031.jpg", "roast/032.jpg"], G={"shops": [{"k": "roundhay", "rating": 4.4, "count": 349, "hours": ["Monday: 7:00 AM – 6:00 PM", "Tuesday: 7:00 AM – 6:00 PM", "Wednesday: 7:00 AM – 6:00 PM", "Thursday: 7:00 AM – 6:00 PM", "Friday: 7:00 AM – 6:00 PM", "Saturday: 7:00 AM – 6:00 PM", "Sunday: 7:30 AM – 6:00 PM"], "maps": "https://www.google.com/maps/search/?api=1&query=RAND+Coffee+Roastery+90+Street+Lane+Leeds+LS8+2AL"}, {"k": "uni", "rating": 3.9, "count": 84, "hours": ["Monday: 8:00 AM – 5:00 PM", "Tuesday: 8:00 AM – 5:00 PM", "Wednesday: 8:00 AM – 5:00 PM", "Thursday: 8:00 AM – 5:00 PM", "Friday: 8:00 AM – 5:00 PM", "Saturday: 8:00 AM – 5:00 PM", "Sunday: 9:00 AM – 5:00 PM"], "maps": "https://www.google.com/maps/search/?api=1&query=RAND+Coffee+28+Blenheim+Terrace+Leeds+LS2+9HD"}, {"k": "city", "rating": 4.5, "count": 16, "hours": ["Monday: 8:00 AM – 4:00 PM", "Tuesday: 8:00 AM – 4:00 PM", "Wednesday: 8:00 AM – 4:00 PM", "Thursday: 8:00 AM – 4:00 PM", "Friday: 8:00 AM – 4:00 PM", "Saturday: Closed", "Sunday: Closed"], "maps": "https://www.google.com/maps/search/?api=1&query=RAND+Coffee+81+Great+George+Street+Leeds+LS1+3BR"}], "reviews": []};
+gsap.registerPlugin(ScrollTrigger);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMob=()=>innerWidth<900;
+let lenis=null;if(!reduce&&window.Lenis){lenis=new Lenis({lerp:.1});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);}
+const go=el=>lenis?lenis.scrollTo(el,{offset:0}):el.scrollIntoView();
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=id==='top'?document.body:document.getElementById(id);if(!el)return;e.preventDefault();go(el)}));
+
+/* ---------- shops + live opening status (Google hours) ---------- */
+const SHOPS=[
+ {k:'roundhay',n:'I',name:'Roundhay',addr:'90 Street Lane, Leeds LS8 2AL',x:'The roastery. Watch the roaster while you drink · outdoor seating · Wi-Fi · meeting room upstairs (£30/hr + VAT).'},
+ {k:'uni',n:'II',name:'University',addr:'28 Blenheim Terrace, Leeds LS2 9HD',x:'The original, since 2010. Next to campus · indoor and outdoor seats · good for studying.'},
+ {k:'city',n:'III',name:'City Centre',addr:'81 Great George St, Leeds LS1 3BR',x:'The weekday stop by the Civic Quarter. Cortados, cannoli, a bag of beans for home.'}
+];
+SHOPS.forEach(s=>Object.assign(s,G.shops.find(g=>g.k===s.k)));
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function parseT(t){const m=t.match(/(\d+):(\d+)\s*([AP]M)/i);if(!m)return null;let h=+m[1]%12;if(m[3].toUpperCase()==='PM')h+=12;return h*60+ +m[2]}
+function today(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());const g=k=>p.find(x=>x.type===k).value;return{day:g('weekday'),min:(+g('hour')%24)*60+ +g('minute')}}
+function hoursFor(s,day){const l=s.hours.find(h=>h.startsWith(day));return l?l.split(': ')[1]:''}
+const nice=t=>t.replace(/ | /g,' ').replace(/:00/g,'').replace(/ AM/g,'am').replace(/ PM/g,'pm').replace(' – ','–');
+function status(s){const T=today(),h=hoursFor(s,T.day);if(!h||/closed/i.test(h))return{open:false,txt:'Closed today'};
+  const [a,b]=h.split(/\s*–\s*/).map(parseT);if(T.min>=a&&T.min<b)return{open:true,txt:'Open now · till '+nice(h.split(/\s*–\s*/)[1])};
+  if(T.min<a)return{open:false,txt:'Opens '+nice(h.split(/\s*–\s*/)[0])+' today'};return{open:false,txt:'Closed · '+nice(h)+' today'}}
+function renderShops(){const T=today();
+  document.getElementById('sgrid').innerHTML=SHOPS.map(s=>{const st=status(s);return `<article class="shop reveal">
+    <div class="num">${s.n}</div><h3>${s.name}</h3><p class="addr">${s.addr}</p><p class="xtra">${s.x}</p>
+    <div class="open"><span class="dot ${st.open?'on':''}"></span>${st.txt}</div>
+    <details><summary>All opening hours</summary><ul>${s.hours.map(h=>`<li class="${h.startsWith(T.day)?'td':''}">${nice(h)}</li>`).join('')}</ul></details>
+    <p class="rate">★ ${s.rating} on Google · ${s.count} reviews</p>
+    <div class="acts"><a class="pill" href="${s.maps}" target="_blank" rel="noopener">Directions →</a></div></article>`}).join('');
+  const r=SHOPS[0],st=status(r);
+  const any=SHOPS.filter(s=>status(s).open);
+  const line=any.length?`<span class="dot on"></span>${any.length} of 3 shops open now`:`<span class="dot"></span>Roundhay · ${st.txt.toLowerCase()}`;
+  document.getElementById('navStatus').innerHTML=line;document.getElementById('heroStatus').innerHTML=line;
+  document.getElementById('fgrid').innerHTML+=SHOPS.map(s=>`<div><span class="mono">${s.n} · ${s.name}</span>${s.addr.replace(', Leeds','<br>Leeds')}<br>${nice(hoursFor(s,T.day)||'')} today</div>`).join('');
+}
+renderShops();
+
+/* ---------- reviews: real Google reviews as cards, tabbed by shop ---------- */
+if(!G.reviews.length){document.getElementById('reviews').remove();document.querySelectorAll('a[href="#reviews"]').forEach(a=>a.remove())}
+const RV=G.reviews, SN={roundhay:'Roundhay',uni:'University',city:'City Centre'};
+const short=(t,n=170)=>t.length>n?t.slice(0,t.lastIndexOf(' ',n))+'…':t;
+if(RV.length)document.getElementById('cards').innerHTML=RV.map(r=>`<article class="rc" data-s="${r.shop}">
+  <div class="st">★★★★★</div><q>${short(r.text)}</q>
+  <div class="who"><i>${r.name.trim()[0].toUpperCase()}</i><div>${r.name}<small>${r.when} · ${SN[r.shop]}</small></div></div>
+  <div class="src mono" style="font-size:10px"><span class="g"><svg width="14" height="14" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.1z"/><path fill="#FBBC05" d="M10.6 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.6l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.7 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.2 0-11.5-4.1-13.4-9.9l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>Google review</span>${r.uri?`<a href="${r.uri}" target="_blank" rel="noopener">Profile</a>`:''}</div></article>`).join('');
+const tabs=[{k:'all',b:'All',s:'3 shops'}].concat(SHOPS.map(s=>({k:s.k,b:'★ '+s.rating,s:s.name+' · '+s.count})));
+if(RV.length)document.getElementById('tabs').innerHTML=tabs.map((t,i)=>`<button class="tab ${i?'':'on'}" data-k="${t.k}"><b>${t.b}</b><small>${t.s}</small></button>`).join('');
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.rc').forEach(c=>c.classList.toggle('hide',b.dataset.k!=='all'&&c.dataset.s!==b.dataset.k));document.getElementById('cards').scrollTo({left:0,behavior:'smooth'})});
+
+/* ---------- menu wheel ---------- */
+const ITEMS=[
+ {id:'flatwhite',n:'Flat White',c:['coffee'],l:'Espresso and silky steamed milk. The drink mentioned most in RAND’s reviews.'},
+ {id:'spanish',n:'Spanish Latte',c:['coffee'],l:'Espresso over sweet condensed milk. A regular’s favourite at Blenheim Terrace.'},
+ {id:'miel',n:'Café Miel',c:['coffee'],l:'Honey and cinnamon with espresso and milk. Ask for it extra hot.'},
+ {id:'cortado',n:'Cortado',c:['coffee'],l:'Equal parts espresso and milk. Short, strong, smooth.'},
+ {id:'cappuccino',n:'Cappuccino',c:['coffee'],l:'Deep, airy foam with a dusting of cocoa.'},
+ {id:'turkish',n:'Turkish Coffee',c:['coffee'],l:'Finely ground and brewed the traditional way. Thick, rich, unfiltered.'},
+ {id:'frappe',n:'Mocha Frappé',c:['coffee','iced'],l:'Blended ice, chocolate and coffee. The cold one.'},
+ {id:'brownie',n:'Dubai Choc Brownie',c:['sweet'],l:'Chocolate and pistachio. One reviewer called it “to die for”.'},
+ {id:'baklava',n:'Baklava',c:['sweet'],l:'Thin pastry, syrup and pistachio. Fresh, with your coffee.'},
+ {id:'cannoli',n:'Cannoli',c:['sweet'],l:'Crisp shells, sweet cream. Praised at Great George Street.'}
+];
+const wheel=document.getElementById('wheel'),ring=document.getElementById('ring');
+let list=ITEMS.slice(),pos=0,shown=0,W=0,H=0,cx=0,cy=0,R=0,S=0,STEP=0;
+function geom(){W=innerWidth;H=innerHeight;if(isMob()){R=W*.7;cx=W/2;cy=H*.57+R;S=Math.min(96,W*.24);STEP=26}else{R=Math.min(W*.42,H*.8);cx=W*.6;cy=H*.6+R;S=Math.min(150,H*.17);STEP=17}
+  Object.assign(ring.style,{left:(cx-R)+'px',top:(cy-R)+'px',width:2*R+'px',height:2*R+'px'})}
+function build(){wheel.innerHTML=list.map((it,i)=>`<div class="it" data-i="${i}" style="--s:${S}px"><div class="disc"><img src="img/d/${it.id}.jpg" alt="${it.n} (illustrative)"></div><span>${it.n}</span></div>`).join('');
+  wheel.querySelectorAll('.it').forEach(el=>el.onclick=()=>goTo(+el.dataset.i));place(pos)}
+function place(p){const its=wheel.children;for(let i=0;i<its.length;i++){const d=i-p,a=(d*STEP-90)*Math.PI/180,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
+    const k=Math.max(0,1-Math.abs(d)),sc=1+k*(isMob()?.75:.95),vis=Math.abs(d)*STEP<95;
+    its[i].style.transform=`translate(${x}px,${y}px) scale(${sc})`;its[i].style.opacity=vis?Math.max(.0,1-Math.abs(d)*0.18):0;its[i].style.zIndex=100-Math.round(Math.abs(d)*10);
+    its[i].classList.toggle('act',Math.round(p)===i)}
+  const a=Math.max(0,Math.min(list.length-1,Math.round(p)));if(a!==shown||!document.getElementById('iT').textContent)setInfo(a)}
+function setInfo(a){shown=a;const it=list[a];
+  document.getElementById('iN').textContent=String(a+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');
+  document.getElementById('iT').textContent=it.n;document.getElementById('iP').textContent=it.l;
+  document.getElementById('iR').innerHTML=it.c.map(c=>`<span class="chip">${{coffee:'Coffee',iced:'Iced',sweet:'Sweet'}[c]}</span>`).join('')+'<span class="chip price">£ · price to confirm</span>';
+  if(!reduce)gsap.fromTo('#info>*',{opacity:0,y:10},{opacity:1,y:0,stagger:.04,duration:.35,overwrite:true})}
+let st=null;
+function goTo(i){if(!st){pos=i;place(pos);return}const p=st.start+(st.end-st.start)*(list.length>1?i/(list.length-1):0);lenis?lenis.scrollTo(p,{duration:.8}):scrollTo(0,p)}
+document.getElementById('prev').onclick=()=>goTo(Math.max(0,shown-1));document.getElementById('next').onclick=()=>goTo(Math.min(list.length-1,shown+1));
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));
+  list=b.dataset.f==='all'?ITEMS.slice():ITEMS.filter(it=>it.c.includes(b.dataset.f));pos=0;shown=-1;build();if(st)goTo(0);setInfo(0)});
+geom();build();setInfo(0);
+
+/* ---------- image sequences ---------- */
+const load=l=>l.map(s=>{const i=new Image();i.src=s;return i});
+const WF=load(WALK),RF=load(ROAST);
+const cw=document.getElementById('cw'),cr=document.getElementById('cr');
+function sizeWalk(){const d=Math.min(devicePixelRatio||1,1.5);cw.width=innerWidth*d;cw.height=innerHeight*d}
+function drawCover(cv,imgs,p){const i=imgs[Math.max(0,Math.min(imgs.length-1,Math.round(p*(imgs.length-1))))];if(!i||!i.complete||!i.naturalWidth)return;
+  const c=cv.getContext('2d'),s=Math.max(cv.width/i.naturalWidth,cv.height/i.naturalHeight),w=i.naturalWidth*s,h=i.naturalHeight*s;c.drawImage(i,(cv.width-w)/2,(cv.height-h)/2,w,h)}
+function drawSq(cv,imgs,p){const i=imgs[Math.max(0,Math.min(imgs.length-1,Math.round(p*(imgs.length-1))))];if(!i||!i.complete)return;const c=cv.getContext('2d');c.clearRect(0,0,cv.width,cv.height);c.drawImage(i,0,0,cv.width,cv.height)}
+sizeWalk();WF[0].onload=()=>drawCover(cw,WF,0);RF[0].onload=()=>drawSq(cr,RF,0);
+let walkP=0;
+
+const nav=document.getElementById('nav');
+ScrollTrigger.create({start:()=>innerHeight*.9,end:'max',onEnter:()=>nav.classList.add('solid'),onLeaveBack:()=>nav.classList.remove('solid')});
+
+if(!reduce){
+  gsap.from('#walkT>*',{opacity:0,y:30,stagger:.1,duration:1.1,ease:'power3.out',delay:.1});
+  const tw=gsap.timeline({scrollTrigger:{trigger:'#walk',start:'top top',end:'+=120%',scrub:true,pin:true,onUpdate:s=>{walkP=s.progress;drawCover(cw,WF,Math.min(1,s.progress*1.1))}}});
+  tw.to('#walkT',{opacity:0,y:-40,duration:.25},0).to('.cue',{opacity:0,duration:.1},0).to('#walkIn',{opacity:1,y:0,duration:.2},.7);
+  st=ScrollTrigger.create({trigger:'#menu',start:'top top',end:()=>'+='+(isMob()?200:240)+'%',pin:true,scrub:true,
+     snap:{snapTo:v=>list.length>1?Math.round(v*(list.length-1))/(list.length-1):0,duration:{min:.15,max:.4},delay:.05,ease:'power1.inOut'},
+     onUpdate:s=>{pos=s.progress*(list.length-1);place(pos)}});
+  const ors=[...document.querySelectorAll('.or')];
+  ScrollTrigger.create({trigger:'#coffee',start:'top top',end:'+=130%',pin:true,scrub:true,onUpdate:s=>{drawSq(cr,RF,Math.min(1,s.progress*1.1));const k=Math.min(2,Math.floor(s.progress*3));ors.forEach((o,i)=>o.classList.toggle('on',i<=k))}});
+  gsap.utils.toArray('.reveal').forEach(el=>gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%'}}));
+} else {document.querySelectorAll('.reveal').forEach(e=>{e.style.opacity=1;e.style.transform='none'});document.querySelectorAll('.or').forEach(o=>o.classList.add('on'));
+  WF[WF.length-1].onload=()=>drawCover(cw,WF,1);RF[RF.length-1].onload=()=>drawSq(cr,RF,1)}
+['menu','reviews','shops','coffee','beans'].filter(id=>document.getElementById(id)).forEach(id=>ScrollTrigger.create({trigger:'#'+id,start:'top 40%',end:'bottom 40%',onToggle:s=>{if(s.isActive)document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#'+id))}}));
+ScrollTrigger.sort();ScrollTrigger.refresh();
+addEventListener('keydown',e=>{const r=document.getElementById('menu').getBoundingClientRect();if(r.top<=1&&r.bottom>=innerHeight-1){if(e.key==='ArrowRight')goTo(Math.min(list.length-1,shown+1));if(e.key==='ArrowLeft')goTo(Math.max(0,shown-1))}});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{sizeWalk();drawCover(cw,WF,walkP);geom();build();ScrollTrigger.refresh()},150)});
+
+</script>
+</body>
+</html>
